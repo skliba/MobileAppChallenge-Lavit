@@ -8,6 +8,8 @@ import android.util.Log;
 import com.google.android.gms.auth.UserRecoverableAuthException;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
+import com.google.android.gms.common.api.ResultCallback;
+import com.google.android.gms.plus.People;
 import com.google.android.gms.plus.Plus;
 
 import mac2015.lavit.domain.interactor.AbstractInteractor;
@@ -50,6 +52,12 @@ public class LoginGoogleInteractorImpl extends AbstractInteractor implements Log
     @Override
     public void onConnected(Bundle bundle) {
         GoogleApiClient client = this.googleApiManager.getGoogleApiClient();
+        Plus.PeopleApi.loadVisible(client, null).setResultCallback(new ResultCallback<People.LoadPeopleResult>() {
+            @Override
+            public void onResult(People.LoadPeopleResult loadPeopleResult) {
+
+            }
+        });
         this.googleRepository = new GoogleAPIRepository(client, endpoint);
         getInteractorExecutor().execute(this);
     }
@@ -120,6 +128,7 @@ public class LoginGoogleInteractorImpl extends AbstractInteractor implements Log
 
 
     private RegistrationModel fillRegistrationModel(final User googleUser) {
+        registrationModel = new RegistrationModel();
         registrationModel.setEmail(googleUser.getEmail());
         registrationModel.setPassword(googleUser.getPassword());
         registrationModel.setFirstName(googleUser.getFirstName());

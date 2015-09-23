@@ -75,7 +75,6 @@ public class GoogleAPIRepository implements GoogleRepository {
     }
 
     private Person getPerson() {
-        Plus.PeopleApi.loadVisible(googleApiClient, null).await();
         return Plus.PeopleApi.getCurrentPerson(googleApiClient);
     }
 
