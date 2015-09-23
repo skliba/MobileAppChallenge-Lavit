@@ -3,12 +3,10 @@ package mac2015.lavit.ui.activity;
 import android.os.Bundle;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 import android.support.v7.widget.Toolbar;
 import android.widget.ImageView;
 
-import com.joanzapata.iconify.fonts.MaterialIcons;
 import com.squareup.picasso.Picasso;
 
 import java.util.Arrays;
@@ -40,8 +38,8 @@ public class ProjectInfoActivity extends BaseActivity implements ProjectInfoView
     FloatingActionButton fab;
     @InjectView(R.id.toolbar)
     Toolbar toolbar;
-    @InjectView(R.id.tabs)
-    TabLayout tabs;
+    // @InjectView(R.id.tabs)
+    //  TabLayout tabs;
     @InjectView(R.id.viewPager)
     ViewPager viewPager;
     @InjectView(R.id.collapsing_toolbar)
@@ -98,9 +96,9 @@ public class ProjectInfoActivity extends BaseActivity implements ProjectInfoView
         adapter.addTabs(Arrays.asList(projectInfoDetailsFragment, projectInfoFeedbackFragment));
         viewPager.setOffscreenPageLimit(2);
         viewPager.setAdapter(adapter);
-        tabs.setupWithViewPager(viewPager);
+       /* tabs.setupWithViewPager(viewPager);
         tabs.getTabAt(0).setCustomView(adapter.createView(MaterialIcons.md_info, R.layout.tab_iconic_bottom_padding));
-        tabs.getTabAt(1).setCustomView(adapter.createView(MaterialIcons.md_people, R.layout.tab_iconic_bottom_padding));
+        tabs.getTabAt(1).setCustomView(adapter.createView(MaterialIcons.md_people, R.layout.tab_iconic_bottom_padding));*/
 
     }
 
