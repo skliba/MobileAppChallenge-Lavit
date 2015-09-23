@@ -38,4 +38,5 @@ dependencies {
         transitive = false
     }
     compile 'org.buraktamturk:loadingview:1.0.0@aar'
+    compile 'com.pkmmte.view:circularimageview:1.1'
 }
