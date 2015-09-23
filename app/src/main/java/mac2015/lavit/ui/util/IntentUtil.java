@@ -1,5 +1,6 @@
 package mac2015.lavit.ui.util;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 
@@ -21,4 +22,8 @@ public class IntentUtil {
         return mainActivityIntent;
     }
 
+    public static User fetchUser(Activity activity) {
+        String userJSON = activity.getIntent().getStringExtra(KEY_USER);
+        return Serializator.deserialize(userJSON, User.class);
+    }
 }

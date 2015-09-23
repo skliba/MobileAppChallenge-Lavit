@@ -13,6 +13,8 @@ import com.rengwuxian.materialedittext.MaterialEditText;
 import butterknife.InjectView;
 import butterknife.OnClick;
 import mac2015.lavit.R;
+import mac2015.lavit.domain.models.User;
+import mac2015.lavit.domain.util.Mock;
 import mac2015.lavit.ui.util.IntentUtil;
 import mac2015.lavit.ui.view.LoginView;
 
@@ -87,9 +89,9 @@ public class LoginFragment extends BaseTabFragment implements LoginView {
     }
 
     @Override
-    public void proceed(String data) {
-        startActivity(IntentUtil.startMainActivity(getActivity(), null));
-        Toast.makeText(getActivity(), "Proceeding with:\n" + data, Toast.LENGTH_SHORT).show();
+    public void proceed(User user) {
+        startActivity(IntentUtil.startMainActivity(getActivity(), user));
+        Toast.makeText(getActivity(), "Proceeding with:\n" + user.getEmail(), Toast.LENGTH_SHORT).show();
     }
 
     @Override
@@ -104,7 +106,7 @@ public class LoginFragment extends BaseTabFragment implements LoginView {
 
     @OnClick(R.id.btnSignIn)
     protected void onSignInClicked() {
-        proceed(null);
+        proceed(Mock.mockUser());
     }
 
     private void toggleEnabled(boolean enabled) {

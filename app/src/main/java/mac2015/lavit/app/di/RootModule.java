@@ -13,6 +13,7 @@ import mac2015.lavit.ui.activity.MainActivity;
 import mac2015.lavit.ui.fragment.LoginFragment;
 import mac2015.lavit.ui.fragment.RegistrationFragment;
 import mac2015.lavit.ui.presenter.implementation.LoginPresenterImpl;
+import mac2015.lavit.ui.presenter.implementation.MainPresenterImpl;
 import mac2015.lavit.ui.presenter.implementation.RegistrationPresenterImpl;
 
 /**
@@ -39,7 +40,8 @@ import mac2015.lavit.ui.presenter.implementation.RegistrationPresenterImpl;
                 // View
                 // Presenter
                 LoginPresenterImpl.class,
-                RegistrationPresenterImpl.class
+                RegistrationPresenterImpl.class,
+                MainPresenterImpl.class
                 // Service
         },
         library = true
