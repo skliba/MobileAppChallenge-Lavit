@@ -1,6 +1,8 @@
 package mac2015.lavit.ui.view.implementation;
 
 import android.content.Context;
+import android.util.Log;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -17,12 +19,15 @@ import mac2015.lavit.domain.models.ProjectModel;
  */
 public class ProjectViewImpl extends BindableLayout<ProjectModel> {
 
+    private static final String TAG = "DAM_VIEW_PROJECT";
     @InjectView(R.id.txtProjectName)
     TextView txtProjectName;
     @InjectView(R.id.txtProjectOwner)
     TextView txtProjectOwner;
     @InjectView(R.id.imgProjectCover)
     ImageView imgProjectCover;
+
+    private ProjectModel project;
 
     public ProjectViewImpl(Context context) {
         super(context);
@@ -41,8 +46,19 @@ public class ProjectViewImpl extends BindableLayout<ProjectModel> {
 
     @Override
     public void bind(ProjectModel projectModel) {
+        this.project = projectModel;
         Picasso.with(getContext()).load(projectModel.getCoverPicture()).into(imgProjectCover);
         txtProjectName.setText(projectModel.getName());
         txtProjectOwner.setText(projectModel.getOwnerName());
+        setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                notifyItemAction(Action.CLICK, project, ProjectViewImpl.this);
+            }
+        });
+    }
+
+    public static final class Action {
+        public static int CLICK = 0;
     }
 }

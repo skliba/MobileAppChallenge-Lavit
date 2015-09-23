@@ -10,11 +10,14 @@ import android.widget.Toast;
 
 import com.rengwuxian.materialedittext.MaterialEditText;
 
+import javax.inject.Inject;
+
 import butterknife.InjectView;
 import butterknife.OnClick;
 import mac2015.lavit.R;
 import mac2015.lavit.domain.models.User;
 import mac2015.lavit.domain.util.Mock;
+import mac2015.lavit.ui.presenter.LoginPresenter;
 import mac2015.lavit.ui.util.IntentUtil;
 import mac2015.lavit.ui.view.LoginView;
 
@@ -28,6 +31,9 @@ public class LoginFragment extends BaseTabFragment implements LoginView {
     @InjectView(R.id.etPassword)
     MaterialEditText etPassword;
 
+    @Inject
+    LoginPresenter loginPresenter;
+
     ProgressDialog progressDialog;
 
     @Nullable
@@ -39,7 +45,10 @@ public class LoginFragment extends BaseTabFragment implements LoginView {
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        loginPresenter.initialize();
+        loginPresenter.setView(this);
         progressDialog = new ProgressDialog(getActivity());
+        loginPresenter.onViewCreate();
     }
 
     @Override
@@ -49,7 +58,7 @@ public class LoginFragment extends BaseTabFragment implements LoginView {
 
     @Override
     public String getPassword() {
-        return etEmail.getText().toString();
+        return etPassword.getText().toString();
     }
 
     @Override
@@ -106,7 +115,8 @@ public class LoginFragment extends BaseTabFragment implements LoginView {
 
     @OnClick(R.id.btnSignIn)
     protected void onSignInClicked() {
-        proceed(Mock.mockUser());
+        loginPresenter.attemptLogin();
+        //proceed(Mock.mockUser());
     }
 
     private void toggleEnabled(boolean enabled) {

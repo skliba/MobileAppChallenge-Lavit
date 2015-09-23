@@ -1,5 +1,7 @@
 package mac2015.lavit.domain.interactor.impl;
 
+import android.util.Log;
+
 import mac2015.lavit.domain.interactor.AbstractInteractor;
 import mac2015.lavit.domain.interactor.RegistrationInteractor;
 import mac2015.lavit.domain.models.LoginModel;
@@ -18,6 +20,7 @@ import retrofit.RetrofitError;
  */
 public class RegistrationInteractorImpl extends AbstractInteractor implements RegistrationInteractor {
 
+    private static final String TAG = "DAM_INT_REG";
     private ListRepository listRepository;
     private RegistrationModel registrationModel;
     private LoginModel loginModel;
@@ -32,15 +35,15 @@ public class RegistrationInteractorImpl extends AbstractInteractor implements Re
     @Override
     public void run() {
         try{
-            final Response<RegistrationResponse> registrationResponse = listRepository.register(registrationModel);
+            final Response<String> registrationResponse = listRepository.register(registrationModel);
             final Response<LoginResponse> loginResponse = listRepository.login(loginModel);
             User user = new User();
             user.setPassword(loginModel.getPassword());
             user.setEmail(loginModel.getEmail());
             notifySuccess(user);
-
         }
         catch(RetrofitError e){
+            Log.e(TAG, "Error:", e);
             notifyError(e.getMessage());
         }
     }
@@ -67,7 +70,6 @@ public class RegistrationInteractorImpl extends AbstractInteractor implements Re
     public void register(Callback callback, RegistrationModel model) {
         this.registrationModel = model;
         this.callback = callback;
-
         loginModel = new LoginModel();
         loginModel.setEmail(registrationModel.getEmail());
         loginModel.setPassword(registrationModel.getPassword());

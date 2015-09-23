@@ -13,9 +13,9 @@ import retrofit.http.POST;
  */
 public interface AppService {
 
+    @POST("/register")
+    Response<String> register(@Body RegistrationModel registrationModel);
 
-    Response<RegistrationResponse> register(@Body RegistrationModel registrationModel);
-
-    @POST("/test")
+    @POST("/login")
     Response<LoginResponse> login(@Body LoginModel loginModel);
 }

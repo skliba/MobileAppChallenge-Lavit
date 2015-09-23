@@ -9,13 +9,13 @@ import java.io.Serializable;
  */
 public class RegistrationModel implements Serializable{
 
-    @SerializedName("firstName")
+    @SerializedName("name")
     private String firstName;
 
-    @SerializedName("lastName")
+    @SerializedName("surname")
     private String lastName;
 
-    @SerializedName("mail")
+    @SerializedName("email")
     private String email;
 
     @SerializedName("password")

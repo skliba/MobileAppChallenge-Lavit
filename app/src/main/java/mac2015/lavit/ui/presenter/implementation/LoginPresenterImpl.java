@@ -5,17 +5,22 @@ import android.content.Context;
 import javax.inject.Inject;
 
 import mac2015.lavit.app.BasePresenter;
+import mac2015.lavit.domain.interactor.LoginInteractor;
 import mac2015.lavit.domain.manager.ValidationManager;
+import mac2015.lavit.domain.models.LoginModel;
+import mac2015.lavit.domain.models.User;
 import mac2015.lavit.ui.presenter.LoginPresenter;
 import mac2015.lavit.ui.view.LoginView;
 
 /**
  * Created by dmacan on 23.9.2015..
  */
-public class LoginPresenterImpl extends BasePresenter implements LoginPresenter {
+public class LoginPresenterImpl extends BasePresenter implements LoginPresenter, LoginInteractor.Callback {
 
     @Inject
     ValidationManager validationManager;
+    @Inject
+    LoginInteractor loginInteractor;
     LoginView loginView;
 
     public LoginPresenterImpl(Context context) {
@@ -23,8 +28,11 @@ public class LoginPresenterImpl extends BasePresenter implements LoginPresenter 
     }
 
     @Override
-    public void attemptRegistration() {
-
+    public void attemptLogin() {
+        LoginModel loginModel = new LoginModel();
+        loginModel.setEmail(loginView.getEmail());
+        loginModel.setPassword(loginView.getPassword());
+        loginInteractor.login(this, loginModel);
     }
 
     @Override
@@ -77,5 +85,15 @@ public class LoginPresenterImpl extends BasePresenter implements LoginPresenter 
     @Override
     public void setView(LoginView view) {
         this.loginView = view;
+    }
+
+    @Override
+    public void onLoginError(String msg) {
+        loginView.showError(msg);
+    }
+
+    @Override
+    public void onLoginSuccess(User user) {
+        loginView.proceed(user);
     }
 }

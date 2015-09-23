@@ -51,7 +51,7 @@ public class ApiManagerImpl implements ApiManager, ListRepository {
     }
 
     @Override
-    public Response<RegistrationResponse> register(RegistrationModel model) {
+    public Response<String> register(RegistrationModel model) {
         return service.register(model);
     }
 

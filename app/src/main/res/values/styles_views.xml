@@ -29,6 +29,11 @@
         <item name="android:textColorPrimary">@android:color/white</item>
     </style>
 
+    <style name="Widget.MAC.ActionBar.Transparent" parent="Widget.AppCompat.ActionBar">
+        <item name="theme">@style/ThemeOverlay.MAC.ActionBar</item>
+        <item name="popupTheme">@style/ThemeOverlay.AppCompat.Light</item>
+    </style>
+
     <style name="MACTabLayout" parent="Widget.Design.TabLayout">
         <item name="android:minHeight">?attr/actionBarSize</item>
         <item name="tabIndicatorColor">@android:color/white</item>
