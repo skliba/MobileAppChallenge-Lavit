@@ -11,7 +11,9 @@ import android.widget.Toast;
 import com.rengwuxian.materialedittext.MaterialEditText;
 
 import butterknife.InjectView;
+import butterknife.OnClick;
 import mac2015.lavit.R;
+import mac2015.lavit.ui.util.IntentUtil;
 import mac2015.lavit.ui.view.LoginView;
 
 /**
@@ -86,6 +88,7 @@ public class LoginFragment extends BaseTabFragment implements LoginView {
 
     @Override
     public void proceed(String data) {
+        startActivity(IntentUtil.startMainActivity(getActivity(), null));
         Toast.makeText(getActivity(), "Proceeding with:\n" + data, Toast.LENGTH_SHORT).show();
     }
 
@@ -99,10 +102,17 @@ public class LoginFragment extends BaseTabFragment implements LoginView {
         toggleEnabled(true);
     }
 
+    @OnClick(R.id.btnSignIn)
+    protected void onSignInClicked() {
+        proceed(null);
+    }
+
     private void toggleEnabled(boolean enabled) {
         etEmail.setEnabled(enabled);
         etEmail.setClickable(enabled);
         etPassword.setEnabled(enabled);
         etPassword.setClickable(enabled);
     }
+
+
 }
