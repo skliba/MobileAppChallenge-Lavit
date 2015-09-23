@@ -20,4 +20,6 @@ public interface ListRepository {
     Response<LoginResponse> login(LoginModel model);
 
     Response<LoginResponse> loginGoogle(String accessToken, String id, String expires, String authProvider);
+
+    //Response<ProjectResponse> fetchProjects(ProjectModel model);
 }

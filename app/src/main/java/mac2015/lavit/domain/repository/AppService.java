@@ -1,6 +1,7 @@
 package mac2015.lavit.domain.repository;
 
 import mac2015.lavit.domain.models.LoginModel;
+import mac2015.lavit.domain.models.ProjectModel;
 import mac2015.lavit.domain.models.RegistrationModel;
 import mac2015.lavit.domain.models.response.LoginResponse;
 import mac2015.lavit.domain.models.response.RegistrationResponse;
@@ -18,4 +19,6 @@ public interface AppService {
 
     @POST("/login")
     Response<LoginResponse> login(@Body LoginModel loginModel);
+
+    //Response<ProjectResponse> fetchProjects(ProjectModel model);
 }
