@@ -3,7 +3,9 @@ package mac2015.lavit.ui.presenter.implementation;
 import android.content.Context;
 
 import mac2015.lavit.app.BasePresenter;
+import mac2015.lavit.domain.models.ProjectModel;
 import mac2015.lavit.domain.models.User;
+import mac2015.lavit.domain.util.Mock;
 import mac2015.lavit.ui.presenter.MainPresenter;
 import mac2015.lavit.ui.view.MainView;
 
@@ -27,6 +29,7 @@ public class MainPresenterImpl extends BasePresenter implements MainPresenter {
     @Override
     public void onViewCreate() {
         mainView.showProfileInfo(user);
+        mainView.showProjects(Mock.mockProjects());
     }
 
     @Override
@@ -52,5 +55,10 @@ public class MainPresenterImpl extends BasePresenter implements MainPresenter {
     @Override
     public void setUser(User user) {
         this.user = user;
+    }
+
+    @Override
+    public void projectSelected(ProjectModel projectModel) {
+        this.mainView.openProject(user, projectModel);
     }
 }

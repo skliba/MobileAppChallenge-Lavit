@@ -1,5 +1,8 @@
 package mac2015.lavit.ui.view;
 
+import java.util.List;
+
+import mac2015.lavit.domain.models.ProjectModel;
 import mac2015.lavit.domain.models.User;
 
 /**
@@ -8,5 +11,9 @@ import mac2015.lavit.domain.models.User;
 public interface MainView extends View {
 
     void showProfileInfo(User user);
+
+    void showProjects(List<ProjectModel> projects);
+
+    void openProject(User user, ProjectModel project);
 
 }
