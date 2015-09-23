@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Main theme (reference this style throughout the app -->
+    <style name="MAC" parent="AppTheme.Base.MAC" />
+
+    <style name="AppTheme.Base.MAC" parent="AppTheme.Base">
+        <item name="android:colorAccent">@color/accent</item>
+    </style>
+
+    <style name="AppTheme.Base" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="colorPrimary">@color/primary</item>
+        <item name="colorPrimaryDark">@color/primary_dark</item>
+        <item name="android:textColor">@color/primary_text</item>
+        <!--    <item name="windowActionBar">false</item> -->
+    </style>
+</resources>

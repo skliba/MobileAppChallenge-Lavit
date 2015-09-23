@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="10dp">
+
+        <com.rengwuxian.materialedittext.MaterialEditText
+            android:id="@+id/etEmail"
+            style="@style/MAC.EditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Email"
+            android:inputType="textEmailAddress"
+            android:textCursorDrawable="@null" />
+
+
+        <com.rengwuxian.materialedittext.MaterialEditText
+            android:id="@+id/etPassword"
+            style="@style/MAC.EditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:hint="Password"
+            android:inputType="textPassword"
+            android:textCursorDrawable="@null" />
+
+        <com.rengwuxian.materialedittext.MaterialEditText
+            android:id="@+id/etPasswordConfirm"
+            style="@style/MAC.EditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:hint="Password confirm"
+            android:inputType="textPassword"
+            android:textCursorDrawable="@null" />
+
+        <com.rengwuxian.materialedittext.MaterialEditText
+            android:id="@+id/etFirstName"
+            style="@style/MAC.EditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:hint="First name"
+            android:inputType="textPersonName"
+            android:textCursorDrawable="@null" />
+
+        <com.rengwuxian.materialedittext.MaterialEditText
+            android:id="@+id/etLastName"
+            style="@style/MAC.EditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:hint="Last name"
+            android:inputType="textPersonName"
+            android:textCursorDrawable="@null" />
+
+        <Button
+            android:id="@+id/btnSignUp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:paddingBottom="20dp"
+            android:paddingTop="20dp"
+            android:text="SIGN UP" />
+
+    </LinearLayout>
+</ScrollView>

@@ -1,0 +1,55 @@
+package mac2015.lavit.app.di;
+
+import android.content.Context;
+import android.view.LayoutInflater;
+
+import javax.inject.Singleton;
+
+import dagger.Module;
+import dagger.Provides;
+import mac2015.lavit.app.MyApp;
+import mac2015.lavit.ui.activity.LoginActivity;
+import mac2015.lavit.ui.fragment.LoginFragment;
+import mac2015.lavit.ui.fragment.RegistrationFragment;
+
+/**
+ * Created by dmacan on 22.9.2015..
+ */
+@Module(
+        includes = {
+                ExecutorModule.class,
+        },
+        injects = {
+                // App
+                MyApp.class,
+                // Activity
+                LoginActivity.class,
+                // Fragment
+                LoginFragment.class,
+                RegistrationFragment.class,
+                // View
+                // Presenter
+                // Service
+        },
+        library = true
+)
+public class RootModule {
+
+    private final Context context;
+
+    public RootModule(Context context) {
+        this.context = context;
+    }
+
+    @Provides
+    @Singleton
+    public Context provideApplicationContext() {
+        return context;
+    }
+
+    @Provides
+    public LayoutInflater provideLayoutInflater() {
+        return LayoutInflater.from(context);
+    }
+
+}
