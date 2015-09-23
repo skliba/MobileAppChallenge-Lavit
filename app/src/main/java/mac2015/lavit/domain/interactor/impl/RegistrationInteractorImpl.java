@@ -41,6 +41,6 @@ public class RegistrationInteractorImpl extends AbstractInteractor implements Re
 
     @Override
     public void onError(String msg) {
-        
+
     }
 }
