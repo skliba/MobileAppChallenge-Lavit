@@ -35,7 +35,7 @@ public class InteractorModule {
 
     @Provides
     @Named("interactor_login_google")
-    public LoginGoogleInteractor provideLoginGoogleInteractor(InteractorExecutor interactorExecutor, MainThreadExecutor mainThreadExecutor, @Named("google_api") ListRepository listRepository, @Named("api_google_url") String endpoint){
+    public LoginGoogleInteractor provideLoginGoogleInteractor(InteractorExecutor interactorExecutor, MainThreadExecutor mainThreadExecutor, @Named("api_google_url") ListRepository listRepository, @Named("api_google_url") String endpoint){
         return new LoginGoogleInteractorImpl(interactorExecutor, mainThreadExecutor, listRepository, endpoint);
     }
 }
