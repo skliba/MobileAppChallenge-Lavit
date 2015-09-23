@@ -1,22 +1,23 @@
 package mac2015.lavit.domain.interactor.impl;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 
+import com.google.android.gms.auth.UserRecoverableAuthException;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
+import com.google.android.gms.plus.Plus;
 
 import mac2015.lavit.domain.interactor.AbstractInteractor;
 import mac2015.lavit.domain.interactor.LoginGoogleInteractor;
-import mac2015.lavit.domain.interactor.LoginInteractor;
 import mac2015.lavit.domain.manager.GoogleApiManager;
 import mac2015.lavit.domain.models.LoginModel;
 import mac2015.lavit.domain.models.RegistrationModel;
 import mac2015.lavit.domain.models.SocialProfile;
 import mac2015.lavit.domain.models.User;
 import mac2015.lavit.domain.models.response.LoginResponse;
-import mac2015.lavit.domain.models.response.RegistrationResponse;
 import mac2015.lavit.domain.models.response.Response;
 import mac2015.lavit.domain.repository.ListRepository;
 import mac2015.lavit.domain.repository.google.GoogleAPIRepository;
@@ -27,7 +28,7 @@ import mac2015.lavit.executor.MainThreadExecutor;
 /**
  * Created by noxqs on 23.09.15..
  */
-public class LoginGoogleInteractorImpl extends AbstractInteractor implements LoginGoogleInteractor, GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener{
+public class LoginGoogleInteractorImpl extends AbstractInteractor implements LoginGoogleInteractor, GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener {
 
     private static final String TAG = "GOOGLE_INTERACTOR";
     private GoogleApiManager googleApiManager;
@@ -48,6 +49,8 @@ public class LoginGoogleInteractorImpl extends AbstractInteractor implements Log
 
     @Override
     public void onConnected(Bundle bundle) {
+        GoogleApiClient client = this.googleApiManager.getGoogleApiClient();
+        this.googleRepository = new GoogleAPIRepository(client, endpoint);
         getInteractorExecutor().execute(this);
     }
 
@@ -58,8 +61,8 @@ public class LoginGoogleInteractorImpl extends AbstractInteractor implements Log
 
     @Override
     public void onConnectionFailed(ConnectionResult connectionResult) {
-        if(googleApiManager.canResolve()){
-            if(connectionResult.hasResolution()){
+        if (googleApiManager.canResolve()) {
+            if (connectionResult.hasResolution()) {
                 googleApiManager.resolveFail(activity, connectionResult);
             }
 
@@ -68,7 +71,7 @@ public class LoginGoogleInteractorImpl extends AbstractInteractor implements Log
 
     @Override
     public void run() {
-        try{
+        try {
             final User googleUser = googleRepository.getUser();
             googleUser.setProfilePicture("http://www.vecernji.hr/media/slika/89/442815.jpg");
             registrationModel = fillRegistrationModel(googleUser);
@@ -80,13 +83,21 @@ public class LoginGoogleInteractorImpl extends AbstractInteractor implements Log
             User user = new User();
             user.setToken(loginResponse.getMessage().getToken());
             notifySuccess(user);
-        }
-        catch(Exception e){
+        } catch (UserRecoverableAuthException e) {
+            notifyAuthorizationRequest(e.getIntent());
+        } catch (Exception e) {
             Log.e(TAG, "Google login error", e);
             notifyError(e.getMessage());
         }
+    }
 
-
+    private void notifyAuthorizationRequest(final Intent intent) {
+        getMainThreadExecutor().execute(new Runnable() {
+            @Override
+            public void run() {
+                callback.onLoginAuthorizationRequest(intent);
+            }
+        });
     }
 
     private void notifyError(final String message) {
@@ -122,11 +133,10 @@ public class LoginGoogleInteractorImpl extends AbstractInteractor implements Log
         this.activity = activity;
         this.googleApiManager = googleApiManager;
         this.googleApiManager.init(this, this);
-        this.googleRepository = new GoogleAPIRepository(this.googleApiManager.getGoogleApiClient(), endpoint);
-        if(!this.googleApiManager.isConnected()){
+        if (!this.googleApiManager.isConnected()) {
             this.googleApiManager.connect();
-        }
-        else{
+        } else {
+            this.googleRepository = new GoogleAPIRepository(this.googleApiManager.getGoogleApiClient(), endpoint);
             getInteractorExecutor().execute(this);
         }
     }

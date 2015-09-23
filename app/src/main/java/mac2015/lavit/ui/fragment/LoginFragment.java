@@ -1,6 +1,7 @@
 package mac2015.lavit.ui.fragment;
 
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
@@ -16,7 +17,6 @@ import butterknife.InjectView;
 import butterknife.OnClick;
 import mac2015.lavit.R;
 import mac2015.lavit.domain.models.User;
-import mac2015.lavit.domain.util.Mock;
 import mac2015.lavit.ui.presenter.LoginPresenter;
 import mac2015.lavit.ui.util.IntentUtil;
 import mac2015.lavit.ui.view.LoginView;
@@ -113,10 +113,20 @@ public class LoginFragment extends BaseTabFragment implements LoginView {
         toggleEnabled(true);
     }
 
+    @Override
+    public void requestAuthorization(Intent intent, int code) {
+        startActivityForResult(intent, code);
+    }
+
     @OnClick(R.id.btnSignIn)
     protected void onSignInClicked() {
         loginPresenter.attemptLogin();
         //proceed(Mock.mockUser());
+    }
+
+    @OnClick(R.id.btnGoogleLogin)
+    protected void onGoogleLoginClicked() {
+        loginPresenter.attemptGoogleLogin(getActivity());
     }
 
     private void toggleEnabled(boolean enabled) {
@@ -124,6 +134,12 @@ public class LoginFragment extends BaseTabFragment implements LoginView {
         etEmail.setClickable(enabled);
         etPassword.setEnabled(enabled);
         etPassword.setClickable(enabled);
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        loginPresenter.onAuthorizationResult(getActivity(), requestCode, resultCode, data);
     }
 
 

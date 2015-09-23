@@ -1,6 +1,9 @@
 package mac2015.lavit.ui.presenter;
 
 
+import android.app.Activity;
+import android.content.Intent;
+
 import mac2015.lavit.ui.view.LoginView;
 
 /**
@@ -14,4 +17,7 @@ public interface LoginPresenter extends Presenter<LoginView> {
 
     boolean validatePassword();
 
+    void attemptGoogleLogin(Activity activity);
+
+    void onAuthorizationResult(Activity activity, int requestCode, int resultCode, Intent data);
 }

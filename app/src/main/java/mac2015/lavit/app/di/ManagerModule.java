@@ -4,6 +4,7 @@ import android.content.Context;
 
 import dagger.Module;
 import dagger.Provides;
+import mac2015.lavit.domain.manager.GoogleApiManager;
 import mac2015.lavit.domain.manager.ValidationManager;
 import mac2015.lavit.ui.custom.behavior.AppbarOffsetHandler;
 
@@ -21,5 +22,10 @@ public class ManagerModule {
     @Provides
     public AppbarOffsetHandler provideAppbarOffsetHandler() {
         return new AppbarOffsetHandler();
+    }
+
+    @Provides
+    GoogleApiManager provideGoogleApiManager(Context context) {
+        return new GoogleApiManager(context);
     }
 }
