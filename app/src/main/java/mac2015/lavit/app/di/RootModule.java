@@ -10,6 +10,7 @@ import dagger.Provides;
 import mac2015.lavit.app.MyApp;
 import mac2015.lavit.ui.activity.LoginActivity;
 import mac2015.lavit.ui.activity.MainActivity;
+import mac2015.lavit.ui.activity.ProjectInfoActivity;
 import mac2015.lavit.ui.fragment.LoginFragment;
 import mac2015.lavit.ui.fragment.RegistrationFragment;
 import mac2015.lavit.ui.presenter.implementation.LoginPresenterImpl;
@@ -35,6 +36,7 @@ import mac2015.lavit.ui.presenter.implementation.RegistrationPresenterImpl;
                 // Activity
                 LoginActivity.class,
                 MainActivity.class,
+                ProjectInfoActivity.class,
                 // Fragment
                 LoginFragment.class,
                 RegistrationFragment.class,

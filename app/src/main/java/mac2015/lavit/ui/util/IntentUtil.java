@@ -8,6 +8,7 @@ import mac2015.lavit.domain.models.ProjectModel;
 import mac2015.lavit.domain.models.User;
 import mac2015.lavit.domain.util.Serializator;
 import mac2015.lavit.ui.activity.MainActivity;
+import mac2015.lavit.ui.activity.ProjectInfoActivity;
 
 /**
  * Created by dmacan on 23.9.2015..
@@ -29,10 +30,10 @@ public class IntentUtil {
         return Serializator.deserialize(userJSON, User.class);
     }
 
-    public static Intent startProfileActivity(Context context, User user, ProjectModel project) {
+    public static Intent startProjectActivity(Context context, User user, ProjectModel project) {
         String userJSON = Serializator.serialize(user);
         String projectJSON = Serializator.serialize(project);
-        Intent projectActivityIntent = new Intent(context, null); // TODO project activity instead of null
+        Intent projectActivityIntent = new Intent(context, ProjectInfoActivity.class);
         projectActivityIntent.putExtra(KEY_USER, userJSON);
         projectActivityIntent.putExtra(KEY_PROJECT, projectJSON);
         return projectActivityIntent;

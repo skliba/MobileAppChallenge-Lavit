@@ -77,7 +77,7 @@ public class MainActivity extends BaseActivity implements MainView, ViewEventLis
 
     @Override
     public void openProject(User user, ProjectModel project) {
-        startActivity(IntentUtil.startProfileActivity(getBaseContext(), user, project));
+        startActivity(IntentUtil.startProjectActivity(getBaseContext(), user, project));
     }
 
     private void setupGrid() {
