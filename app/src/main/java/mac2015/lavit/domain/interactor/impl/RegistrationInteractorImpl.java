@@ -41,7 +41,7 @@ public class RegistrationInteractorImpl extends AbstractInteractor implements Re
 
         }
         catch(RetrofitError e){
-            notifyError("Error kod registracije"); //privremena poruka dok nesto pamenije ne smislimo
+            notifyError(e.getMessage());
         }
     }
 
