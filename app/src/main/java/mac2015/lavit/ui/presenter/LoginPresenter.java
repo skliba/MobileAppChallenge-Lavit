@@ -8,7 +8,7 @@ import mac2015.lavit.ui.view.LoginView;
  */
 public interface LoginPresenter extends Presenter<LoginView> {
 
-    void attemptRegistration();
+    void attemptLogin();
 
     boolean validateEmail();
 

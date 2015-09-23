@@ -16,7 +16,7 @@ public class RepositoryModule {
     @Provides
     @Named("api_base_url")
     public String provideBaseApiUrl() {
-        return "178.62.255.25";
+        return "http://178.62.255.25";
     }
 
     @Provides
