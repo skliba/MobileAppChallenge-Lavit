@@ -53,7 +53,7 @@ public class LoginGoogleInteractorImpl extends AbstractInteractor implements Log
 
     @Override
     public void onConnectionSuspended(int i) {
-
+        //not needed
     }
 
     @Override
@@ -72,19 +72,39 @@ public class LoginGoogleInteractorImpl extends AbstractInteractor implements Log
             final User googleUser = googleRepository.getUser();
             googleUser.setProfilePicture("http://www.vecernji.hr/media/slika/89/442815.jpg");
             registrationModel = fillRegistrationModel(googleUser);
-            final Response<RegistrationResponse> registrationResponse = this.listRepository.registerGoogle(registrationModel, googleUser.getSocialProfile());
+            final Response<String> registrationResponse = this.listRepository.registerGoogle(registrationModel, googleUser.getSocialProfile());
             final Response<LoginResponse> loginResponse = this.listRepository.loginGoogle(googleUser.getSocialProfile().getToken(),
                     googleUser.getSocialProfile().getId(),
                     googleUser.getSocialProfile().getTokenExpiration(),
                     String.valueOf(SocialProfile.Type.GOOGLE));
-
+            User user = new User();
+            user.setToken(loginResponse.getMessage().getToken());
+            notifySuccess(user);
         }
         catch(Exception e){
             Log.e(TAG, "Google login error", e);
-
+            notifyError(e.getMessage());
         }
 
 
+    }
+
+    private void notifyError(final String message) {
+        getMainThreadExecutor().execute(new Runnable() {
+            @Override
+            public void run() {
+                callback.onLoginError(message);
+            }
+        });
+    }
+
+    private void notifySuccess(final User googleUser) {
+        getMainThreadExecutor().execute(new Runnable() {
+            @Override
+            public void run() {
+                callback.onLoginSuccess(googleUser);
+            }
+        });
     }
 
 

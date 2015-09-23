@@ -56,7 +56,7 @@ public class ApiManagerImpl implements ApiManager, ListRepository {
     }
 
     @Override
-    public Response<RegistrationResponse> registerGoogle(RegistrationModel model, SocialProfile profile) {
+    public Response<String> registerGoogle(RegistrationModel model, SocialProfile profile) {
         try{
             int profileType = profile.getType();
             return service.register(model);
