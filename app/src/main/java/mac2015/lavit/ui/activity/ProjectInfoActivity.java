@@ -93,7 +93,7 @@ public class ProjectInfoActivity extends BaseActivity implements ProjectInfoView
 
     private void setupTabs() {
         adapter = new IconTabAdapter(getFragmentManager(), getBaseContext());
-        adapter.addTabs(Arrays.asList(projectInfoDetailsFragment, projectInfoFeedbackFragment));
+        adapter.addTabs(Arrays.asList(projectInfoDetailsFragment));
         viewPager.setOffscreenPageLimit(2);
         viewPager.setAdapter(adapter);
        /* tabs.setupWithViewPager(viewPager);
