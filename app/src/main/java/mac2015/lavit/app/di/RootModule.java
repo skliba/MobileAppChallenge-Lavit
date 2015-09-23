@@ -23,7 +23,8 @@ import mac2015.lavit.ui.presenter.implementation.RegistrationPresenterImpl;
                 ManagerModule.class,
                 PresenterModule.class,
                 InteractorModule.class,
-                RepositoryModule.class
+                RepositoryModule.class,
+                FragmentModule.class
         },
         injects = {
                 // App

@@ -7,6 +7,8 @@ import android.support.v7.widget.Toolbar;
 
 import java.util.Arrays;
 
+import javax.inject.Inject;
+
 import butterknife.InjectView;
 import butterknife.OnPageChange;
 import mac2015.lavit.R;
@@ -20,9 +22,9 @@ import mac2015.lavit.ui.fragment.RegistrationFragment;
  */
 public class LoginActivity extends BaseActivity {
 
-    //  @Inject
+    @Inject
     LoginFragment loginFragment;
-    //  @Inject
+    @Inject
     RegistrationFragment registrationFragment;
 
     @InjectView(R.id.toolbar)
@@ -40,8 +42,8 @@ public class LoginActivity extends BaseActivity {
 
     @Override
     protected void main(Bundle savedInstanceState) {
-     /*   setSupportActionBar(toolbar);
-        setupTabs();*/
+        setSupportActionBar(toolbar);
+        setupTabs();
     }
 
     private void setupTabs() {
@@ -54,13 +56,13 @@ public class LoginActivity extends BaseActivity {
     @OnPageChange(R.id.viewpager)
     protected void onPageChanged(int position) {
         switch (position) {
-            case 0: // QR Generator
-             /*   loginFragment.onFocusChanged(true);
-                loginFragment.onFocusChanged(false);/*
+            case 0: // Login
+                loginFragment.onFocusChanged(true);
+                loginFragment.onFocusChanged(false);
                 break;
-            case 1: // QR Scanner
-             /*   registrationFragment.onFocusChanged(true);
-                registrationFragment.onFocusChanged(false);*/
+            case 1: // Registration
+                registrationFragment.onFocusChanged(true);
+                registrationFragment.onFocusChanged(false);
                 break;
         }
     }
