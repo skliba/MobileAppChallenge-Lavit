@@ -34,6 +34,7 @@ public class LoginInteractorImpl extends AbstractInteractor implements LoginInte
             User user = new User();
             user.setEmail(model.getEmail());
             user.setPassword(model.getPassword());
+            user.setToken(loginResponse.getMessage().getToken());
             notifySuccess(user);
         }
         catch(RetrofitError e){

@@ -9,7 +9,7 @@ import java.io.Serializable;
  */
 public class LoginModel implements Serializable{
 
-    @SerializedName("mail")
+    @SerializedName("email")
     private String email;
 
     @SerializedName("password")
