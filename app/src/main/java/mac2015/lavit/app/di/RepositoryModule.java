@@ -30,4 +30,5 @@ public class RepositoryModule {
     public ListRepository provideListRepository(@Named("api_base_url") String endpoint){
         return new ApiManagerImpl(endpoint);
     }
+
 }
