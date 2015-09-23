@@ -4,11 +4,13 @@ import android.content.Context;
 
 import dagger.Module;
 import dagger.Provides;
+import mac2015.lavit.ui.presenter.FeedbackPresenter;
 import mac2015.lavit.ui.presenter.LoginPresenter;
 import mac2015.lavit.ui.presenter.MainPresenter;
 import mac2015.lavit.ui.presenter.ProjectInfoDescriptionPresenter;
 import mac2015.lavit.ui.presenter.ProjectInfoPresenter;
 import mac2015.lavit.ui.presenter.RegistrationPresenter;
+import mac2015.lavit.ui.presenter.implementation.FeedbackPresenterImpl;
 import mac2015.lavit.ui.presenter.implementation.LoginPresenterImpl;
 import mac2015.lavit.ui.presenter.implementation.MainPresenterImpl;
 import mac2015.lavit.ui.presenter.implementation.ProjectInfoDescriptionPresenterImpl;
@@ -44,6 +46,11 @@ public class PresenterModule {
     @Provides
     public ProjectInfoDescriptionPresenter provideProjectInfoDescriptionPresenter(Context context) {
         return new ProjectInfoDescriptionPresenterImpl(context);
+    }
+
+    @Provides
+    public FeedbackPresenter provideFeedbackPresenter(Context context) {
+        return new FeedbackPresenterImpl(context);
     }
 
 }

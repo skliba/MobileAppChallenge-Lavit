@@ -7,6 +7,7 @@ import android.content.Intent;
 import mac2015.lavit.domain.models.ProjectModel;
 import mac2015.lavit.domain.models.User;
 import mac2015.lavit.domain.util.Serializator;
+import mac2015.lavit.ui.activity.FeedbackActivity;
 import mac2015.lavit.ui.activity.MainActivity;
 import mac2015.lavit.ui.activity.ProjectInfoActivity;
 
@@ -43,5 +44,12 @@ public class IntentUtil {
     public static ProjectModel fetchProject(Activity activity) {
         String projectJSON = activity.getIntent().getStringExtra(KEY_PROJECT);
         return Serializator.deserialize(projectJSON, ProjectModel.class);
+    }
+
+    public static Intent startFeedbackActivity(Context context, ProjectModel project) {
+        String projectJSON = Serializator.serialize(project);
+        Intent feedbackActivityIntent = new Intent(context, FeedbackActivity.class);
+        feedbackActivityIntent.putExtra(KEY_PROJECT, projectJSON);
+        return feedbackActivityIntent;
     }
 }
