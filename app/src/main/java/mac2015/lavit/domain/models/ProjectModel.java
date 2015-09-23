@@ -5,11 +5,23 @@ package mac2015.lavit.domain.models;
  */
 public class ProjectModel {
 
+    //TODO @SerializedName fali ovdje, nismo dodali jer nema api-ja jos uvijek pa ne znamo imena
+
     private String name;
     private String coverPicture;
     private String description;
     private String ownerName;
     private String category;
+    private String tags;
+    private int feedBackType;
+
+    public String getTags() {
+        return tags;
+    }
+
+    public void setTags(String tags) {
+        this.tags = tags;
+    }
 
     public String getName() {
         return name;
