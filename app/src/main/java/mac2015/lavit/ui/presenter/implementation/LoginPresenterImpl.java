@@ -1,11 +1,15 @@
 package mac2015.lavit.ui.presenter.implementation;
 
+import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 
 import javax.inject.Inject;
 
 import mac2015.lavit.app.BasePresenter;
+import mac2015.lavit.domain.interactor.LoginGoogleInteractor;
 import mac2015.lavit.domain.interactor.LoginInteractor;
+import mac2015.lavit.domain.manager.GoogleApiManager;
 import mac2015.lavit.domain.manager.ValidationManager;
 import mac2015.lavit.domain.models.LoginModel;
 import mac2015.lavit.domain.models.User;
@@ -15,12 +19,16 @@ import mac2015.lavit.ui.view.LoginView;
 /**
  * Created by dmacan on 23.9.2015..
  */
-public class LoginPresenterImpl extends BasePresenter implements LoginPresenter, LoginInteractor.Callback {
+public class LoginPresenterImpl extends BasePresenter implements LoginPresenter, LoginInteractor.Callback, LoginGoogleInteractor.Callback {
 
     @Inject
     ValidationManager validationManager;
     @Inject
     LoginInteractor loginInteractor;
+    @Inject
+    LoginGoogleInteractor loginGoogleInteractor;
+    @Inject
+    GoogleApiManager googleApiManager;
     LoginView loginView;
 
     public LoginPresenterImpl(Context context) {
@@ -58,6 +66,18 @@ public class LoginPresenterImpl extends BasePresenter implements LoginPresenter,
     }
 
     @Override
+    public void attemptGoogleLogin(Activity activity) {
+        loginGoogleInteractor.login(this, activity, googleApiManager);
+    }
+
+    @Override
+    public void onAuthorizationResult(Activity activity, int requestCode, int resultCode, Intent data) {
+        if (requestCode == 69) {
+            attemptGoogleLogin(activity);
+        }
+    }
+
+    @Override
     public void initialize() {
         //Not needed
     }
@@ -88,6 +108,11 @@ public class LoginPresenterImpl extends BasePresenter implements LoginPresenter,
     }
 
     @Override
+    public void onLoginAuthorizationRequest(Intent intent) {
+        loginView.requestAuthorization(intent, 69);
+    }
+
+    @Override
     public void onLoginError(String msg) {
         loginView.showError(msg);
     }
@@ -96,4 +121,6 @@ public class LoginPresenterImpl extends BasePresenter implements LoginPresenter,
     public void onLoginSuccess(User user) {
         loginView.proceed(user);
     }
+
+
 }

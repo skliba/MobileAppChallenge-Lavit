@@ -4,16 +4,14 @@ import android.util.Log;
 
 import com.google.android.gms.auth.GoogleAuthException;
 import com.google.android.gms.auth.GoogleAuthUtil;
+import com.google.android.gms.auth.UserRecoverableAuthException;
 import com.google.android.gms.common.Scopes;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.plus.Plus;
 import com.google.android.gms.plus.model.people.Person;
 
-import java.io.IOError;
 import java.io.IOException;
-import java.security.Permission;
 
-import mac2015.lavit.domain.manager.GoogleApiManager;
 import mac2015.lavit.domain.models.SocialProfile;
 import mac2015.lavit.domain.models.User;
 import mac2015.lavit.domain.models.response.GoogleTokenResponse;
@@ -22,19 +20,20 @@ import retrofit.RestAdapter;
 /**
  * Created by noxqs on 23.09.15..
  */
-public class GoogleAPIRepository implements GoogleRepository{
+public class GoogleAPIRepository implements GoogleRepository {
 
+    private static final String TAG = "DAM_REPO_GOOGLE";
     private GoogleApiClient googleApiClient;
     private String endpoint;
     private GoogleAPIService googleAPIService;
 
-    public GoogleAPIRepository(GoogleApiClient googleApiClient, String endpoint){
+    public GoogleAPIRepository(GoogleApiClient googleApiClient, String endpoint) {
         this.googleApiClient = googleApiClient;
         this.endpoint = endpoint;
         this.init();
     }
 
-    private void init(){
+    private void init() {
         RestAdapter adapter = new RestAdapter.Builder()
                 .setEndpoint(endpoint)
                 .setLogLevel(RestAdapter.LogLevel.FULL)
@@ -51,8 +50,8 @@ public class GoogleAPIRepository implements GoogleRepository{
 
 
     @Override
-    public User getUser() throws GoogleAuthException {
-        try{
+    public User getUser() throws GoogleAuthException, UserRecoverableAuthException {
+        try {
             Person person = getPerson();
             String email = getEmail();
             String token = getTokenV2(email);
@@ -66,25 +65,25 @@ public class GoogleAPIRepository implements GoogleRepository{
             url += "?sz=300";
             user.setProfilePicture(url);
             return user;
-        }
-        catch(IOException e){
+        } catch (UserRecoverableAuthException e) {
+            throw e;
+        } catch (Exception e) {
             e.printStackTrace();
-        }
-        catch(Exception e){
-            e.printStackTrace();
+            //throw new GetUserException(C.Code.Error.GET_USER);
         }
         return null;
     }
 
-    private Person getPerson(){
+    private Person getPerson() {
+        Plus.PeopleApi.loadVisible(googleApiClient, null).await();
         return Plus.PeopleApi.getCurrentPerson(googleApiClient);
     }
 
-    private String getEmail(){
+    private String getEmail() {
         return Plus.AccountApi.getAccountName(googleApiClient);
     }
 
-    private String getToken(String email) throws GoogleAuthException, IOException{
+    private String getToken(String email) throws GoogleAuthException, IOException {
         return GoogleAuthUtil.getToken(googleApiClient.getContext(), email, "oauth2:" + Scopes.PLUS_LOGIN + " https://www.googleapis.com/auth/plus.profile.emails.read");
     }
 

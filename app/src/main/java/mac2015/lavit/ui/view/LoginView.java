@@ -1,5 +1,7 @@
 package mac2015.lavit.ui.view;
 
+import android.content.Intent;
+
 import mac2015.lavit.domain.models.User;
 
 /**
@@ -31,4 +33,5 @@ public interface LoginView extends View {
 
     void unlock();
 
+    void requestAuthorization(Intent intent, int code);
 }

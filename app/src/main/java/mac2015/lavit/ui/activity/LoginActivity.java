@@ -1,5 +1,6 @@
 package mac2015.lavit.ui.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
@@ -65,5 +66,10 @@ public class LoginActivity extends BaseActivity {
                 registrationFragment.onFocusChanged(false);
                 break;
         }
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
     }
 }
