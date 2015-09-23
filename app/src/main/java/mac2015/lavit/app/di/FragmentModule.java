@@ -5,6 +5,8 @@ import android.content.Context;
 import dagger.Module;
 import dagger.Provides;
 import mac2015.lavit.ui.fragment.LoginFragment;
+import mac2015.lavit.ui.fragment.ProjectInfoDetailsFragment;
+import mac2015.lavit.ui.fragment.ProjectInfoFeedbackFragment;
 import mac2015.lavit.ui.fragment.RegistrationFragment;
 
 /**
@@ -25,6 +27,20 @@ public class FragmentModule {
         RegistrationFragment registrationFragment = new RegistrationFragment();
         registrationFragment.setLabel("Sign up");
         return registrationFragment;
+    }
+
+    @Provides
+    public ProjectInfoFeedbackFragment provideProjectInfoFeedbackFragment(Context context) {
+        ProjectInfoFeedbackFragment projectInfoFeedbackFragment = new ProjectInfoFeedbackFragment();
+        projectInfoFeedbackFragment.setLabel("Feedback");
+        return projectInfoFeedbackFragment;
+    }
+
+    @Provides
+    public ProjectInfoDetailsFragment provideProjectInfoDetailsFragment(Context context) {
+        ProjectInfoDetailsFragment projectInfoDetailsFragment = new ProjectInfoDetailsFragment();
+        projectInfoDetailsFragment.setLabel("Info");
+        return projectInfoDetailsFragment;
     }
 
 }

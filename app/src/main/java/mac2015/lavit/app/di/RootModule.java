@@ -12,9 +12,12 @@ import mac2015.lavit.ui.activity.LoginActivity;
 import mac2015.lavit.ui.activity.MainActivity;
 import mac2015.lavit.ui.activity.ProjectInfoActivity;
 import mac2015.lavit.ui.fragment.LoginFragment;
+import mac2015.lavit.ui.fragment.ProjectInfoDetailsFragment;
+import mac2015.lavit.ui.fragment.ProjectInfoFeedbackFragment;
 import mac2015.lavit.ui.fragment.RegistrationFragment;
 import mac2015.lavit.ui.presenter.implementation.LoginPresenterImpl;
 import mac2015.lavit.ui.presenter.implementation.MainPresenterImpl;
+import mac2015.lavit.ui.presenter.implementation.ProjectInfoPresenterImpl;
 import mac2015.lavit.ui.presenter.implementation.RegistrationPresenterImpl;
 
 /**
@@ -40,11 +43,14 @@ import mac2015.lavit.ui.presenter.implementation.RegistrationPresenterImpl;
                 // Fragment
                 LoginFragment.class,
                 RegistrationFragment.class,
+                ProjectInfoDetailsFragment.class,
+                ProjectInfoFeedbackFragment.class,
                 // View
                 // Presenter
                 LoginPresenterImpl.class,
                 RegistrationPresenterImpl.class,
-                MainPresenterImpl.class
+                MainPresenterImpl.class,
+                ProjectInfoPresenterImpl.class
                 // Service
         },
         library = true
