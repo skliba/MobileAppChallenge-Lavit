@@ -20,6 +20,7 @@ public class PresenterModule {
         return new LoginPresenterImpl(context);
     }
 
+    @Provides
     public RegistrationPresenter provideRegistrationPresenter(Context context) {
         return new RegistrationPresenterImpl(context);
     }

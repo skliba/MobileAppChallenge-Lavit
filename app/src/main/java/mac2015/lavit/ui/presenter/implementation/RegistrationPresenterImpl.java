@@ -1,24 +1,29 @@
 package mac2015.lavit.ui.presenter.implementation;
 
 import android.content.Context;
+import android.util.Log;
 
 import javax.inject.Inject;
 
 import mac2015.lavit.app.BasePresenter;
+import mac2015.lavit.domain.interactor.RegistrationInteractor;
 import mac2015.lavit.domain.manager.ValidationManager;
+import mac2015.lavit.domain.models.RegistrationModel;
+import mac2015.lavit.domain.models.User;
+import mac2015.lavit.domain.util.Serializator;
 import mac2015.lavit.ui.presenter.RegistrationPresenter;
 import mac2015.lavit.ui.view.RegistrationView;
 
 /**
  * Created by dmacan on 23.9.2015..
  */
-public class RegistrationPresenterImpl extends BasePresenter implements RegistrationPresenter {
+public class RegistrationPresenterImpl extends BasePresenter implements RegistrationPresenter, RegistrationInteractor.Callback {
 
     private static final String TAG = "DAM_PRESENTER_REG";
     @Inject
     ValidationManager validationManager;
-    /*@Inject
-    RegistrationInteractor registrationInteractor;*/
+    @Inject
+    RegistrationInteractor registrationInteractor;
     RegistrationView registrationView;
 
     public RegistrationPresenterImpl(Context context) {
@@ -27,21 +32,20 @@ public class RegistrationPresenterImpl extends BasePresenter implements Registra
 
     @Override
     public void attemptRegistration() {
-      /*  Log.i(TAG, "Attempting reg");
+        Log.i(TAG, "Attempting reg");
         if (validateEmail() && validatePassword() && validatePasswordConfirm() && validateFirstName() && validateLastName()) {
             Log.i(TAG, "Locking");
             registrationView.lock();
             registrationView.showLoading("Creating your account");
             Log.i(TAG, "Loading");
-            RegisterModel registerModel = new RegisterModel();
+            RegistrationModel registerModel = new RegistrationModel();
             registerModel.setEmail(registrationView.getEmail());
             registerModel.setPassword(registrationView.getPassword());
             registerModel.setFirstName(registrationView.getFirstName());
             registerModel.setLastName(registrationView.getLastName());
-            registerModel.setAuthProvider(0);// API
             registrationInteractor.register(this, registerModel);
             Log.i(TAG, "Registering");
-        }*/
+        }
     }
 
     @Override
@@ -127,6 +131,22 @@ public class RegistrationPresenterImpl extends BasePresenter implements Registra
     @Override
     public void setView(RegistrationView view) {
         this.registrationView = view;
+    }
+
+    @Override
+    public void onRegistrationSuccess(User user) {
+        Log.i(TAG, "Response");
+        this.registrationView.unlock();
+        this.registrationView.hideLoading();
+        this.registrationView.proceed(Serializator.serialize(user));
+    }
+
+    @Override
+    public void onRegistrationError(String msg) {
+        Log.i(TAG, "Error");
+        this.registrationView.unlock();
+        this.registrationView.hideLoading();
+        this.registrationView.showError(msg);
     }
 
    /* @Override

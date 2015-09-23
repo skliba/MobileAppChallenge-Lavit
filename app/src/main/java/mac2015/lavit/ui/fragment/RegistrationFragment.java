@@ -10,6 +10,8 @@ import android.widget.Toast;
 
 import com.rengwuxian.materialedittext.MaterialEditText;
 
+import javax.inject.Inject;
+
 import butterknife.InjectView;
 import butterknife.OnClick;
 import mac2015.lavit.R;
@@ -32,7 +34,7 @@ public class RegistrationFragment extends BaseTabFragment implements Registratio
     @InjectView(R.id.etLastName)
     MaterialEditText etLastName;
 
-   // @Inject
+    @Inject
     RegistrationPresenter registrationPresenter;
 
     ProgressDialog progressDialog;
@@ -46,10 +48,10 @@ public class RegistrationFragment extends BaseTabFragment implements Registratio
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-      /*  registrationPresenter.initialize();
+        registrationPresenter.initialize();
         registrationPresenter.setView(this);
         progressDialog = new ProgressDialog(getActivity());
-        registrationPresenter.onViewCreate();*/
+        registrationPresenter.onViewCreate();
     }
 
     @OnClick(R.id.btnSignUp)

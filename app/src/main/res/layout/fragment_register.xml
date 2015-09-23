@@ -1,73 +1,87 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:fillViewport="true">
+    android:layout_height="match_parent">
 
-    <LinearLayout
+    <Button
+        android:id="@+id/btnSignUp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="@drawable/btn_default"
+        android:paddingBottom="15dp"
+        android:paddingTop="15dp"
+        android:text="SIGN UP"
+        android:textColor="@android:color/white" />
+
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:padding="10dp">
+        android:layout_above="@+id/btnSignUp"
+        android:layout_alignParentTop="true">
 
-        <com.rengwuxian.materialedittext.MaterialEditText
-            android:id="@+id/etEmail"
-            style="@style/MAC.EditText"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Email"
-            android:inputType="textEmailAddress"
-            android:textCursorDrawable="@null" />
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:padding="10dp">
+
+            <com.rengwuxian.materialedittext.MaterialEditText
+                android:id="@+id/etEmail"
+                style="@style/MAC.EditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Email"
+                android:inputType="textEmailAddress"
+                android:text="dmacan23@gmail.com"
+                android:textCursorDrawable="@null" />
 
 
-        <com.rengwuxian.materialedittext.MaterialEditText
-            android:id="@+id/etPassword"
-            style="@style/MAC.EditText"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:hint="Password"
-            android:inputType="textPassword"
-            android:textCursorDrawable="@null" />
+            <com.rengwuxian.materialedittext.MaterialEditText
+                android:id="@+id/etPassword"
+                style="@style/MAC.EditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:hint="Password"
+                android:inputType="textPassword"
+                android:text="xxx123"
+                android:textCursorDrawable="@null" />
 
-        <com.rengwuxian.materialedittext.MaterialEditText
-            android:id="@+id/etPasswordConfirm"
-            style="@style/MAC.EditText"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:hint="Password confirm"
-            android:inputType="textPassword"
-            android:textCursorDrawable="@null" />
+            <com.rengwuxian.materialedittext.MaterialEditText
+                android:id="@+id/etPasswordConfirm"
+                style="@style/MAC.EditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:hint="Password confirm"
+                android:inputType="textPassword"
+                android:text="xxx123"
+                android:textCursorDrawable="@null" />
 
-        <com.rengwuxian.materialedittext.MaterialEditText
-            android:id="@+id/etFirstName"
-            style="@style/MAC.EditText"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:hint="First name"
-            android:inputType="textPersonName"
-            android:textCursorDrawable="@null" />
+            <com.rengwuxian.materialedittext.MaterialEditText
+                android:id="@+id/etFirstName"
+                style="@style/MAC.EditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:hint="First name"
+                android:inputType="textPersonName"
+                android:text="David"
+                android:textCursorDrawable="@null" />
 
-        <com.rengwuxian.materialedittext.MaterialEditText
-            android:id="@+id/etLastName"
-            style="@style/MAC.EditText"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:hint="Last name"
-            android:inputType="textPersonName"
-            android:textCursorDrawable="@null" />
+            <com.rengwuxian.materialedittext.MaterialEditText
+                android:id="@+id/etLastName"
+                style="@style/MAC.EditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:hint="Last name"
+                android:inputType="textPersonName"
+                android:text="Macan"
+                android:textCursorDrawable="@null" />
 
-        <Button
-            android:id="@+id/btnSignUp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="30dp"
-            android:paddingBottom="20dp"
-            android:paddingTop="20dp"
-            android:text="SIGN UP" />
+        </LinearLayout>
+    </ScrollView>
 
-    </LinearLayout>
-</ScrollView>
+</RelativeLayout>
