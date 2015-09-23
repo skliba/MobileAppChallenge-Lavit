@@ -5,5 +5,7 @@ import java.io.Serializable;
 /**
  * Created by noxqs on 23.09.15..
  */
-public class RegistrationResponse implements Serializable{
+public class LoginResponse implements Serializable{
+
+
 }

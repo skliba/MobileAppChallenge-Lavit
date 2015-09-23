@@ -7,35 +7,13 @@ import java.io.Serializable;
 /**
  * Created by noxqs on 23.09.15..
  */
-public class RegistrationModel implements Serializable{
-
-    @SerializedName("firstName")
-    private String firstName;
-
-    @SerializedName("lastName")
-    private String lastName;
+public class LoginModel implements Serializable{
 
     @SerializedName("mail")
     private String email;
 
     @SerializedName("password")
     private String password;
-
-    public String getFirstName() {
-        return firstName;
-    }
-
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
-    }
-
-    public String getLastName() {
-        return lastName;
-    }
-
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
-    }
 
     public String getEmail() {
         return email;

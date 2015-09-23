@@ -21,7 +21,9 @@ import mac2015.lavit.ui.presenter.implementation.RegistrationPresenterImpl;
         includes = {
                 ExecutorModule.class,
                 ManagerModule.class,
-                PresenterModule.class
+                PresenterModule.class,
+                InteractorModule.class,
+                RepositoryModule.class
         },
         injects = {
                 // App
