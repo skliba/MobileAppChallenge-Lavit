@@ -1,8 +1,8 @@
-package mac2015.lavit.domain.interactor.api.impl;
+package mac2015.lavit.domain.repository.api.impl;
 
 import android.util.Log;
 
-import mac2015.lavit.domain.interactor.api.ApiManager;
+import mac2015.lavit.domain.repository.api.ApiManager;
 import mac2015.lavit.domain.models.LoginModel;
 import mac2015.lavit.domain.models.RegistrationModel;
 import mac2015.lavit.domain.models.Response.LoginResponse;

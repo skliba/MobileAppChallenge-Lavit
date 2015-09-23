@@ -1,4 +1,4 @@
-package mac2015.lavit.domain.interactor.api;
+package mac2015.lavit.domain.repository.api;
 
 import mac2015.lavit.domain.repository.AppService;
 

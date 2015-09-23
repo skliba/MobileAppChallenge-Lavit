@@ -1,12 +1,10 @@
 package mac2015.lavit.app.di;
 
-import java.util.List;
-
 import javax.inject.Named;
 
 import dagger.Module;
 import dagger.Provides;
-import mac2015.lavit.domain.interactor.api.impl.ApiManagerImpl;
+import mac2015.lavit.domain.repository.api.impl.ApiManagerImpl;
 import mac2015.lavit.domain.repository.ListRepository;
 
 /**
@@ -18,7 +16,7 @@ public class RepositoryModule {
     @Provides
     @Named("api_base_url")
     public String provideBaseApiUrl() {
-        return "NEKA_PIZDA_MATERINA";
+        return "178.62.255.25";
     }
 
     @Provides
