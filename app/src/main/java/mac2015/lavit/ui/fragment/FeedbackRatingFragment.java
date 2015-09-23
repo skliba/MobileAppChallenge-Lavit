@@ -11,7 +11,7 @@ import mac2015.lavit.R;
 /**
  * Created by dmacan on 23.9.2015..
  */
-public class FeedbackRatingFragment extends FeedbackFragment {
+public class FeedbackRatingFragment extends FeedbackFragment<Double> {
 
 
     @Nullable

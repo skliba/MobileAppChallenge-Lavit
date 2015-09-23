@@ -1,5 +1,6 @@
 package mac2015.lavit.ui.fragment;
 
+import android.location.Location;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
@@ -11,7 +12,7 @@ import mac2015.lavit.R;
 /**
  * Created by dmacan on 23.9.2015..
  */
-public class FeedbackGeolocationFragment extends FeedbackFragment {
+public class FeedbackGeolocationFragment extends FeedbackFragment<Location> {
 
 
     @Nullable
