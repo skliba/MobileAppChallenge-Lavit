@@ -2,15 +2,17 @@ package mac2015.lavit.domain.repository.api.impl;
 
 import android.util.Log;
 
+import mac2015.lavit.domain.models.SocialProfile;
 import mac2015.lavit.domain.repository.api.ApiManager;
 import mac2015.lavit.domain.models.LoginModel;
 import mac2015.lavit.domain.models.RegistrationModel;
-import mac2015.lavit.domain.models.Response.LoginResponse;
-import mac2015.lavit.domain.models.Response.RegistrationResponse;
-import mac2015.lavit.domain.models.Response.Response;
+import mac2015.lavit.domain.models.response.LoginResponse;
+import mac2015.lavit.domain.models.response.RegistrationResponse;
+import mac2015.lavit.domain.models.response.Response;
 import mac2015.lavit.domain.repository.AppService;
 import mac2015.lavit.domain.repository.ListRepository;
 import retrofit.RestAdapter;
+import retrofit.RetrofitError;
 
 /**
  * Created by noxqs on 23.09.15..
@@ -54,7 +56,24 @@ public class ApiManagerImpl implements ApiManager, ListRepository {
     }
 
     @Override
+    public Response<RegistrationResponse> registerGoogle(RegistrationModel model, SocialProfile profile) {
+        try{
+            int profileType = profile.getType();
+            return service.register(model);
+        }
+        catch(RetrofitError e){
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    @Override
     public Response<LoginResponse> login(LoginModel model) {
         return service.login(model);
+    }
+
+    @Override
+    public Response<LoginResponse> loginGoogle(String accessToken, String id, String expires, String authProvider) {
+        return null;
     }
 }

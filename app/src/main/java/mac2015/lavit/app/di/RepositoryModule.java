@@ -20,6 +20,12 @@ public class RepositoryModule {
     }
 
     @Provides
+    @Named("api_google_url")
+    public String provideBaseGoogleUrl() {
+        return "https://www.googleapis.com";
+    }
+
+    @Provides
     @Named("production_api")
     public ListRepository provideListRepository(@Named("api_base_url") String endpoint){
         return new ApiManagerImpl(endpoint);

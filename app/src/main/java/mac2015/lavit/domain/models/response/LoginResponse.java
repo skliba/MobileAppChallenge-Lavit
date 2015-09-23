@@ -1,4 +1,4 @@
-package mac2015.lavit.domain.models.Response;
+package mac2015.lavit.domain.models.response;
 
 import com.google.gson.annotations.SerializedName;
 

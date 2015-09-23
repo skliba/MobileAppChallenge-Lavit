@@ -10,6 +10,33 @@ public class User {
     private String firstName;
     private String lastName;
     private String token;
+    private String profilePicture;
+    private SocialProfile socialProfile;
+
+    public SocialProfile getSocialProfile() {
+        return socialProfile;
+    }
+
+    public void setSocialProfile(SocialProfile socialProfile) {
+        this.socialProfile = socialProfile;
+    }
+
+    public void setSocialProfile(String id, String token, int type) {
+        SocialProfile sp = new SocialProfile();
+        sp.setId(id);
+        sp.setToken(token);
+        sp.setType(type);
+        setSocialProfile(sp);
+    }
+
+
+    public String getProfilePicture() {
+        return profilePicture;
+    }
+
+    public void setProfilePicture(String profilePicture) {
+        this.profilePicture = profilePicture;
+    }
 
     public String getToken() {
         return token;
