@@ -79,7 +79,7 @@ public class ProjectInfoActivity extends BaseActivity implements ProjectInfoView
         if (getSupportActionBar() != null) {
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
             getSupportActionBar().setDisplayShowHomeEnabled(true);
-            appbarOffsetHandler.setOnTresholdListener(new AppbarOffsetHandler.OnTresholdListener() {
+            /*appbarOffsetHandler.setOnTresholdListener(new AppbarOffsetHandler.OnTresholdListener() {
                 @Override
                 public void onTreshold(boolean within) {
                     if (within) {
@@ -89,7 +89,7 @@ public class ProjectInfoActivity extends BaseActivity implements ProjectInfoView
                     }
                 }
             });
-            appbar.addOnOffsetChangedListener(appbarOffsetHandler);
+            appbar.addOnOffsetChangedListener(appbarOffsetHandler);*/
         }
     }
 
