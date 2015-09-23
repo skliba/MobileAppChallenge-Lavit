@@ -1,5 +1,7 @@
 package mac2015.lavit.domain.interactor.impl;
 
+import android.util.Log;
+
 import mac2015.lavit.domain.interactor.AbstractInteractor;
 import mac2015.lavit.domain.interactor.LoginInteractor;
 import mac2015.lavit.domain.models.LoginModel;
@@ -35,6 +37,7 @@ public class LoginInteractorImpl extends AbstractInteractor implements LoginInte
             user.setEmail(model.getEmail());
             user.setPassword(model.getPassword());
             user.setToken(loginResponse.getMessage().getToken());
+            Log.e("TOKEN", loginResponse.getMessage().getToken());
             notifySuccess(user);
         }
         catch(RetrofitError e){

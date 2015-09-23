@@ -15,6 +15,6 @@ public interface AppService {
 
     Response<RegistrationResponse> register(@Body RegistrationModel registrationModel);
 
-    @POST("/login")
+    @POST("/test")
     Response<LoginResponse> login(@Body LoginModel loginModel);
 }
