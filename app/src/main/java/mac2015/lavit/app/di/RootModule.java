@@ -8,9 +8,14 @@ import javax.inject.Singleton;
 import dagger.Module;
 import dagger.Provides;
 import mac2015.lavit.app.MyApp;
+import mac2015.lavit.ui.activity.FeedbackActivity;
 import mac2015.lavit.ui.activity.LoginActivity;
 import mac2015.lavit.ui.activity.MainActivity;
 import mac2015.lavit.ui.activity.ProjectInfoActivity;
+import mac2015.lavit.ui.fragment.FeedbackCommentFragment;
+import mac2015.lavit.ui.fragment.FeedbackGeolocationFragment;
+import mac2015.lavit.ui.fragment.FeedbackPhotoFragment;
+import mac2015.lavit.ui.fragment.FeedbackRatingFragment;
 import mac2015.lavit.ui.fragment.LoginFragment;
 import mac2015.lavit.ui.fragment.ProjectInfoDetailsFragment;
 import mac2015.lavit.ui.fragment.ProjectInfoFeedbackFragment;
@@ -41,11 +46,16 @@ import mac2015.lavit.ui.presenter.implementation.RegistrationPresenterImpl;
                 LoginActivity.class,
                 MainActivity.class,
                 ProjectInfoActivity.class,
+                FeedbackActivity.class,
                 // Fragment
                 LoginFragment.class,
                 RegistrationFragment.class,
                 ProjectInfoDetailsFragment.class,
                 ProjectInfoFeedbackFragment.class,
+                FeedbackCommentFragment.class,
+                FeedbackRatingFragment.class,
+                FeedbackPhotoFragment.class,
+                FeedbackGeolocationFragment.class,
                 // View
                 // Presenter
                 LoginPresenterImpl.class,
