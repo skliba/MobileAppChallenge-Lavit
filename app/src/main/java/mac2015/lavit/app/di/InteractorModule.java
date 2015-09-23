@@ -22,20 +22,17 @@ import mac2015.lavit.executor.MainThreadExecutor;
 public class InteractorModule {
 
     @Provides
-    @Named("interactor_registration_standard")
-    public RegistrationInteractor provideRegistrationInteractor (InteractorExecutor interactorExecutor, MainThreadExecutor mainThreadExecutor, @Named("production_api")ListRepository listRepository){
+    public RegistrationInteractor provideRegistrationInteractor(InteractorExecutor interactorExecutor, MainThreadExecutor mainThreadExecutor, @Named("production_api") ListRepository listRepository) {
         return new RegistrationInteractorImpl(interactorExecutor, mainThreadExecutor, listRepository);
     }
 
     @Provides
-    @Named("interactor_login_standard")
-    public LoginInteractor provideLoginInteractor(InteractorExecutor interactorExecutor, MainThreadExecutor mainThreadExecutor, @Named("production_api") ListRepository listRepository){
-        return new LoginInteractorImpl(interactorExecutor,mainThreadExecutor, listRepository);
+    public LoginInteractor provideLoginInteractor(InteractorExecutor interactorExecutor, MainThreadExecutor mainThreadExecutor, @Named("production_api") ListRepository listRepository) {
+        return new LoginInteractorImpl(interactorExecutor, mainThreadExecutor, listRepository);
     }
 
     @Provides
-    @Named("interactor_login_google")
-    public LoginGoogleInteractor provideLoginGoogleInteractor(InteractorExecutor interactorExecutor, MainThreadExecutor mainThreadExecutor, @Named("api_google_url") ListRepository listRepository, @Named("api_google_url") String endpoint){
+    public LoginGoogleInteractor provideLoginGoogleInteractor(InteractorExecutor interactorExecutor, MainThreadExecutor mainThreadExecutor, @Named("production_api") ListRepository listRepository, @Named("api_google_url") String endpoint) {
         return new LoginGoogleInteractorImpl(interactorExecutor, mainThreadExecutor, listRepository, endpoint);
     }
 }
