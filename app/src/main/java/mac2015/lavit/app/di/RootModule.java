@@ -11,6 +11,8 @@ import mac2015.lavit.app.MyApp;
 import mac2015.lavit.ui.activity.LoginActivity;
 import mac2015.lavit.ui.fragment.LoginFragment;
 import mac2015.lavit.ui.fragment.RegistrationFragment;
+import mac2015.lavit.ui.presenter.implementation.LoginPresenterImpl;
+import mac2015.lavit.ui.presenter.implementation.RegistrationPresenterImpl;
 
 /**
  * Created by dmacan on 22.9.2015..
@@ -18,6 +20,8 @@ import mac2015.lavit.ui.fragment.RegistrationFragment;
 @Module(
         includes = {
                 ExecutorModule.class,
+                ManagerModule.class,
+                PresenterModule.class
         },
         injects = {
                 // App
@@ -29,6 +33,8 @@ import mac2015.lavit.ui.fragment.RegistrationFragment;
                 RegistrationFragment.class,
                 // View
                 // Presenter
+                LoginPresenterImpl.class,
+                RegistrationPresenterImpl.class
                 // Service
         },
         library = true
