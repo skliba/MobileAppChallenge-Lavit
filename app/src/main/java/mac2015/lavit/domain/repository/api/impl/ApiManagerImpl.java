@@ -9,6 +9,7 @@ import mac2015.lavit.domain.models.LoginModel;
 import mac2015.lavit.domain.models.ProjectModel;
 import mac2015.lavit.domain.models.RegistrationModel;
 import mac2015.lavit.domain.models.SocialProfile;
+import mac2015.lavit.domain.models.response.FeedbackResponse;
 import mac2015.lavit.domain.models.response.LoginResponse;
 import mac2015.lavit.domain.models.response.RegistrationResponse;
 import mac2015.lavit.domain.models.response.Response;
@@ -87,7 +88,12 @@ public class ApiManagerImpl implements ApiManager, ListRepository {
     }
 
     @Override
-    public String sendImage(TypedFile file, String projectId) {
+    public String sendImage(TypedFile file, long projectId) {
+        return service.uploadImage(projectId, file);
+    }
+
+    @Override
+    public Response<FeedbackResponse> fetchFeedback(FeedbackModel model, double rating) {
         return null;
     }
 

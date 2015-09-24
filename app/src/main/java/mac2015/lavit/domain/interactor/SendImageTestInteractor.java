@@ -9,7 +9,7 @@ import retrofit.mime.TypedFile;
  */
 public interface SendImageTestInteractor {
 
-    void sendImage(Callback callback, File file, String projectId);
+    void sendImage(Callback callback, File file, long projectId);
 
     interface Callback{
 

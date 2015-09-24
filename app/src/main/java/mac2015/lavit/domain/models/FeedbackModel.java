@@ -16,7 +16,7 @@ public class FeedbackModel {
     private double latitude;
     private double longitude;
     private transient File image;
-
+    private String imagePath;
     private ProjectModel project;
 
     public double getLatitude() {

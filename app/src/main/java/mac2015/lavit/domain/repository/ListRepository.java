@@ -2,10 +2,12 @@ package mac2015.lavit.domain.repository;
 
 import java.util.List;
 
+import mac2015.lavit.domain.models.FeedbackModel;
 import mac2015.lavit.domain.models.LoginModel;
 import mac2015.lavit.domain.models.ProjectModel;
 import mac2015.lavit.domain.models.RegistrationModel;
 import mac2015.lavit.domain.models.SocialProfile;
+import mac2015.lavit.domain.models.response.FeedbackResponse;
 import mac2015.lavit.domain.models.response.LoginResponse;
 import mac2015.lavit.domain.models.response.RegistrationResponse;
 import mac2015.lavit.domain.models.response.Response;
@@ -27,5 +29,7 @@ public interface ListRepository {
 
     Response<List<ProjectModel>> fetchProjects(String token);
 
-    String sendImage(TypedFile file, String projectId);
+    String sendImage(TypedFile file, long projectId);
+
+    Response<FeedbackResponse> fetchFeedback(FeedbackModel model, double rating);
 }
