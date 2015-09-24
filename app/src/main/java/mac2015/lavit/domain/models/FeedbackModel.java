@@ -1,5 +1,7 @@
 package mac2015.lavit.domain.models;
 
+import java.io.File;
+
 /**
  * Created by noxqs on 23.09.15..
  */
@@ -7,21 +9,30 @@ public class FeedbackModel {
 
     //TODO ovdje isto fali @SerializedName
     private String user;
-    private int rating;
+    private double rating;
 
     //TODO atributi ako je dopusten takav nacin feedbacka, ovisi o postu
     private String comment;
-    private String imagePath;
+    private File image;
     private int latitude;
     private int longitude;
 
-    public int getRating() {
+    public File getImage() {
+        return image;
+    }
+
+    public void setImage(File image) {
+        this.image = image;
+    }
+
+    public void setRating(double rating) {
+        this.rating = rating;
+    }
+
+    public double getRating() {
         return rating;
     }
 
-    public void setRating(int rating) {
-        this.rating = rating;
-    }
 
     public String getComment() {
         return comment;
@@ -31,13 +42,6 @@ public class FeedbackModel {
         this.comment = comment;
     }
 
-    public String getImagePath() {
-        return imagePath;
-    }
-
-    public void setImagePath(String imagePath) {
-        this.imagePath = imagePath;
-    }
 
     public int getLatitude() {
         return latitude;

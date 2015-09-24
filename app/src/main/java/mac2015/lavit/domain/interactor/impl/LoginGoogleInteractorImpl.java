@@ -20,6 +20,7 @@ import mac2015.lavit.domain.models.RegistrationModel;
 import mac2015.lavit.domain.models.SocialProfile;
 import mac2015.lavit.domain.models.User;
 import mac2015.lavit.domain.models.response.LoginResponse;
+import mac2015.lavit.domain.models.response.RegistrationResponse;
 import mac2015.lavit.domain.models.response.Response;
 import mac2015.lavit.domain.repository.ListRepository;
 import mac2015.lavit.domain.repository.google.GoogleAPIRepository;
@@ -83,13 +84,13 @@ public class LoginGoogleInteractorImpl extends AbstractInteractor implements Log
             final User googleUser = googleRepository.getUser();
             googleUser.setProfilePicture("http://www.vecernji.hr/media/slika/89/442815.jpg");
             registrationModel = fillRegistrationModel(googleUser);
-            final Response<String> registrationResponse = this.listRepository.registerGoogle(registrationModel, googleUser.getSocialProfile());
+            final Response<RegistrationResponse> registrationResponse = this.listRepository.registerGoogle(registrationModel, googleUser.getSocialProfile());
             final Response<LoginResponse> loginResponse = this.listRepository.loginGoogle(googleUser.getSocialProfile().getToken(),
                     googleUser.getSocialProfile().getId(),
                     googleUser.getSocialProfile().getTokenExpiration(),
                     String.valueOf(SocialProfile.Type.GOOGLE));
             User user = new User();
-            user.setToken(loginResponse.getMessage().getToken());
+            user.setToken(loginResponse.getData().getToken());
             notifySuccess(user);
         } catch (UserRecoverableAuthException e) {
             notifyAuthorizationRequest(e.getIntent());

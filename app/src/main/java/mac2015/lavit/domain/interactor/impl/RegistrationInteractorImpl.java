@@ -35,7 +35,7 @@ public class RegistrationInteractorImpl extends AbstractInteractor implements Re
     @Override
     public void run() {
         try{
-            final Response<String> registrationResponse = listRepository.register(registrationModel);
+            final Response<RegistrationResponse> registrationResponse = listRepository.register(registrationModel);
             final Response<LoginResponse> loginResponse = listRepository.login(loginModel);
             User user = new User();
             user.setPassword(loginModel.getPassword());

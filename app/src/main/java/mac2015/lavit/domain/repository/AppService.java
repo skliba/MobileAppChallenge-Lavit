@@ -14,10 +14,10 @@ import retrofit.http.POST;
  */
 public interface AppService {
 
-    @POST("/register")
-    Response<String> register(@Body RegistrationModel registrationModel);
+    @POST("/app/api/register")
+    Response<RegistrationResponse> register(@Body RegistrationModel registrationModel);
 
-    @POST("/login")
+    @POST("/app/api/login")
     Response<LoginResponse> login(@Body LoginModel loginModel);
 
     //Response<ProjectResponse> fetchProjects(ProjectModel model);

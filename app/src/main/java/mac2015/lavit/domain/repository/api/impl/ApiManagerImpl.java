@@ -3,6 +3,7 @@ package mac2015.lavit.domain.repository.api.impl;
 import android.util.Log;
 
 import mac2015.lavit.domain.models.SocialProfile;
+import mac2015.lavit.domain.models.response.ProjectResponse;
 import mac2015.lavit.domain.repository.api.ApiManager;
 import mac2015.lavit.domain.models.LoginModel;
 import mac2015.lavit.domain.models.RegistrationModel;
@@ -51,12 +52,12 @@ public class ApiManagerImpl implements ApiManager, ListRepository {
     }
 
     @Override
-    public Response<String> register(RegistrationModel model) {
+    public Response<RegistrationResponse> register(RegistrationModel model) {
         return service.register(model);
     }
 
     @Override
-    public Response<String> registerGoogle(RegistrationModel model, SocialProfile profile) {
+    public Response<RegistrationResponse> registerGoogle(RegistrationModel model, SocialProfile profile) {
         try{
             int profileType = profile.getType();
             return service.register(model);
@@ -74,6 +75,11 @@ public class ApiManagerImpl implements ApiManager, ListRepository {
 
     @Override
     public Response<LoginResponse> loginGoogle(String accessToken, String id, String expires, String authProvider) {
+        return null;
+    }
+
+    @Override
+    public Response<ProjectResponse> fetchProjects(String token) {
         return null;
     }
 }
