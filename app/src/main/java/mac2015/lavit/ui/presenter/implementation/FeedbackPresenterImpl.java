@@ -43,7 +43,7 @@ public class FeedbackPresenterImpl extends BasePresenter implements FeedbackPres
             // TODO: ask user if he/she is sure about finishing
             feedbackView.showStatus("Sending feedback");
             // TODO: send feedback
-            sendFeedbackInteractor.sendFeedback(this, createModel(), preferences.getToken());
+            sendFeedbackInteractor.sendFeedback(this, createModel(), preferences.getToken(), project.getId());
             feedbackView.finishFeedback();
         }
     }
