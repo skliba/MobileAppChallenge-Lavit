@@ -28,7 +28,7 @@ public class ProjectModel {
     private String category;
     private int feedBackType;
     @SerializedName("allowedTypes")
-    private int[] feedbackTypes;
+    private transient int[] feedbackTypes;
 
     public String getName() {
         return name;

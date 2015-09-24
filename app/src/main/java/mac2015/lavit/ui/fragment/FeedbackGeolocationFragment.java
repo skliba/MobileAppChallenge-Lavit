@@ -100,7 +100,8 @@ public class FeedbackGeolocationFragment extends FeedbackFragment<Location> {
         txtLat.setText("Latitude: " + getFeedback().getLatitude());
         txtLng.setText("Longitude: " + getFeedback().getLongitude());
         try {
-            txtLocation.setText(getName(getFeedback()));
+            txtLocation.setVisibility(View.GONE);
+           // txtLocation.setText(getName(getFeedback()));
         } catch (Exception e) {
             txtLocation.setVisibility(View.GONE);
         }

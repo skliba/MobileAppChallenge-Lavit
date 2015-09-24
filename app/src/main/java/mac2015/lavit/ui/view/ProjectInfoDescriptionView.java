@@ -1,5 +1,7 @@
 package mac2015.lavit.ui.view;
 
+import java.util.List;
+
 import mac2015.lavit.domain.models.ProjectModel;
 
 /**
@@ -13,5 +15,5 @@ public interface ProjectInfoDescriptionView extends View {
 
     void showOverallScore(double score);
 
-    void showTags(ProjectModel.Tag[] tags);
+    void showTags(List<ProjectModel.Tag> tags);
 }
