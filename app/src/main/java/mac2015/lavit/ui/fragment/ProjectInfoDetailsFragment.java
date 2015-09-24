@@ -7,6 +7,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import java.util.List;
+
 import javax.inject.Inject;
 
 import butterknife.InjectView;
@@ -24,7 +26,8 @@ public class ProjectInfoDetailsFragment extends BaseTabFragment implements Proje
     TextView txtDescription;
     @InjectView(R.id.txtProjectOwner)
     TextView txtProjectOwner;
-    //@InjectView(R.id.txtTags)
+    @InjectView(R.id.txtTags)
+    TextView txtTags;
 
 
     @Inject
@@ -67,11 +70,11 @@ public class ProjectInfoDetailsFragment extends BaseTabFragment implements Proje
     }
 
     @Override
-    public void showTags(ProjectModel.Tag[] tags) {
+    public void showTags(List<ProjectModel.Tag> tags) {
         String tagLabel = "";
         for (ProjectModel.Tag tag : tags) {
             tagLabel += "#" + tag.getName() + "  ";
         }
-        txtProjectOwner.setText(tagLabel);
+        txtTags.setText(tagLabel);
     }
 }
