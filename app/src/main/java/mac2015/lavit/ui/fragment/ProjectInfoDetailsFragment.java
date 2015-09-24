@@ -24,6 +24,8 @@ public class ProjectInfoDetailsFragment extends BaseTabFragment implements Proje
     TextView txtDescription;
     @InjectView(R.id.txtProjectOwner)
     TextView txtProjectOwner;
+    //@InjectView(R.id.txtTags)
+
 
     @Inject
     ProjectInfoDescriptionPresenter projectInfoDescriptionPresenter;
@@ -57,5 +59,19 @@ public class ProjectInfoDetailsFragment extends BaseTabFragment implements Proje
     @Override
     public void showOwners(ProjectModel projectModel) {
         txtProjectOwner.setText(projectModel.getOwnerName());
+    }
+
+    @Override
+    public void showOverallScore(double score) {
+        txtProjectOwner.setText(score + "%");
+    }
+
+    @Override
+    public void showTags(ProjectModel.Tag[] tags) {
+        String tagLabel = "";
+        for (ProjectModel.Tag tag : tags) {
+            tagLabel += "#" + tag.getName() + "  ";
+        }
+        txtProjectOwner.setText(tagLabel);
     }
 }

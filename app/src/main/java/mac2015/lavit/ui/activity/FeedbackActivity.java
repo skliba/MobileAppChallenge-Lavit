@@ -78,11 +78,9 @@ public class FeedbackActivity extends BaseActivity implements FeedbackView {
     @Override
     public void enableFeedbacks(int... types) {
         Arrays.sort(types);
+        pages.add(feedbackRatingFragment);
         for (int type : types) {
             switch (type) {
-                case FeedbackTypes.RATING:
-                    pages.add(feedbackRatingFragment);
-                    break;
                 case FeedbackTypes.COMMENT:
                     pages.add(feedbackCommentFragment);
                     break;
@@ -185,6 +183,8 @@ public class FeedbackActivity extends BaseActivity implements FeedbackView {
 
     @Override
     public void turnPage(int index) {
+        Log.i(TAG, "Total items: " + pages.size());
+        Log.i(TAG, "Current item: " + index);
         pager.setCurrentItem(index);
     }
 

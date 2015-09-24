@@ -11,6 +11,72 @@
         android:orientation="vertical">
 
         <android.support.v7.widget.CardView
+            android:id="@+id/cardProjectOwners"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="10dp">
+
+                <TextView
+                    android:id="@+id/txtLblProjectOwner"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:text="Overall score"
+                    android:textColor="@color/primary_text"
+                    android:textSize="20sp" />
+
+                <TextView
+                    android:id="@+id/txtProjectOwner"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_toEndOf="@+id/txtLblProjectOwner"
+                    android:layout_toRightOf="@+id/txtLblProjectOwner"
+                    android:gravity="right"
+                    android:paddingLeft="10dp"
+                    android:textColor="@color/accent2" />
+            </RelativeLayout>
+        </android.support.v7.widget.CardView>
+
+        <android.support.v7.widget.CardView
+            android:id="@+id/cardProjectTags"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="10dp">
+
+                <TextView
+                    android:id="@+id/txtLblProjectTags"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Tags"
+                    android:textColor="@color/primary_text"
+                    android:textSize="20sp" />
+
+                <TextView
+                    android:id="@+id/txtTags"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignLeft="@+id/txtLblProjectTags"
+                    android:layout_alignStart="@+id/txtLblProjectTags"
+                    android:layout_below="@+id/txtLblProjectTags"
+                    android:layout_marginTop="10dp"
+                    android:paddingLeft="10dp"
+                    android:textColor="@color/secondary_text" />
+            </RelativeLayout>
+        </android.support.v7.widget.CardView>
+
+        <android.support.v7.widget.CardView
             android:id="@+id/cardProjectDescription"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -42,37 +108,7 @@
             </RelativeLayout>
         </android.support.v7.widget.CardView>
 
-        <android.support.v7.widget.CardView
-            android:id="@+id/cardProjectOwners"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="10dp">
 
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:padding="10dp">
-
-                <TextView
-                    android:id="@+id/txtLblProjectOwner"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Owners:"
-                    android:textColor="@color/primary_text"
-                    android:textSize="20sp" />
-
-                <TextView
-                    android:id="@+id/txtProjectOwner"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_alignLeft="@+id/txtLblProjectOwner"
-                    android:layout_alignStart="@+id/txtLblProjectOwner"
-                    android:layout_below="@+id/txtLblProjectOwner"
-                    android:layout_marginTop="10dp"
-                    android:paddingLeft="10dp"
-                    android:textColor="@color/secondary_text" />
-            </RelativeLayout>
-        </android.support.v7.widget.CardView>
     </LinearLayout>
 
 </android.support.v4.widget.NestedScrollView>

@@ -51,6 +51,7 @@ public class LoginPresenterImpl extends BasePresenter implements LoginPresenter,
         LoginModel loginModel = new LoginModel();
         loginModel.setEmail(loginView.getEmail());
         loginModel.setPassword(loginView.getPassword());
+        loginModel.setRegId(preferences.getRegistrationId());
         loginInteractor.login(this, loginModel);
     }
 
@@ -97,7 +98,7 @@ public class LoginPresenterImpl extends BasePresenter implements LoginPresenter,
     public void onViewCreate() {
         if (preferences.isUserStored()) {
             loginView.proceed(preferences.getUser());
-        }else{
+        } else {
             setupGCM();
         }
     }

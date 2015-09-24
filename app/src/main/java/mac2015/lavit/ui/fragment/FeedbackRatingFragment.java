@@ -12,9 +12,6 @@ import android.widget.RelativeLayout;
 import android.widget.SeekBar;
 import android.widget.TextView;
 
-import com.daimajia.androidanimations.library.Techniques;
-import com.daimajia.androidanimations.library.YoYo;
-
 import butterknife.InjectView;
 import mac2015.lavit.R;
 
@@ -88,7 +85,7 @@ public class FeedbackRatingFragment extends FeedbackFragment<Double> {
 
         @Override
         public void onStopTrackingTouch(SeekBar seekBar) {
-            YoYo.with(Techniques.Tada).duration(800).playOn(imgFrontHeart);
+//            YoYo.with(Techniques.Tada).duration(800).playOn(imgFrontHeart);
         }
     };
 

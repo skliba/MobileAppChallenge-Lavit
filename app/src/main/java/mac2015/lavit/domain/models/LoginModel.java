@@ -7,13 +7,16 @@ import java.io.Serializable;
 /**
  * Created by noxqs on 23.09.15..
  */
-public class LoginModel implements Serializable{
+public class LoginModel implements Serializable {
 
     @SerializedName("email")
     private String email;
 
     @SerializedName("password")
     private String password;
+
+    @SerializedName("registrationId")
+    private String regId;
 
     public String getEmail() {
         return email;
@@ -29,5 +32,13 @@ public class LoginModel implements Serializable{
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public String getRegId() {
+        return regId;
+    }
+
+    public void setRegId(String regId) {
+        this.regId = regId;
     }
 }

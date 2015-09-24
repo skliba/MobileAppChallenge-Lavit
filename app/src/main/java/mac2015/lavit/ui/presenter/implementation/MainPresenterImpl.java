@@ -97,5 +97,7 @@ public class MainPresenterImpl extends BasePresenter implements MainPresenter, P
     @Override
     public void onGcmMessageReceived(boolean success, Intent gcmMessage) {
         Log.i(TAG, "Received GCM message: " + success);
+        Log.i(TAG, "Message: " + gcmMessage.getStringExtra("message"));
+        Log.i(TAG, "Project: " + gcmMessage.getStringExtra("project"));
     }
 }

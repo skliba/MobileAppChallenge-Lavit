@@ -29,10 +29,10 @@ public interface AppService {
     @POST("/app/api/login")
     Response<LoginResponse> login(@Body LoginModel loginModel);
 
-    @GET("/app/api/projects")
+    @GET("/app/api/projects/")
     Response<List<ProjectModel>> fetchProjects();
 
-    @GET("/app/api/projects")
+    @GET("/app/api/projects/")
     Response<List<ProjectModel>> fetchProjects(@Header("X-Api-Token") String token);
 
     @POST("/app/api/feedback/{projectId}")
