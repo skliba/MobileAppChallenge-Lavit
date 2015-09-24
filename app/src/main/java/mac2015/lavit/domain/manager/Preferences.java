@@ -13,6 +13,7 @@ public class Preferences {
 
     private static final String KEY_USER = "mac2015.lavit.user";
     private static final String KEY_TOKEN = "mac2015.lavit.token";
+    private static final String KEY_REG_KEY = "mac2015.lavit.regkey";
 
     private Context context;
 
@@ -55,6 +56,10 @@ public class Preferences {
 
     public SharedPreferences.Editor editor() {
         return preferences().edit();
+    }
+
+    public void saveRegistrationId(String registrationId) {
+        editor().putString(KEY_REG_KEY, registrationId).commit();
     }
 
 }
