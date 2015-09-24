@@ -31,6 +31,8 @@ public class FeedbackCommentFragment extends FeedbackFragment<String> {
 
     @Override
     public String getFeedback() {
-        return etFeedbackComment.getText().toString();
+        if (etFeedbackComment != null && etFeedbackComment.getText() != null)
+            return etFeedbackComment.getText().toString();
+        return null;
     }
 }
