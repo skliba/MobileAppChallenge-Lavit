@@ -4,11 +4,13 @@ import javax.inject.Named;
 
 import dagger.Module;
 import dagger.Provides;
+import mac2015.lavit.domain.interactor.FetchFeedbackInteractor;
 import mac2015.lavit.domain.interactor.LoginGoogleInteractor;
 import mac2015.lavit.domain.interactor.LoginInteractor;
 import mac2015.lavit.domain.interactor.ProjectInteractor;
 import mac2015.lavit.domain.interactor.RegistrationInteractor;
 import mac2015.lavit.domain.interactor.SendFeedbackInteractor;
+import mac2015.lavit.domain.interactor.impl.FetchFeedbackInteractorImpl;
 import mac2015.lavit.domain.interactor.impl.LoginGoogleInteractorImpl;
 import mac2015.lavit.domain.interactor.impl.LoginInteractorImpl;
 import mac2015.lavit.domain.interactor.impl.ProjectInteractorImpl;
@@ -49,5 +51,10 @@ public class InteractorModule {
     @Provides
     public SendFeedbackInteractor provideSendFeedbackInteractor(InteractorExecutor interactorExecutor, MainThreadExecutor mainThreadExecutor, @Named("api_base_url") String endpoint) {
         return new SendFeedbackInteractorImpl(interactorExecutor, mainThreadExecutor, new ApiManagerImpl(endpoint));
+    }
+
+    @Provides
+    public FetchFeedbackInteractor provideFetchFeedbackInteractor(InteractorExecutor interactorExecutor, MainThreadExecutor mainThreadExecutor, @Named("production_api") ListRepository listRepository){
+        return new FetchFeedbackInteractorImpl(interactorExecutor, mainThreadExecutor, listRepository);
     }
 }

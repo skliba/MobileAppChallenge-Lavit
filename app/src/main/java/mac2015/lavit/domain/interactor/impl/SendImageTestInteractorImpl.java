@@ -36,7 +36,7 @@ public class SendImageTestInteractorImpl extends AbstractInteractor implements S
             notifySuccess(response);
         }
         catch(RetrofitError e){
-            notifyError();
+            notifyError(e.getMessage());
         }
     }
 
@@ -50,11 +50,11 @@ public class SendImageTestInteractorImpl extends AbstractInteractor implements S
         });
     }
 
-    private void notifyError() {
+    private void notifyError(final String msg) {
         getMainThreadExecutor().execute(new Runnable() {
             @Override
             public void run() {
-                callback.onImageSendError("Error on sending image");
+                callback.onImageSendError(msg);
             }
         });
     }

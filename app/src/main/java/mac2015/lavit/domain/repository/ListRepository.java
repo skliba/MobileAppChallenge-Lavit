@@ -31,5 +31,5 @@ public interface ListRepository {
 
     String sendImage(TypedFile file, long projectId);
 
-    Response<FeedbackResponse> fetchFeedback(FeedbackModel model, double rating);
+    Response<FeedbackResponse> fetchFeedback(String token, long projectId);
 }

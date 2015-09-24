@@ -93,7 +93,7 @@ public class ApiManagerImpl implements ApiManager, ListRepository {
     }
 
     @Override
-    public Response<FeedbackResponse> fetchFeedback(FeedbackModel model, double rating) {
+    public Response<FeedbackResponse> fetchFeedback(String token, long projectId) {
         return null;
     }
 
