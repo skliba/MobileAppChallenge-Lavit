@@ -7,4 +7,5 @@
     <string name="sign_in_button_text">SIGN IN</string>
     <string name="log_in_password_hint">Password</string>
     <string name="log_in_email_hint">Email</string>
+    <string name="gcm_sender_id">AIzaSyBVXzSVSRq_9AInCPLW0fOD_Hveo8kmK1E</string>
 </resources>

@@ -1,6 +1,7 @@
 package mac2015.lavit.ui.presenter.implementation;
 
 import android.content.Context;
+import android.content.Intent;
 import android.util.Log;
 
 import java.util.List;
@@ -12,13 +13,15 @@ import mac2015.lavit.domain.interactor.ProjectInteractor;
 import mac2015.lavit.domain.manager.Preferences;
 import mac2015.lavit.domain.models.ProjectModel;
 import mac2015.lavit.domain.models.User;
+import mac2015.lavit.domain.repository.gcm.GcmObserver;
+import mac2015.lavit.domain.repository.gcm.listener.OnGcmMessageReceivedListener;
 import mac2015.lavit.ui.presenter.MainPresenter;
 import mac2015.lavit.ui.view.MainView;
 
 /**
  * Created by dmacan on 23.9.2015..
  */
-public class MainPresenterImpl extends BasePresenter implements MainPresenter, ProjectInteractor.Callback {
+public class MainPresenterImpl extends BasePresenter implements MainPresenter, ProjectInteractor.Callback, OnGcmMessageReceivedListener {
 
     private static final String TAG = "DAM_PRES_MAIN";
     @Inject
@@ -42,6 +45,7 @@ public class MainPresenterImpl extends BasePresenter implements MainPresenter, P
     public void onViewCreate() {
         mainView.showProfileInfo(user);
         projectInteractor.fetchProjects(this, preferences.getToken());
+        GcmObserver.getInstance().register(this);
     }
 
     @Override
@@ -88,5 +92,10 @@ public class MainPresenterImpl extends BasePresenter implements MainPresenter, P
     @Override
     public void onProjectFetchSuccess(List<ProjectModel> data) {
         mainView.showProjects(data);
+    }
+
+    @Override
+    public void onGcmMessageReceived(boolean success, Intent gcmMessage) {
+        Log.i(TAG, "Received GCM message: " + success);
     }
 }

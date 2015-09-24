@@ -3,9 +3,11 @@ package mac2015.lavit.ui.presenter.implementation;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.util.Log;
 
 import javax.inject.Inject;
 
+import mac2015.lavit.R;
 import mac2015.lavit.app.BasePresenter;
 import mac2015.lavit.domain.interactor.LoginGoogleInteractor;
 import mac2015.lavit.domain.interactor.LoginInteractor;
@@ -14,13 +16,16 @@ import mac2015.lavit.domain.manager.Preferences;
 import mac2015.lavit.domain.manager.ValidationManager;
 import mac2015.lavit.domain.models.LoginModel;
 import mac2015.lavit.domain.models.User;
+import mac2015.lavit.domain.repository.gcm.listener.OnErrorListener;
+import mac2015.lavit.domain.repository.gcm.listener.OnGcmRegisteredListener;
+import mac2015.lavit.domain.repository.gcm.simple.SimpleGcmRegistar;
 import mac2015.lavit.ui.presenter.LoginPresenter;
 import mac2015.lavit.ui.view.LoginView;
 
 /**
  * Created by dmacan on 23.9.2015..
  */
-public class LoginPresenterImpl extends BasePresenter implements LoginPresenter, LoginInteractor.Callback, LoginGoogleInteractor.Callback {
+public class LoginPresenterImpl extends BasePresenter implements LoginPresenter, LoginInteractor.Callback, LoginGoogleInteractor.Callback, OnGcmRegisteredListener, OnErrorListener {
 
     private static final String TAG = "DAM_PRESENTER_LOGIN";
     @Inject
@@ -33,6 +38,7 @@ public class LoginPresenterImpl extends BasePresenter implements LoginPresenter,
     GoogleApiManager googleApiManager;
     @Inject
     Preferences preferences;
+    SimpleGcmRegistar gcmRegistar;
     LoginView loginView;
 
     public LoginPresenterImpl(Context context) {
@@ -91,6 +97,8 @@ public class LoginPresenterImpl extends BasePresenter implements LoginPresenter,
     public void onViewCreate() {
         if (preferences.isUserStored()) {
             loginView.proceed(preferences.getUser());
+        }else{
+            setupGCM();
         }
     }
 
@@ -134,5 +142,29 @@ public class LoginPresenterImpl extends BasePresenter implements LoginPresenter,
         loginView.proceed(user);
     }
 
+    private void setupGCM() {
+        if (!preferences.isRegistrationIdAvailable()) {
+            loginView.showLoading("Preparing your device...");
+            this.gcmRegistar = new SimpleGcmRegistar(getContext());
+            this.gcmRegistar.setOnGcmRegisteredListener(this);
+            this.gcmRegistar.setOnErrorListener(this);
+            this.gcmRegistar.registerInBackground(getContext().getString(R.string.gcm_sender_id));
+        }
+    }
 
+
+    @Override
+    public void onGcmRegistered(boolean success, String registrationId) {
+        loginView.hideLoading();
+        Log.i(TAG, "GCM registered: " + success);
+        if (success) {
+            preferences.saveRegistrationId(registrationId);
+        }
+    }
+
+    @Override
+    public void onError(String error) {
+        loginView.hideLoading();
+        loginView.showError("GCM failed to register");
+    }
 }
