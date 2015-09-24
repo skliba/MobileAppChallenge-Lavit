@@ -5,6 +5,7 @@ import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.view.ViewPager;
 import android.support.v7.widget.Toolbar;
+import android.view.MenuItem;
 import android.widget.ImageView;
 
 import com.squareup.picasso.Picasso;
@@ -115,6 +116,14 @@ public class ProjectInfoActivity extends BaseActivity implements ProjectInfoView
         collapsingToolbar.setTitle(title);
         collapsingToolbar.setExpandedTitleColor(color);
         collapsingToolbar.setCollapsedTitleTextColor(color);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem menuItem) {
+        if (menuItem.getItemId() == android.R.id.home) {
+            onBackPressed();
+        }
+        return super.onOptionsItemSelected(menuItem);
     }
 
 }

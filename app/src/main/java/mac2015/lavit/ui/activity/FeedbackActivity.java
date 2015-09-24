@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.location.Location;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.MenuItem;
 import android.widget.Button;
 import android.widget.Toast;
 
@@ -193,5 +194,13 @@ public class FeedbackActivity extends BaseActivity implements FeedbackView {
         if (requestCode == 0) {
             feedbackPhotoFragment.onActivityResult(requestCode, resultCode, data);
         }
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem menuItem) {
+        if (menuItem.getItemId() == android.R.id.home) {
+            onBackPressed();
+        }
+        return super.onOptionsItemSelected(menuItem);
     }
 }
