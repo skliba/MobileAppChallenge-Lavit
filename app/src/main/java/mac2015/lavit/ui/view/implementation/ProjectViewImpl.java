@@ -7,6 +7,8 @@ import android.widget.TextView;
 
 import com.squareup.picasso.Picasso;
 
+import java.util.List;
+
 import butterknife.ButterKnife;
 import butterknife.InjectView;
 import io.nlopez.smartadapters.views.BindableLayout;
@@ -21,8 +23,8 @@ public class ProjectViewImpl extends BindableLayout<ProjectModel> {
     private static final String TAG = "DAM_VIEW_PROJECT";
     @InjectView(R.id.txtProjectName)
     TextView txtProjectName;
-    @InjectView(R.id.txtProjectOwner)
-    TextView txtProjectOwner;
+    @InjectView(R.id.txtProjectTags)
+    TextView txtProjectTags;
     @InjectView(R.id.imgProjectCover)
     ImageView imgProjectCover;
 
@@ -48,13 +50,21 @@ public class ProjectViewImpl extends BindableLayout<ProjectModel> {
         this.project = projectModel;
         Picasso.with(getContext()).load("http://blog.caranddriver.com/wp-content/uploads/2009/08/2009-Lamborghini-Gallardo-LP60-4.jpg").into(imgProjectCover);
         txtProjectName.setText(projectModel.getName());
-        txtProjectOwner.setText(projectModel.getOwnerName());
+        showTags(projectModel.getTags());
         setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
                 notifyItemAction(Action.CLICK, project, ProjectViewImpl.this);
             }
         });
+    }
+
+    private void showTags(List<ProjectModel.Tag> tags) {
+        String tagLabel = "";
+        for (ProjectModel.Tag tag : tags) {
+            tagLabel += "#" + tag.getName() + "  ";
+        }
+        txtProjectTags.setText(tagLabel);
     }
 
     public static final class Action {

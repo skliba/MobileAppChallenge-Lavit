@@ -24,7 +24,7 @@ public class ProjectInfoDetailsFragment extends BaseTabFragment implements Proje
 
     @InjectView(R.id.txtDescription)
     TextView txtDescription;
-    @InjectView(R.id.txtProjectOwner)
+    @InjectView(R.id.txtProjectTags)
     TextView txtProjectOwner;
     @InjectView(R.id.txtTags)
     TextView txtTags;

@@ -11,8 +11,6 @@ import mac2015.lavit.domain.models.response.FeedbackResponse;
  */
 public class ProjectModel {
 
-    //TODO @SerializedName fali ovdje, nismo dodali jer nema api-ja jos uvijek pa ne znamo imena
-
     @SerializedName("id")
     private int id;
     @SerializedName("name")
