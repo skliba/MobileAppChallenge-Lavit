@@ -4,9 +4,11 @@ import mac2015.lavit.domain.models.LoginModel;
 import mac2015.lavit.domain.models.ProjectModel;
 import mac2015.lavit.domain.models.RegistrationModel;
 import mac2015.lavit.domain.models.response.LoginResponse;
+import mac2015.lavit.domain.models.response.ProjectResponse;
 import mac2015.lavit.domain.models.response.RegistrationResponse;
 import mac2015.lavit.domain.models.response.Response;
 import retrofit.http.Body;
+import retrofit.http.GET;
 import retrofit.http.POST;
 
 /**
@@ -20,5 +22,6 @@ public interface AppService {
     @POST("/app/api/login")
     Response<LoginResponse> login(@Body LoginModel loginModel);
 
-    //Response<ProjectResponse> fetchProjects(ProjectModel model);
+    @GET("/app/api/projects")
+    Response<ProjectResponse> fetchProjects(ProjectModel model);
 }

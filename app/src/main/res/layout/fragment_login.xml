@@ -3,32 +3,15 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <Button
-        android:id="@+id/btnSignIn"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:background="@drawable/btn_default"
-        android:paddingBottom="15dp"
-        android:paddingTop="15dp"
-        android:text="SIGN IN"
-        android:textColor="@android:color/white" />
-
-    <Button
-        android:id="@+id/btnGoogleLogin"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/btnSignIn"
-        android:background="@drawable/btn_default"
-        android:paddingBottom="15dp"
-        android:paddingTop="15dp"
-        android:text="Use Google"
-        android:textColor="@android:color/white" />
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
 
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/btnSignIn"
+        android:id="@+id/scrollView"
+        android:layout_centerHorizontal="true"
         android:layout_alignParentTop="true">
 
         <LinearLayout
@@ -42,7 +25,7 @@
                 style="@style/MAC.EditText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Email"
+                android:hint="@string/log_in_email_hint"
                 android:inputType="textEmailAddress"
                 android:textCursorDrawable="@null" />
 
@@ -53,10 +36,36 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
-                android:hint="Password"
+                android:hint="@string/log_in_password_hint"
                 android:inputType="textPassword"
                 android:textCursorDrawable="@null" />
-
         </LinearLayout>
     </ScrollView>
+
+    <Button
+        android:id="@+id/btnSignIn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/scrollView"
+        android:background="@drawable/btn_default"
+        android:paddingBottom="15dp"
+        android:paddingTop="15dp"
+        android:text="@string/sign_in_button_text"
+        android:textColor="@android:color/white" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        />
+
+    <Button
+        android:id="@+id/btnGoogleLogin"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/btn_google_normal_dark_full_xxhdpi"
+        android:paddingBottom="15dp"
+        android:paddingTop="15dp"
+        android:layout_alignParentBottom="true"
+        android:text="@string/google_sign_in_button_text"
+        android:textColor="@android:color/white" />
 </RelativeLayout>
