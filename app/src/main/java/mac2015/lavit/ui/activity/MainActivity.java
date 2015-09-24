@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
@@ -99,7 +100,7 @@ public class MainActivity extends BaseActivity implements MainView, ViewEventLis
     }
 
     private void setupGrid() {
-        gridProjects.setLayoutManager(new GridLayoutManager(getBaseContext(), 2));
+        gridProjects.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
         gridProjects.setAdapter(projectsAdapter);
         projectsAdapter.setViewEventListener(this);
     }
