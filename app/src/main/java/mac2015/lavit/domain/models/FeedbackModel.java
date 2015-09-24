@@ -13,7 +13,7 @@ public class FeedbackModel {
 
     //TODO atributi ako je dopusten takav nacin feedbacka, ovisi o postu
     private String comment;
-    private File image;
+    private transient File image;
     private int latitude;
     private int longitude;
     private ProjectModel project;
