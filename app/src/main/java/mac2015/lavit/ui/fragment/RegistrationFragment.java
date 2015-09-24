@@ -156,6 +156,7 @@ public class RegistrationFragment extends BaseTabFragment implements Registratio
     @Override
     public void proceed(User user) {
         startActivity(IntentUtil.startMainActivity(getActivity(), user));
+        getActivity().finish();
     }
 
     @Override

@@ -1,10 +1,13 @@
 package mac2015.lavit.ui.activity;
 
+import android.content.Intent;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -89,6 +92,12 @@ public class MainActivity extends BaseActivity implements MainView, ViewEventLis
         Toast.makeText(getBaseContext(), msg, Toast.LENGTH_SHORT).show();
     }
 
+    @Override
+    public void returnToLogin() {
+        startActivity(new Intent(getBaseContext(), LoginActivity.class));
+        finish();
+    }
+
     private void setupGrid() {
         gridProjects.setLayoutManager(new GridLayoutManager(getBaseContext(), 2));
         gridProjects.setAdapter(projectsAdapter);
@@ -98,5 +107,20 @@ public class MainActivity extends BaseActivity implements MainView, ViewEventLis
     @Override
     public void onViewEvent(int i, ProjectModel projectModel, int i1, View view) {
         mainPresenter.projectSelected(projectModel);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_main, menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId() == R.id.menuLogout) {
+            mainPresenter.onLogoutSelected();
+            return true;
+        }
+        return false;
     }
 }

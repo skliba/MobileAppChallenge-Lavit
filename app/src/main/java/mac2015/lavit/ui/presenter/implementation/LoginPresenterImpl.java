@@ -89,7 +89,9 @@ public class LoginPresenterImpl extends BasePresenter implements LoginPresenter,
 
     @Override
     public void onViewCreate() {
-        //Not needed
+        if (preferences.isUserStored()) {
+            loginView.proceed(preferences.getUser());
+        }
     }
 
     @Override

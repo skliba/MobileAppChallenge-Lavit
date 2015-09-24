@@ -13,4 +13,5 @@ public interface MainPresenter extends Presenter<MainView> {
 
     void projectSelected(ProjectModel projectModel);
 
+    void onLogoutSelected();
 }
