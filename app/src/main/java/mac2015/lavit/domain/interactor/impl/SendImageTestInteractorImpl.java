@@ -31,6 +31,7 @@ public class SendImageTestInteractorImpl extends AbstractInteractor implements S
     @Override
     public void run() {
         try{
+            typedFile = new TypedFile("image/jpeg", file);
             String response = listRepository.sendImage(typedFile, projectId);
 
             notifySuccess(response);
@@ -39,6 +40,7 @@ public class SendImageTestInteractorImpl extends AbstractInteractor implements S
             notifyError();
         }
     }
+
 
     private void notifySuccess(final String response) {
         getMainThreadExecutor().execute(new Runnable() {
@@ -59,9 +61,9 @@ public class SendImageTestInteractorImpl extends AbstractInteractor implements S
     }
 
     @Override
-    public void sendImage(Callback callback, TypedFile file, String projectId) {
+    public void sendImage(Callback callback, File file, String projectId) {
         this.callback = callback;
-        this.typedFile = file;
+        this.file = file;
         this.projectId = projectId;
 
         getInteractorExecutor().execute(this);

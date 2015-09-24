@@ -1,5 +1,7 @@
 package mac2015.lavit.domain.interactor;
 
+import java.io.File;
+
 import retrofit.mime.TypedFile;
 
 /**
@@ -7,7 +9,7 @@ import retrofit.mime.TypedFile;
  */
 public interface SendImageTestInteractor {
 
-    void sendImage(Callback callback, TypedFile file, String projectId);
+    void sendImage(Callback callback, File file, String projectId);
 
     interface Callback{
 
