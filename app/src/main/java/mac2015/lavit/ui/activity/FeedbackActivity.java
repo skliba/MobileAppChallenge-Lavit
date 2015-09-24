@@ -100,6 +100,7 @@ public class FeedbackActivity extends BaseActivity implements FeedbackView {
         adapter.addTabs(pages);
         pager.setPagingEnabled(false);
         pager.setAdapter(adapter);
+        pager.setOffscreenPageLimit(pages.size());
     }
 
     @Override
