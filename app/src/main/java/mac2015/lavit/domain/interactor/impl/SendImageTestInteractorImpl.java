@@ -5,7 +5,6 @@ import java.io.File;
 import mac2015.lavit.domain.interactor.AbstractInteractor;
 import mac2015.lavit.domain.interactor.SendImageTestInteractor;
 import mac2015.lavit.domain.repository.ListRepository;
-import mac2015.lavit.domain.repository.api.impl.ApiManagerImpl;
 import mac2015.lavit.executor.InteractorExecutor;
 import mac2015.lavit.executor.MainThreadExecutor;
 import retrofit.RetrofitError;
@@ -30,12 +29,11 @@ public class SendImageTestInteractorImpl extends AbstractInteractor implements S
 
     @Override
     public void run() {
-        try{
+        try {
             typedFile = new TypedFile("image/jpeg", file);
             String response = listRepository.sendImage(typedFile, projectId);
             notifySuccess(response);
-        }
-        catch(RetrofitError e){
+        } catch (RetrofitError e) {
             notifyError(e.getMessage());
         }
     }
@@ -64,7 +62,6 @@ public class SendImageTestInteractorImpl extends AbstractInteractor implements S
         this.callback = callback;
         this.file = file;
         this.projectId = projectId;
-
         getInteractorExecutor().execute(this);
     }
 }

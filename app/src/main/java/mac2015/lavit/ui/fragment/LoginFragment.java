@@ -90,7 +90,7 @@ public class LoginFragment extends BaseTabFragment implements LoginView {
 
     @Override
     public void hideLoading() {
-        progressDialog.hide();
+        progressDialog.dismiss();
     }
 
     @Override
