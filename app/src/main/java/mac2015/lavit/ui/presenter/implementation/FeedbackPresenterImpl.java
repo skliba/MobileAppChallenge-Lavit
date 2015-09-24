@@ -54,7 +54,7 @@ public class FeedbackPresenterImpl extends BasePresenter implements FeedbackPres
     @Override
     public void initialize() {
         project = feedbackView.getProject();
-        pages = new int[]{0, 1, 2}; // TODO get types
+        pages = new int[]{0, 1, 2, 3}; // TODO get types
     }
 
     @Override
