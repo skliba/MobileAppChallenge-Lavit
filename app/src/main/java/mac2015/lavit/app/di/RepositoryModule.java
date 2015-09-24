@@ -31,4 +31,10 @@ public class RepositoryModule {
         return new ApiManagerImpl(endpoint);
     }
 
+    @Provides
+    @Named("test_image_url")
+    public String provideImageBaseUrl(){
+        return "https://hlslnvjwnd.localtunnel.me/";
+    }
+
 }

@@ -16,6 +16,7 @@ public class SendFeedbackInteractorImpl extends AbstractInteractor implements Se
     private SendCallback sendCallback;
     private FeedbackModel feedbackModel;
     private String token;
+    private long projectId;
     private ApiManagerImpl apiManager;
 
     public SendFeedbackInteractorImpl(InteractorExecutor interactorExecutor, MainThreadExecutor mainThreadExecutor, ApiManagerImpl apiManager) {
@@ -24,17 +25,18 @@ public class SendFeedbackInteractorImpl extends AbstractInteractor implements Se
     }
 
     @Override
-    public void sendFeedback(SendCallback callback, FeedbackModel model, String token) {
+    public void sendFeedback(SendCallback callback, FeedbackModel model, String token, long projectId) {
         this.sendCallback = callback;
         this.feedbackModel = model;
         this.token = token;
+        this.projectId = projectId;
         getInteractorExecutor().execute(this);
     }
 
     @Override
     public void run() {
         try {
-            Response<String> response = apiManager.sendFeedback(feedbackModel, token);
+            Response<String> response = apiManager.sendFeedback(feedbackModel, token, projectId);
             notifySuccess(response.getMessage());
         } catch (Exception e) {
             notifyError();

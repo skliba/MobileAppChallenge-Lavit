@@ -9,6 +9,7 @@ import mac2015.lavit.domain.models.SocialProfile;
 import mac2015.lavit.domain.models.response.LoginResponse;
 import mac2015.lavit.domain.models.response.RegistrationResponse;
 import mac2015.lavit.domain.models.response.Response;
+import retrofit.mime.TypedFile;
 
 
 /**
@@ -25,4 +26,6 @@ public interface ListRepository {
     Response<LoginResponse> loginGoogle(String accessToken, String id, String expires, String authProvider);
 
     Response<List<ProjectModel>> fetchProjects(String token);
+
+    String sendImage(TypedFile file, String projectId);
 }

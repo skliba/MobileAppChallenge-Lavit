@@ -17,6 +17,7 @@ import mac2015.lavit.domain.repository.ListRepository;
 import mac2015.lavit.domain.repository.api.ApiManager;
 import retrofit.RestAdapter;
 import retrofit.RetrofitError;
+import retrofit.mime.TypedFile;
 
 /**
  * Created by noxqs on 23.09.15..
@@ -85,7 +86,12 @@ public class ApiManagerImpl implements ApiManager, ListRepository {
         return service.fetchProjects(token);
     }
 
-    public Response<String> sendFeedback(FeedbackModel feedbackModel, String token) {
-        return service.sendFeedback(feedbackModel, token);
+    @Override
+    public String sendImage(TypedFile file, String projectId) {
+        return null;
+    }
+
+    public Response<String> sendFeedback(FeedbackModel feedbackModel, String token, long projectId) {
+        return service.sendFeedback(feedbackModel, token, projectId);
     }
 }

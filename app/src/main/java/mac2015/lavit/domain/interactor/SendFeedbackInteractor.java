@@ -7,7 +7,7 @@ import mac2015.lavit.domain.models.FeedbackModel;
  */
 public interface SendFeedbackInteractor {
 
-    void sendFeedback(SendCallback callback, FeedbackModel model, String token);
+    void sendFeedback(SendCallback callback, FeedbackModel model, String token, long projectId);
 
     interface SendCallback {
 

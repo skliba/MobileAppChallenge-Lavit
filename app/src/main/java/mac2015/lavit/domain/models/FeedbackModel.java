@@ -14,9 +14,25 @@ public class FeedbackModel {
     //TODO atributi ako je dopusten takav nacin feedbacka, ovisi o postu
     private String comment;
     private File image;
-    private int latitude;
-    private int longitude;
+    private double latitude;
+    private double longitude;
     private ProjectModel project;
+
+    public double getLatitude() {
+        return latitude;
+    }
+
+    public void setLatitude(double latitude) {
+        this.latitude = latitude;
+    }
+
+    public double getLongitude() {
+        return longitude;
+    }
+
+    public void setLongitude(double longitude) {
+        this.longitude = longitude;
+    }
 
     public File getImage() {
         return image;
@@ -43,18 +59,6 @@ public class FeedbackModel {
         this.comment = comment;
     }
 
-
-    public int getLatitude() {
-        return latitude;
-    }
-
-    public void setLatitude(int latitude) {
-        this.latitude = latitude;
-    }
-
-    public int getLongitude() {
-        return longitude;
-    }
 
     public void setLongitude(int longitude) {
         this.longitude = longitude;

@@ -51,9 +51,6 @@ public class ProjectInteractorImpl extends AbstractInteractor implements Project
         getMainThreadExecutor().execute(new Runnable() {
             @Override
             public void run() {
-                //TODO TEMP varijabla koju sam stavio samo da ne baca errore u buildu, treba ici lista ili neka druga pizda materina
-                //TODO napravi response modele za sve! Odkomentiraj AppService, ListRepository i pazi na ApiManagerImpl kada odkomentiras ListRepository
-                // Stari moj, al si ga ti zakomplicirao s ovim response ugnježđivanjima :D
                 callback.onProjectFetchSuccess(data);
             }
         });
