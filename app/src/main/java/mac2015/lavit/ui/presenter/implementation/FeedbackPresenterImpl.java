@@ -52,8 +52,10 @@ public class FeedbackPresenterImpl extends BasePresenter implements FeedbackPres
         FeedbackModel model = new FeedbackModel();
         model.setComment(feedbackView.getFeedbackComment());
         model.setImage(feedbackView.getFeedbackPhoto());
-        model.setLatitude((int) feedbackView.getFeedbackLocation().getLatitude());
-        model.setLongitude((int) feedbackView.getFeedbackLocation().getLongitude());
+        if (feedbackView.getFeedbackLocation() != null) {
+            model.setLatitude((int) feedbackView.getFeedbackLocation().getLatitude());
+            model.setLongitude((int) feedbackView.getFeedbackLocation().getLongitude());
+        }
         model.setRating(feedbackView.getFeedbackRating());
         return model;
     }
@@ -77,7 +79,7 @@ public class FeedbackPresenterImpl extends BasePresenter implements FeedbackPres
     @Override
     public void initialize() {
         project = feedbackView.getProject();
-        pages = new int[]{0, 1, 2, 3}; // TODO get types
+        pages = project.getFeedbackTypes();
     }
 
     @Override

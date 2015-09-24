@@ -11,7 +11,7 @@ public interface ProjectInfoDescriptionView extends View {
 
     void showOwners(ProjectModel projectModel);
 
-    void showOverallScore(ProjectModel projectModel);
+    void showOverallScore(double score);
 
-    void showTags(ProjectModel projectModel);
+    void showTags(ProjectModel.Tag[] tags);
 }

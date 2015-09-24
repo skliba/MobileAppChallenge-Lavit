@@ -27,7 +27,7 @@ public class RepositoryModule {
 
     @Provides
     @Named("production_api")
-    public ListRepository provideListRepository(@Named("zoka_image_url") String endpoint) {
+    public ListRepository provideListRepository(@Named("api_base_url") String endpoint) {
         return new ApiManagerImpl(endpoint);
     }
 
