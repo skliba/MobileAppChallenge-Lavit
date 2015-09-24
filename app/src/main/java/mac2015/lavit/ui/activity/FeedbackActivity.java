@@ -1,9 +1,11 @@
 package mac2015.lavit.ui.activity;
 
+import android.content.Intent;
 import android.location.Location;
 import android.os.Bundle;
 import android.support.design.widget.AppBarLayout;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.widget.Button;
 import android.widget.Toast;
 
@@ -37,6 +39,7 @@ import mac2015.lavit.ui.view.FeedbackView;
  */
 public class FeedbackActivity extends BaseActivity implements FeedbackView {
 
+    private static final String TAG = "DAM_ACT_FEEDBACK";
     @InjectView(R.id.appbar)
     AppBarLayout appbar;
     @InjectView(R.id.viewPager)
@@ -186,4 +189,12 @@ public class FeedbackActivity extends BaseActivity implements FeedbackView {
         pager.setCurrentItem(index);
     }
 
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        Log.i(TAG, "Activity result: " + requestCode);
+        if (requestCode == 0) {
+            feedbackPhotoFragment.onActivityResult(requestCode, resultCode, data);
+        }
+    }
 }

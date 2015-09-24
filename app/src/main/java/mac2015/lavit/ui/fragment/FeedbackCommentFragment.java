@@ -5,7 +5,9 @@ import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 
+import butterknife.InjectView;
 import mac2015.lavit.R;
 
 /**
@@ -13,6 +15,8 @@ import mac2015.lavit.R;
  */
 public class FeedbackCommentFragment extends FeedbackFragment<String> {
 
+    @InjectView(R.id.etFeedbackComment)
+    EditText etFeedbackComment;
 
     @Nullable
     @Override
@@ -23,5 +27,10 @@ public class FeedbackCommentFragment extends FeedbackFragment<String> {
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+    }
+
+    @Override
+    public String getFeedback() {
+        return etFeedbackComment.getText().toString();
     }
 }
