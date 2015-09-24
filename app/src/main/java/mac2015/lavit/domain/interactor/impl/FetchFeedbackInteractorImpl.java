@@ -6,6 +6,7 @@ import mac2015.lavit.domain.interactor.AbstractInteractor;
 import mac2015.lavit.domain.interactor.FetchFeedbackInteractor;
 import mac2015.lavit.domain.models.response.FeedbackResponse;
 import mac2015.lavit.domain.models.response.Response;
+import mac2015.lavit.domain.models.response.ZokaResponse;
 import mac2015.lavit.domain.repository.ListRepository;
 import mac2015.lavit.executor.InteractorExecutor;
 import mac2015.lavit.executor.MainThreadExecutor;
@@ -42,8 +43,8 @@ public class FetchFeedbackInteractorImpl extends AbstractInteractor implements F
     @Override
     public void run() {
         try{
-            final Response<FeedbackResponse> feedbackResponse = listRepository.fetchFeedback(token, projectId);
-            model = feedbackResponse.getData();
+            final Response<ZokaResponse> feedbackResponse = listRepository.fetchFeedback(token, projectId);
+            model = feedbackResponse.getData().getFeedbackResponseZoka();
             notifySucces(model);
         }
         catch(RetrofitError e){

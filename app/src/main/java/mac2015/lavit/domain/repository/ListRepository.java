@@ -11,6 +11,7 @@ import mac2015.lavit.domain.models.response.FeedbackResponse;
 import mac2015.lavit.domain.models.response.LoginResponse;
 import mac2015.lavit.domain.models.response.RegistrationResponse;
 import mac2015.lavit.domain.models.response.Response;
+import mac2015.lavit.domain.models.response.ZokaResponse;
 import retrofit.mime.TypedFile;
 
 
@@ -31,5 +32,5 @@ public interface ListRepository {
 
     String sendImage(TypedFile file, long projectId);
 
-    Response<FeedbackResponse> fetchFeedback(String token, long projectId);
+    Response<ZokaResponse> fetchFeedback(String token, long projectId);
 }
