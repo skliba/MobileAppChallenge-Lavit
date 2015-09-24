@@ -7,7 +7,7 @@ import java.io.Serializable;
 /**
  * Created by noxqs on 23.09.15..
  */
-public class Response<T> implements Serializable{
+public class Response<T> implements Serializable {
 
     @SerializedName("status")
     private String status;

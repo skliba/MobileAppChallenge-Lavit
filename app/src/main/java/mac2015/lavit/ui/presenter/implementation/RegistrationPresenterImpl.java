@@ -7,6 +7,7 @@ import javax.inject.Inject;
 
 import mac2015.lavit.app.BasePresenter;
 import mac2015.lavit.domain.interactor.RegistrationInteractor;
+import mac2015.lavit.domain.manager.Preferences;
 import mac2015.lavit.domain.manager.ValidationManager;
 import mac2015.lavit.domain.models.RegistrationModel;
 import mac2015.lavit.domain.models.User;
@@ -24,6 +25,8 @@ public class RegistrationPresenterImpl extends BasePresenter implements Registra
     ValidationManager validationManager;
     @Inject
     RegistrationInteractor registrationInteractor;
+    @Inject
+    Preferences preferences;
     RegistrationView registrationView;
 
     public RegistrationPresenterImpl(Context context) {
@@ -136,6 +139,9 @@ public class RegistrationPresenterImpl extends BasePresenter implements Registra
     @Override
     public void onRegistrationSuccess(User user) {
         Log.i(TAG, "Response");
+        preferences.storeUser(user);
+        preferences.storeToken(user.getToken());
+        Log.d(TAG, "Storing token: " + user.getToken());
         this.registrationView.unlock();
         this.registrationView.hideLoading();
         this.registrationView.proceed(Serializator.serialize(user));

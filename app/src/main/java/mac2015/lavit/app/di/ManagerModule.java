@@ -5,6 +5,7 @@ import android.content.Context;
 import dagger.Module;
 import dagger.Provides;
 import mac2015.lavit.domain.manager.GoogleApiManager;
+import mac2015.lavit.domain.manager.Preferences;
 import mac2015.lavit.domain.manager.ValidationManager;
 import mac2015.lavit.ui.custom.behavior.AppbarOffsetHandler;
 
@@ -27,5 +28,10 @@ public class ManagerModule {
     @Provides
     GoogleApiManager provideGoogleApiManager(Context context) {
         return new GoogleApiManager(context);
+    }
+
+    @Provides
+    Preferences provideSharedPreferences(Context context) {
+        return new Preferences(context);
     }
 }

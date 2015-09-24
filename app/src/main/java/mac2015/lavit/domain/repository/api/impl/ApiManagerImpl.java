@@ -2,16 +2,18 @@ package mac2015.lavit.domain.repository.api.impl;
 
 import android.util.Log;
 
-import mac2015.lavit.domain.models.SocialProfile;
-import mac2015.lavit.domain.models.response.ProjectResponse;
-import mac2015.lavit.domain.repository.api.ApiManager;
+import java.util.List;
+
 import mac2015.lavit.domain.models.LoginModel;
+import mac2015.lavit.domain.models.ProjectModel;
 import mac2015.lavit.domain.models.RegistrationModel;
+import mac2015.lavit.domain.models.SocialProfile;
 import mac2015.lavit.domain.models.response.LoginResponse;
 import mac2015.lavit.domain.models.response.RegistrationResponse;
 import mac2015.lavit.domain.models.response.Response;
 import mac2015.lavit.domain.repository.AppService;
 import mac2015.lavit.domain.repository.ListRepository;
+import mac2015.lavit.domain.repository.api.ApiManager;
 import retrofit.RestAdapter;
 import retrofit.RetrofitError;
 
@@ -36,7 +38,7 @@ public class ApiManagerImpl implements ApiManager, ListRepository {
         }
     };
 
-    public void init(){
+    public void init() {
         RestAdapter.Builder builder = new RestAdapter.Builder()
                 .setEndpoint(baseUrl)
                 .setLog(LOG)
@@ -58,11 +60,10 @@ public class ApiManagerImpl implements ApiManager, ListRepository {
 
     @Override
     public Response<RegistrationResponse> registerGoogle(RegistrationModel model, SocialProfile profile) {
-        try{
+        try {
             int profileType = profile.getType();
             return service.register(model);
-        }
-        catch(RetrofitError e){
+        } catch (RetrofitError e) {
             e.printStackTrace();
         }
         return null;
@@ -79,7 +80,7 @@ public class ApiManagerImpl implements ApiManager, ListRepository {
     }
 
     @Override
-    public Response<ProjectResponse> fetchProjects(String token) {
-        return null;
+    public Response<List<ProjectModel>> fetchProjects(String token) {
+        return service.fetchProjects(token);
     }
 }

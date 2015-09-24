@@ -16,4 +16,5 @@ public interface MainView extends View {
 
     void openProject(User user, ProjectModel project);
 
+    void showError(String msg);
 }

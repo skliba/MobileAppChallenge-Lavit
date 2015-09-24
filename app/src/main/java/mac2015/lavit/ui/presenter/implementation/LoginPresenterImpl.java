@@ -3,6 +3,7 @@ package mac2015.lavit.ui.presenter.implementation;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.util.Log;
 
 import javax.inject.Inject;
 
@@ -10,6 +11,7 @@ import mac2015.lavit.app.BasePresenter;
 import mac2015.lavit.domain.interactor.LoginGoogleInteractor;
 import mac2015.lavit.domain.interactor.LoginInteractor;
 import mac2015.lavit.domain.manager.GoogleApiManager;
+import mac2015.lavit.domain.manager.Preferences;
 import mac2015.lavit.domain.manager.ValidationManager;
 import mac2015.lavit.domain.models.LoginModel;
 import mac2015.lavit.domain.models.User;
@@ -21,6 +23,7 @@ import mac2015.lavit.ui.view.LoginView;
  */
 public class LoginPresenterImpl extends BasePresenter implements LoginPresenter, LoginInteractor.Callback, LoginGoogleInteractor.Callback {
 
+    private static final String TAG = "DAM_PRESENTER_LOGIN";
     @Inject
     ValidationManager validationManager;
     @Inject
@@ -29,6 +32,8 @@ public class LoginPresenterImpl extends BasePresenter implements LoginPresenter,
     LoginGoogleInteractor loginGoogleInteractor;
     @Inject
     GoogleApiManager googleApiManager;
+    @Inject
+    Preferences preferences;
     LoginView loginView;
 
     public LoginPresenterImpl(Context context) {
@@ -119,6 +124,9 @@ public class LoginPresenterImpl extends BasePresenter implements LoginPresenter,
 
     @Override
     public void onLoginSuccess(User user) {
+        preferences.storeUser(user);
+        preferences.storeToken(user.getToken());
+        Log.i(TAG, "Storing token: " + user.getToken());
         loginView.proceed(user);
     }
 

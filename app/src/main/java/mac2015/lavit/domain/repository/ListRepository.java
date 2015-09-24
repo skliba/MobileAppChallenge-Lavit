@@ -3,10 +3,10 @@ package mac2015.lavit.domain.repository;
 import java.util.List;
 
 import mac2015.lavit.domain.models.LoginModel;
+import mac2015.lavit.domain.models.ProjectModel;
 import mac2015.lavit.domain.models.RegistrationModel;
 import mac2015.lavit.domain.models.SocialProfile;
 import mac2015.lavit.domain.models.response.LoginResponse;
-import mac2015.lavit.domain.models.response.ProjectResponse;
 import mac2015.lavit.domain.models.response.RegistrationResponse;
 import mac2015.lavit.domain.models.response.Response;
 
@@ -24,5 +24,5 @@ public interface ListRepository {
 
     Response<LoginResponse> loginGoogle(String accessToken, String id, String expires, String authProvider);
 
-    Response<ProjectResponse> fetchProjects(String token);
+    Response<List<ProjectModel>> fetchProjects(String token);
 }

@@ -1,5 +1,9 @@
 package mac2015.lavit.domain.models;
 
+import com.google.gson.annotations.SerializedName;
+
+import java.util.List;
+
 /**
  * Created by noxqs on 23.09.15..
  */
@@ -7,21 +11,20 @@ public class ProjectModel {
 
     //TODO @SerializedName fali ovdje, nismo dodali jer nema api-ja jos uvijek pa ne znamo imena
 
+    @SerializedName("id")
+    private int id;
+    @SerializedName("name")
     private String name;
+    @SerializedName("active")
+    private boolean active;
     private String coverPicture;
+    @SerializedName("description")
     private String description;
+    @SerializedName("tags")
+    List<Tag> tags;
     private String ownerName;
     private String category;
-    private String tags;
     private int feedBackType;
-
-    public String getTags() {
-        return tags;
-    }
-
-    public void setTags(String tags) {
-        this.tags = tags;
-    }
 
     public String getName() {
         return name;
@@ -61,5 +64,58 @@ public class ProjectModel {
 
     public void setCategory(String category) {
         this.category = category;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public boolean isActive() {
+        return active;
+    }
+
+    public void setActive(boolean active) {
+        this.active = active;
+    }
+
+    public int getFeedBackType() {
+        return feedBackType;
+    }
+
+    public void setFeedBackType(int feedBackType) {
+        this.feedBackType = feedBackType;
+    }
+
+    public List<Tag> getTags() {
+        return tags;
+    }
+
+    public void setTags(List<Tag> tags) {
+        this.tags = tags;
+    }
+
+    public class Tag {
+        private long id;
+        private String name;
+
+        public long getId() {
+            return id;
+        }
+
+        public void setId(long id) {
+            this.id = id;
+        }
+
+        public String getName() {
+            return name;
+        }
+
+        public void setName(String name) {
+            this.name = name;
+        }
     }
 }

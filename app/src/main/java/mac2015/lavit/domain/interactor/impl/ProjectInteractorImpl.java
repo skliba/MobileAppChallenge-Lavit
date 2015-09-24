@@ -5,7 +5,6 @@ import java.util.List;
 import mac2015.lavit.domain.interactor.AbstractInteractor;
 import mac2015.lavit.domain.interactor.ProjectInteractor;
 import mac2015.lavit.domain.models.ProjectModel;
-import mac2015.lavit.domain.models.response.ProjectResponse;
 import mac2015.lavit.domain.models.response.Response;
 import mac2015.lavit.domain.repository.ListRepository;
 import mac2015.lavit.executor.InteractorExecutor;
@@ -30,14 +29,10 @@ public class ProjectInteractorImpl extends AbstractInteractor implements Project
 
     @Override
     public void run() {
-        try{
-            final Response<ProjectResponse> projectResponse = listRepository.fetchProjects(token);
-
-
-
-            notifySuccess();
-        }
-        catch(RetrofitError e){
+        try {
+            Response<List<ProjectModel>> projectResponse = listRepository.fetchProjects(token);
+            notifySuccess(projectResponse.getData());
+        } catch (RetrofitError e) {
             notifyError(e.getMessage());
         }
 
@@ -52,14 +47,14 @@ public class ProjectInteractorImpl extends AbstractInteractor implements Project
         });
     }
 
-    private void notifySuccess() {
+    private void notifySuccess(final List<ProjectModel> data) {
         getMainThreadExecutor().execute(new Runnable() {
             @Override
             public void run() {
                 //TODO TEMP varijabla koju sam stavio samo da ne baca errore u buildu, treba ici lista ili neka druga pizda materina
                 //TODO napravi response modele za sve! Odkomentiraj AppService, ListRepository i pazi na ApiManagerImpl kada odkomentiras ListRepository
-                ProjectModel model = new ProjectModel();
-                //callback.onProjectFetchSuccess(model);
+                // Stari moj, al si ga ti zakomplicirao s ovim response ugnježđivanjima :D
+                callback.onProjectFetchSuccess(data);
             }
         });
     }

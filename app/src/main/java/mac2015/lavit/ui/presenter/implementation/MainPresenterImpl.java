@@ -1,18 +1,30 @@
 package mac2015.lavit.ui.presenter.implementation;
 
 import android.content.Context;
+import android.util.Log;
+
+import java.util.List;
+
+import javax.inject.Inject;
 
 import mac2015.lavit.app.BasePresenter;
+import mac2015.lavit.domain.interactor.ProjectInteractor;
+import mac2015.lavit.domain.manager.Preferences;
 import mac2015.lavit.domain.models.ProjectModel;
 import mac2015.lavit.domain.models.User;
-import mac2015.lavit.domain.util.Mock;
 import mac2015.lavit.ui.presenter.MainPresenter;
 import mac2015.lavit.ui.view.MainView;
 
 /**
  * Created by dmacan on 23.9.2015..
  */
-public class MainPresenterImpl extends BasePresenter implements MainPresenter {
+public class MainPresenterImpl extends BasePresenter implements MainPresenter, ProjectInteractor.Callback {
+
+    private static final String TAG = "DAM_PRES_MAIN";
+    @Inject
+    ProjectInteractor projectInteractor;
+    @Inject
+    Preferences preferences;
 
     private MainView mainView;
     private User user;
@@ -29,7 +41,7 @@ public class MainPresenterImpl extends BasePresenter implements MainPresenter {
     @Override
     public void onViewCreate() {
         mainView.showProfileInfo(user);
-        mainView.showProjects(Mock.mockProjects());
+        projectInteractor.fetchProjects(this, preferences.getToken());
     }
 
     @Override
@@ -60,5 +72,15 @@ public class MainPresenterImpl extends BasePresenter implements MainPresenter {
     @Override
     public void projectSelected(ProjectModel projectModel) {
         this.mainView.openProject(user, projectModel);
+    }
+
+    @Override
+    public void onProjectFetchFail(String msg) {
+        mainView.showError(msg);
+    }
+
+    @Override
+    public void onProjectFetchSuccess(List<ProjectModel> data) {
+        mainView.showProjects(data);
     }
 }

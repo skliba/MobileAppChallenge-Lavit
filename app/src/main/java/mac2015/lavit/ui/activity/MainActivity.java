@@ -8,6 +8,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.squareup.picasso.Picasso;
 
@@ -81,6 +82,11 @@ public class MainActivity extends BaseActivity implements MainView, ViewEventLis
     @Override
     public void openProject(User user, ProjectModel project) {
         startActivity(IntentUtil.startProjectActivity(getBaseContext(), user, project));
+    }
+
+    @Override
+    public void showError(String msg) {
+        Toast.makeText(getBaseContext(), msg, Toast.LENGTH_SHORT).show();
     }
 
     private void setupGrid() {
