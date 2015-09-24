@@ -35,8 +35,8 @@ public interface AppService {
     @GET("/app/api/projects/")
     Response<List<ProjectModel>> fetchProjects(@Header("X-Api-Token") String token);
 
-    @POST("/app/api/feedback/{projectId}")
-    Response<String> sendFeedback(FeedbackModel feedbackModel, @Header("X-Api-Token") String token, @Path("projectId") long projectId);
+    @POST("/app/api/feedbacks/{projectId}")
+    Response<String> sendFeedback(@Body FeedbackModel feedbackModel, @Header("X-Api-Token") String token, @Path("projectId") long projectId);
 
     @Multipart
     @POST("/api/1/user/avatar")
