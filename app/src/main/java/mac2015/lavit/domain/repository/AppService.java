@@ -12,7 +12,10 @@ import mac2015.lavit.domain.models.response.Response;
 import retrofit.http.Body;
 import retrofit.http.GET;
 import retrofit.http.Header;
+import retrofit.http.Multipart;
 import retrofit.http.POST;
+import retrofit.http.Part;
+import retrofit.mime.TypedFile;
 
 /**
  * Created by noxqs on 23.09.15..
@@ -33,4 +36,8 @@ public interface AppService {
 
     @POST("/app/api/feedback")
     Response<String> sendFeedback(FeedbackModel feedbackModel, @Header("X-Api-Token") String token);
+
+    @Multipart
+    @POST("/api/1/user/avatar")
+    Response<String> uploadAvatar(@Header("Authorization") String token, @Part("avatar") TypedFile file);
 }
