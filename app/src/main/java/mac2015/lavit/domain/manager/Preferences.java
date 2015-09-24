@@ -16,6 +16,7 @@ public class Preferences {
     private static final String KEY_REG_KEY = "mac2015.lavit.regkey";
 
     private Context context;
+    private boolean registrationIdAvailable;
 
     public Preferences(Context context) {
         this.context = context;
@@ -62,4 +63,11 @@ public class Preferences {
         editor().putString(KEY_REG_KEY, registrationId).commit();
     }
 
+    public boolean isRegistrationIdAvailable() {
+        return getRegistrationId() != null;
+    }
+
+    public String getRegistrationId() {
+        return preferences().getString(KEY_REG_KEY, null);
+    }
 }

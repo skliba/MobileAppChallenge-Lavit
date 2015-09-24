@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="mac2015.lavit">
 
+    <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
+    <uses-permission android:name="me.look4.look4me.permission.C2D_MESSAGE" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.GET_ACCOUNTS" />
     <uses-permission android:name="android.permission.USE_CREDENTIALS" />
@@ -40,6 +43,23 @@
         <activity
             android:name=".ui.activity.FeedbackActivity"
             android:screenOrientation="portrait" />
+
+        <!-- Register custom receiver -->
+        <receiver
+            android:name=".domain.repository.gcm.simple.SimpleGcmBroadcastReceiver"
+            android:permission="com.google.android.c2dm.permission.SEND">
+            <intent-filter>
+                <action android:name="com.google.android.c2dm.intent.RECEIVE" />
+                <category android:name="me.look4.look4me" />
+            </intent-filter>
+        </receiver>
+        <!-- Add Google play services -->
+        <meta-data
+            android:name="com.google.android.gms.version"
+            android:value="@integer/google_play_services_version"
+            tools:replace="android:value" />
+        <!-- Register custom service -->
+        <service android:name=".domain.repository.gcm.simple.SimpleGcmIntentService" />
 
         <meta-data
             android:name="com.google.android.maps.v2.API_KEY"
