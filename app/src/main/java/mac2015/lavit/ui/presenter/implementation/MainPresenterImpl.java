@@ -75,6 +75,12 @@ public class MainPresenterImpl extends BasePresenter implements MainPresenter, P
     }
 
     @Override
+    public void onLogoutSelected() {
+        preferences.clear();
+        mainView.returnToLogin();
+    }
+
+    @Override
     public void onProjectFetchFail(String msg) {
         mainView.showError(msg);
     }

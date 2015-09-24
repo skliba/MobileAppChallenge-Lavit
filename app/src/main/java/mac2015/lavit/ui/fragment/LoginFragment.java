@@ -101,6 +101,7 @@ public class LoginFragment extends BaseTabFragment implements LoginView {
     @Override
     public void proceed(User user) {
         startActivity(IntentUtil.startMainActivity(getActivity(), user));
+        getActivity().finish();
     }
 
     @Override

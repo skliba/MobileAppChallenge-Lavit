@@ -103,6 +103,7 @@ public class FeedbackActivity extends BaseActivity implements FeedbackView {
     @Override
     public void finishFeedback() {
         Toast.makeText(getBaseContext(), "Finishing feedback...", Toast.LENGTH_SHORT).show();
+        finish();
     }
 
     @Override

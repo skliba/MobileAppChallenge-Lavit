@@ -13,9 +13,10 @@ public class FeedbackModel {
 
     //TODO atributi ako je dopusten takav nacin feedbacka, ovisi o postu
     private String comment;
-    private File image;
     private double latitude;
     private double longitude;
+    private transient File image;
+
     private ProjectModel project;
 
     public double getLatitude() {
