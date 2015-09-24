@@ -13,7 +13,7 @@ public class FeedbackResponse {
     private double longitude;
     @SerializedName("latitude")
     private double latitude;
-    @SerializedName("imagePath")
+    @SerializedName("image")
     private String imagePath;
     @SerializedName("comment")
     private String comment;

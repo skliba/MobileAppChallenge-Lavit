@@ -4,6 +4,8 @@ import com.google.gson.annotations.SerializedName;
 
 import java.util.List;
 
+import mac2015.lavit.domain.models.response.FeedbackResponse;
+
 /**
  * Created by noxqs on 23.09.15..
  */
