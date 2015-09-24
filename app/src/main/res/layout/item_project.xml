@@ -2,34 +2,35 @@
 
 <android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/cardProject"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="7dp"
     app:cardElevation="2dp">
 
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:layout_height="match_parent">
 
 
         <ImageView
             android:id="@+id/imgProjectCover"
-            android:layout_width="match_parent"
+            android:layout_width="150dp"
             android:layout_height="150dp"
             android:background="@color/accent"
             android:scaleType="centerCrop" />
 
         <android.support.v7.widget.CardView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/imgProjectCover"
+            android:layout_height="150dp"
             app:cardCornerRadius="0dp"
             app:cardElevation="2dp">
 
             <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:background="@color/primary_light"
                 android:padding="5dp">
                 <!--
@@ -57,9 +58,10 @@
                     android:layout_alignParentStart="true"
                     android:layout_alignParentTop="true"
                     android:padding="7dp"
-                    android:singleLine="true"
+                    android:maxLines="2"
                     android:textColor="@color/accent2"
-                    android:textSize="18sp" />
+                    tools:text="fdafgsghhfhfhdfhdfsgsdfgsdgsdgsdgadfgad"
+                    android:textSize="20sp" />
 
                 <TextView
                     android:id="@+id/txtProjectOwner"
@@ -67,14 +69,17 @@
                     android:layout_height="wrap_content"
                     android:layout_alignParentLeft="true"
                     android:layout_alignParentStart="true"
-                    android:layout_below="@+id/txtProjectName"
                     android:padding="3dp"
                     android:singleLine="true"
-                    android:textColor="@android:color/white"
-                    android:textSize="12sp"
-                    android:visibility="gone" />
+                    android:textColor="@color/secondary_text"
+                    android:textSize="14sp"
+                    android:layout_marginBottom="15dp"
+                    tools:text="sdagfsghsfdgsdf"
+                    android:layout_alignParentBottom="true"
+                    />
+
 
             </RelativeLayout>
         </android.support.v7.widget.CardView>
-    </LinearLayout>
+    </RelativeLayout>
 </android.support.v7.widget.CardView>
