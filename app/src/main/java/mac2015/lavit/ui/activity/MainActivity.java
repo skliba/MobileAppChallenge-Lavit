@@ -74,7 +74,7 @@ public class MainActivity extends BaseActivity implements MainView, ViewEventLis
         txtAccountEmail.setText(user.getEmail());
         txtAccountName.setText(user.getFirstName());
         Typeface myTypeface = Typeface.createFromAsset(getAssets(), "fonts/LobsterTwo.otf");
-        txtAccountName.setTypeface(myTypeface);
+        txtAccountEmail.setTypeface(myTypeface);
     }
 
     @Override

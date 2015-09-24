@@ -14,8 +14,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:gravity="center_vertical"
-        android:orientation="horizontal"
-        android:padding="5dp">
+        android:orientation="horizontal">
 
         <com.pkmmte.view.CircularImageView
             android:id="@+id/imgAccountAvatar"
@@ -25,7 +24,8 @@
             android:layout_marginRight="5dp"
             app:border="true"
             app:border_color="#fff"
-            app:border_width="1dp" />
+            app:border_width="1dp"
+            app:shadow="true" />
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -39,14 +39,17 @@
                 android:singleLine="true"
                 android:text="John Doe"
                 android:textColor="@color/primary_text"
-                android:textSize="20sp" />
+                android:textSize="20sp"
+                android:visibility="gone" />
 
             <TextView
                 android:id="@+id/txtAccountEmail"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:singleLine="true"
-                android:textColor="@color/secondary_text" />
+                android:text="adawd@aowdkawo.cc"
+                android:textColor="@color/primary_text"
+                android:textSize="24sp" />
         </LinearLayout>
     </LinearLayout>
 </android.support.v7.widget.Toolbar>
