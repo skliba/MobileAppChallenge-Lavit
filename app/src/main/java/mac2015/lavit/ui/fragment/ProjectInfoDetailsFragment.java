@@ -58,4 +58,14 @@ public class ProjectInfoDetailsFragment extends BaseTabFragment implements Proje
     public void showOwners(ProjectModel projectModel) {
         txtProjectOwner.setText(projectModel.getOwnerName());
     }
+
+    @Override
+    public void showOverallScore(ProjectModel projectModel) {
+
+    }
+
+    @Override
+    public void showTags(ProjectModel projectModel) {
+
+    }
 }
