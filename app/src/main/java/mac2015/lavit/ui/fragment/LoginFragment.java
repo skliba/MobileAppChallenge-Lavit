@@ -47,7 +47,8 @@ public class LoginFragment extends BaseTabFragment implements LoginView {
         super.onViewCreated(view, savedInstanceState);
         loginPresenter.initialize();
         loginPresenter.setView(this);
-        progressDialog = new ProgressDialog(getActivity());
+        progressDialog = new ProgressDialog(getActivity(), android.support.v7.appcompat.R.style.Theme_AppCompat_Light_Dialog);
+        progressDialog.setCancelable(false);
         loginPresenter.onViewCreate();
     }
 
@@ -100,7 +101,6 @@ public class LoginFragment extends BaseTabFragment implements LoginView {
     @Override
     public void proceed(User user) {
         startActivity(IntentUtil.startMainActivity(getActivity(), user));
-        Toast.makeText(getActivity(), "Proceeding with:\n" + user.getEmail(), Toast.LENGTH_SHORT).show();
     }
 
     @Override
@@ -121,7 +121,6 @@ public class LoginFragment extends BaseTabFragment implements LoginView {
     @OnClick(R.id.btnSignIn)
     protected void onSignInClicked() {
         loginPresenter.attemptLogin();
-        //proceed(Mock.mockUser());
     }
 
     @OnClick(R.id.btnGoogleLogin)

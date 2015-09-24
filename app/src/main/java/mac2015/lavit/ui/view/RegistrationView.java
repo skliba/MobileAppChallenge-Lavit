@@ -1,5 +1,7 @@
 package mac2015.lavit.ui.view;
 
+import mac2015.lavit.domain.models.User;
+
 /**
  * Created by dmacan on 22.9.2015..
  */
@@ -41,7 +43,7 @@ public interface RegistrationView extends View {
 
     void showError(String message);
 
-    void proceed(String data);
+    void proceed(User user);
 
     void lock();
 

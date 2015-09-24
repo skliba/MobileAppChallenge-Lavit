@@ -29,8 +29,23 @@
         <item name="android:textColorPrimary">@color/primary_text</item>
     </style>
 
+    <style name="ThemeOverlay.MAC.ActionBar.Dark" parent="ThemeOverlay.AppCompat.ActionBar">
+        <item name="android:textColorPrimary">@color/primary_light</item>
+    </style>
+
+    <style name="Widget.MAC.ActionBar.Dark" parent="Widget.AppCompat.ActionBar">
+        <item name="android:background">@color/accent</item>
+        <item name="theme">@style/ThemeOverlay.MAC.ActionBar</item>
+        <item name="popupTheme">@style/ThemeOverlay.AppCompat</item>
+    </style>
+
     <style name="Widget.MAC.ActionBar.Transparent" parent="Widget.AppCompat.ActionBar">
         <item name="theme">@style/ThemeOverlay.MAC.ActionBar</item>
+        <item name="popupTheme">@style/ThemeOverlay.AppCompat</item>
+    </style>
+
+    <style name="Widget.MAC.ActionBar.Transparent.Dark" parent="Widget.AppCompat.ActionBar">
+        <item name="theme">@style/ThemeOverlay.MAC.ActionBar.Dark</item>
         <item name="popupTheme">@style/ThemeOverlay.AppCompat</item>
     </style>
 

@@ -11,7 +11,6 @@ import mac2015.lavit.domain.manager.Preferences;
 import mac2015.lavit.domain.manager.ValidationManager;
 import mac2015.lavit.domain.models.RegistrationModel;
 import mac2015.lavit.domain.models.User;
-import mac2015.lavit.domain.util.Serializator;
 import mac2015.lavit.ui.presenter.RegistrationPresenter;
 import mac2015.lavit.ui.view.RegistrationView;
 
@@ -144,7 +143,7 @@ public class RegistrationPresenterImpl extends BasePresenter implements Registra
         Log.d(TAG, "Storing token: " + user.getToken());
         this.registrationView.unlock();
         this.registrationView.hideLoading();
-        this.registrationView.proceed(Serializator.serialize(user));
+        this.registrationView.proceed(user);
     }
 
     @Override

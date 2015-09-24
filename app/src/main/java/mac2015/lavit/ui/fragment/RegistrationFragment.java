@@ -15,7 +15,9 @@ import javax.inject.Inject;
 import butterknife.InjectView;
 import butterknife.OnClick;
 import mac2015.lavit.R;
+import mac2015.lavit.domain.models.User;
 import mac2015.lavit.ui.presenter.RegistrationPresenter;
+import mac2015.lavit.ui.util.IntentUtil;
 import mac2015.lavit.ui.view.RegistrationView;
 
 /**
@@ -50,7 +52,8 @@ public class RegistrationFragment extends BaseTabFragment implements Registratio
         super.onViewCreated(view, savedInstanceState);
         registrationPresenter.initialize();
         registrationPresenter.setView(this);
-        progressDialog = new ProgressDialog(getActivity());
+        progressDialog = new ProgressDialog(getActivity(), android.support.v7.appcompat.R.style.Theme_AppCompat_Light_Dialog);
+        progressDialog.setCancelable(false);
         registrationPresenter.onViewCreate();
     }
 
@@ -151,8 +154,8 @@ public class RegistrationFragment extends BaseTabFragment implements Registratio
     }
 
     @Override
-    public void proceed(String data) {
-        Toast.makeText(getActivity(), "Proceeding with data:\n" + data, Toast.LENGTH_SHORT).show();
+    public void proceed(User user) {
+        startActivity(IntentUtil.startMainActivity(getActivity(), user));
     }
 
     @Override

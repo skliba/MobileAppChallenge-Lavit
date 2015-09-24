@@ -22,7 +22,8 @@
             android:paddingLeft="20dp"
             android:paddingTop="15dp"
             android:text="@string/google_sign_in_button_text"
-            android:textColor="@android:color/white" />
+            android:textColor="@android:color/white"
+            android:visibility="gone" />
 
         <Button
             android:id="@+id/btnSignIn"

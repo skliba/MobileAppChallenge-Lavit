@@ -3,7 +3,6 @@ package mac2015.lavit.ui.presenter.implementation;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
-import android.util.Log;
 
 import javax.inject.Inject;
 
@@ -42,6 +41,7 @@ public class LoginPresenterImpl extends BasePresenter implements LoginPresenter,
 
     @Override
     public void attemptLogin() {
+        loginView.showLoading("Signing you in");
         LoginModel loginModel = new LoginModel();
         loginModel.setEmail(loginView.getEmail());
         loginModel.setPassword(loginView.getPassword());
@@ -119,14 +119,16 @@ public class LoginPresenterImpl extends BasePresenter implements LoginPresenter,
 
     @Override
     public void onLoginError(String msg) {
+        loginView.unlock();
+        loginView.hideLoading();
         loginView.showError(msg);
     }
 
     @Override
     public void onLoginSuccess(User user) {
+        loginView.hideLoading();
         preferences.storeUser(user);
         preferences.storeToken(user.getToken());
-        Log.i(TAG, "Storing token: " + user.getToken());
         loginView.proceed(user);
     }
 

@@ -4,7 +4,7 @@
     <style name="MAC" parent="AppTheme.Base.MAC" />
 
     <style name="AppTheme.Base.MAC" parent="AppTheme.Base">
-        <item name="android:colorAccent">@color/accent</item>
+        <item name="colorAccent">@color/accent2</item>
     </style>
 
     <style name="AppTheme.Base" parent="Theme.AppCompat.NoActionBar">
