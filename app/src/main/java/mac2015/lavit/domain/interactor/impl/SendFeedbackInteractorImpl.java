@@ -35,17 +35,17 @@ public class SendFeedbackInteractorImpl extends AbstractInteractor implements Se
     public void run() {
         try {
             Response<String> response = apiManager.sendFeedback(feedbackModel, token);
-            notifySuccess();
+            notifySuccess(response.getMessage());
         } catch (Exception e) {
             notifyError();
         }
     }
 
-    private void notifySuccess() {
+    private void notifySuccess(String msg) {
         getMainThreadExecutor().execute(new Runnable() {
             @Override
             public void run() {
-                sendCallback.onSendingSuccess("Feedback was successfuly sent");
+                sendCallback.onSendingSuccess("msg");
             }
         });
     }
