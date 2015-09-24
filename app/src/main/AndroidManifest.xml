@@ -29,6 +29,10 @@
         <activity
             android:name=".ui.activity.ProjectInfoActivity"
             android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".ui.activity.FeedbackActivity"
+            android:screenOrientation="portrait" />
     </application>
 
 </manifest>

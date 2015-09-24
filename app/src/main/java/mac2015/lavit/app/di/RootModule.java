@@ -20,6 +20,7 @@ import mac2015.lavit.ui.fragment.LoginFragment;
 import mac2015.lavit.ui.fragment.ProjectInfoDetailsFragment;
 import mac2015.lavit.ui.fragment.ProjectInfoFeedbackFragment;
 import mac2015.lavit.ui.fragment.RegistrationFragment;
+import mac2015.lavit.ui.presenter.implementation.FeedbackPresenterImpl;
 import mac2015.lavit.ui.presenter.implementation.LoginPresenterImpl;
 import mac2015.lavit.ui.presenter.implementation.MainPresenterImpl;
 import mac2015.lavit.ui.presenter.implementation.ProjectInfoDescriptionPresenterImpl;
@@ -62,7 +63,8 @@ import mac2015.lavit.ui.presenter.implementation.RegistrationPresenterImpl;
                 RegistrationPresenterImpl.class,
                 MainPresenterImpl.class,
                 ProjectInfoPresenterImpl.class,
-                ProjectInfoDescriptionPresenterImpl.class
+                ProjectInfoDescriptionPresenterImpl.class,
+                FeedbackPresenterImpl.class
                 // Service
         },
         library = true

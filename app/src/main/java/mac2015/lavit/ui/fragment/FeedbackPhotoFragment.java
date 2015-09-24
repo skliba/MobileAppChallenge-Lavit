@@ -6,12 +6,14 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import java.io.File;
+
 import mac2015.lavit.R;
 
 /**
  * Created by dmacan on 23.9.2015..
  */
-public class FeedbackPhotoFragment extends FeedbackFragment {
+public class FeedbackPhotoFragment extends FeedbackFragment<File> {
 
 
     @Nullable

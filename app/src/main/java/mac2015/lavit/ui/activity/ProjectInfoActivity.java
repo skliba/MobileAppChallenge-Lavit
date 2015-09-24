@@ -14,6 +14,7 @@ import java.util.Arrays;
 import javax.inject.Inject;
 
 import butterknife.InjectView;
+import butterknife.OnClick;
 import mac2015.lavit.R;
 import mac2015.lavit.app.BaseActivity;
 import mac2015.lavit.domain.models.ProjectModel;
@@ -77,17 +78,6 @@ public class ProjectInfoActivity extends BaseActivity implements ProjectInfoView
         if (getSupportActionBar() != null) {
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
             getSupportActionBar().setDisplayShowHomeEnabled(true);
-            /*appbarOffsetHandler.setOnTresholdListener(new AppbarOffsetHandler.OnTresholdListener() {
-                @Override
-                public void onTreshold(boolean within) {
-                    if (within) {
-                        fab.show();
-                    } else {
-                        fab.hide();
-                    }
-                }
-            });
-            appbar.addOnOffsetChangedListener(appbarOffsetHandler);*/
         }
     }
 
@@ -96,10 +86,11 @@ public class ProjectInfoActivity extends BaseActivity implements ProjectInfoView
         adapter.addTabs(Arrays.asList(projectInfoDetailsFragment));
         viewPager.setOffscreenPageLimit(2);
         viewPager.setAdapter(adapter);
-       /* tabs.setupWithViewPager(viewPager);
-        tabs.getTabAt(0).setCustomView(adapter.createView(MaterialIcons.md_info, R.layout.tab_iconic_bottom_padding));
-        tabs.getTabAt(1).setCustomView(adapter.createView(MaterialIcons.md_people, R.layout.tab_iconic_bottom_padding));*/
+    }
 
+    @OnClick(R.id.fab)
+    protected void onBtnFeedbackClick() {
+        projectInfoPresenter.onFeedbackSelected();
     }
 
     @Override
@@ -116,7 +107,7 @@ public class ProjectInfoActivity extends BaseActivity implements ProjectInfoView
 
     @Override
     public void startFeedback(ProjectModel projectModel) {
-
+        startActivity(IntentUtil.startFeedbackActivity(getBaseContext(), projectModel));
     }
 
     private void setProfileName(String title) {
