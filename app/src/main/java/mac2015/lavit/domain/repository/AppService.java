@@ -2,6 +2,7 @@ package mac2015.lavit.domain.repository;
 
 import java.util.List;
 
+import mac2015.lavit.domain.models.FeedbackModel;
 import mac2015.lavit.domain.models.LoginModel;
 import mac2015.lavit.domain.models.ProjectModel;
 import mac2015.lavit.domain.models.RegistrationModel;
@@ -29,4 +30,7 @@ public interface AppService {
 
     @GET("/app/api/projects")
     Response<List<ProjectModel>> fetchProjects(@Header("X-Api-Token") String token);
+
+    @POST("/app/api/feedback")
+    Response<String> sendFeedback(FeedbackModel feedbackModel, @Header("X-Api-Token") String token);
 }

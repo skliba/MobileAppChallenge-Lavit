@@ -25,6 +25,8 @@ public class ProjectModel {
     private String ownerName;
     private String category;
     private int feedBackType;
+    @SerializedName("allowedTypes")
+    private int[] feedbackTypes;
 
     public String getName() {
         return name;
@@ -117,5 +119,13 @@ public class ProjectModel {
         public void setName(String name) {
             this.name = name;
         }
+    }
+
+    public int[] getFeedbackTypes() {
+        return feedbackTypes;
+    }
+
+    public void setFeedbackTypes(int[] feedbackTypes) {
+        this.feedbackTypes = feedbackTypes;
     }
 }

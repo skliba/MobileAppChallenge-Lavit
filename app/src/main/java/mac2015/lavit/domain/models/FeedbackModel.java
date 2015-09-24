@@ -16,6 +16,7 @@ public class FeedbackModel {
     private File image;
     private int latitude;
     private int longitude;
+    private ProjectModel project;
 
     public File getImage() {
         return image;
@@ -65,5 +66,13 @@ public class FeedbackModel {
 
     public void setUser(String user) {
         this.user = user;
+    }
+
+    public ProjectModel getProject() {
+        return project;
+    }
+
+    public void setProject(ProjectModel project) {
+        this.project = project;
     }
 }

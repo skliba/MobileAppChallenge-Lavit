@@ -4,6 +4,7 @@ import android.util.Log;
 
 import java.util.List;
 
+import mac2015.lavit.domain.models.FeedbackModel;
 import mac2015.lavit.domain.models.LoginModel;
 import mac2015.lavit.domain.models.ProjectModel;
 import mac2015.lavit.domain.models.RegistrationModel;
@@ -82,5 +83,9 @@ public class ApiManagerImpl implements ApiManager, ListRepository {
     @Override
     public Response<List<ProjectModel>> fetchProjects(String token) {
         return service.fetchProjects(token);
+    }
+
+    public Response<String> sendFeedback(FeedbackModel feedbackModel, String token) {
+        return service.sendFeedback(feedbackModel, token);
     }
 }
