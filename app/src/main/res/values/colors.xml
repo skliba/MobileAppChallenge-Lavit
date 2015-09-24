@@ -1,12 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="primary">#C2185B</color>C2185B
-    <color name="primary_dark">#AD1457</color>
-    <color name="primary_light">#F8BBD0</color>
-    <color name="accent">#019689</color>
-    <color name="primary_text">#212121</color>
+    <color name="primary">#FFFCFD</color>C2185B
+    <color name="primary_dark">#d7d0d7</color>
+    <color name="primary_light">#fff</color>
+    <color name="accent">#c2185b</color>
+    <color name="accent2">#019689</color>
+    <color name="primary_text">#c2185b</color>
     <color name="secondary_text">#727272</color>
     <color name="hint_text">#aaa</color>
+    <color name="google_plus">#dd4b39</color>
+    <color name="google_plus_dark">#ffb23629</color>
     <color name="icons">#FFFFFF</color>
     <color name="divider">#B6B6B6</color>
     <color name="error">#d32f2f</color>

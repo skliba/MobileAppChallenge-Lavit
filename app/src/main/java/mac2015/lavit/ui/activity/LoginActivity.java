@@ -1,10 +1,12 @@
 package mac2015.lavit.ui.activity;
 
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 import android.support.v7.widget.Toolbar;
+import android.widget.TextView;
 
 import java.util.Arrays;
 
@@ -34,6 +36,8 @@ public class LoginActivity extends BaseActivity {
     ViewPager viewPager;
     @InjectView(R.id.tabs)
     TabLayout tabs;
+    @InjectView(R.id.toolbar_title)
+    TextView txtTitle;
     TabAdapter tabAdapter;
 
     @Override
@@ -44,6 +48,9 @@ public class LoginActivity extends BaseActivity {
     @Override
     protected void main(Bundle savedInstanceState) {
         setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayShowTitleEnabled(false);
+        Typeface myTypeface = Typeface.createFromAsset(getAssets(), "fonts/LobsterTwo.otf");
+        txtTitle.setTypeface(myTypeface);
         setupTabs();
     }
 

@@ -4,17 +4,17 @@
     <style name="MAC.EditText">
         <item name="android:textSize">16sp</item>
         <item name="android:textColor">@color/primary_text</item>
-        <item name="android:textColorHint">@color/hint_text</item>
+        <item name="android:textColorHint">@color/primary_dark</item>
         <item name="android:paddingTop">0dp</item>
         <item name="android:paddingBottom">0dp</item>
         <item name="android:paddingLeft">0dp</item>
         <item name="android:singleLine">true</item>
         <item name="android:paddingRight">0dp</item>
-        <item name="met_textColorHint">@color/hint_text</item>
-        <item name="met_baseColor">@color/secondary_text</item>
-        <item name="met_underlineColor">@color/secondary_text</item>
-        <item name="met_floatingLabelTextColor">@color/secondary_text</item>
-        <item name="met_primaryColor">@color/accent</item>
+        <item name="met_textColorHint">@color/primary_dark</item>
+        <item name="met_baseColor">@color/primary_light</item>
+        <item name="met_underlineColor">@color/primary_dark</item>
+        <item name="met_floatingLabelTextColor">@color/primary_light</item>
+        <item name="met_primaryColor">@color/accent2</item>
         <item name="met_errorColor">@color/error</item>
         <item name="met_floatingLabel">normal</item>
     </style>
@@ -22,32 +22,32 @@
     <style name="Widget.MAC.ActionBar" parent="Widget.AppCompat.ActionBar">
         <item name="android:background">@color/primary</item>
         <item name="theme">@style/ThemeOverlay.MAC.ActionBar</item>
-        <item name="popupTheme">@style/ThemeOverlay.AppCompat.Light</item>
+        <item name="popupTheme">@style/ThemeOverlay.AppCompat</item>
     </style>
 
     <style name="ThemeOverlay.MAC.ActionBar" parent="ThemeOverlay.AppCompat.ActionBar">
-        <item name="android:textColorPrimary">@android:color/white</item>
+        <item name="android:textColorPrimary">@color/primary_text</item>
     </style>
 
     <style name="Widget.MAC.ActionBar.Transparent" parent="Widget.AppCompat.ActionBar">
         <item name="theme">@style/ThemeOverlay.MAC.ActionBar</item>
-        <item name="popupTheme">@style/ThemeOverlay.AppCompat.Light</item>
+        <item name="popupTheme">@style/ThemeOverlay.AppCompat</item>
     </style>
 
     <style name="MACTabLayout" parent="Widget.Design.TabLayout">
         <item name="android:minHeight">?attr/actionBarSize</item>
-        <item name="tabIndicatorColor">@android:color/white</item>
-        <item name="tabIndicatorHeight">4dp</item>
+        <item name="tabIndicatorColor">@color/accent2</item>
+        <item name="tabIndicatorHeight">3dp</item>
         <item name="tabPaddingStart">12dp</item>
         <item name="tabPaddingEnd">12dp</item>
-        <item name="android:background">?attr/colorPrimary</item>
+        <item name="android:background">#00000000</item>
         <item name="tabTextAppearance">@style/MACTabTextAppearance</item>
-        <item name="tabSelectedTextColor">@android:color/white</item>
+        <item name="tabSelectedTextColor">@color/accent</item>
     </style>
 
     <style name="MACTabTextAppearance" parent="TextAppearance.Design.Tab">
         <item name="android:textSize">14sp</item>
-        <item name="android:textColor">@android:color/white</item>
+        <item name="android:textColor">@color/accent</item>
         <item name="textAllCaps">true</item>
     </style>
 </resources>

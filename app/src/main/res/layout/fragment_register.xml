@@ -12,7 +12,7 @@
         android:paddingBottom="15dp"
         android:paddingTop="15dp"
         android:text="SIGN UP"
-        android:textColor="@android:color/white" />
+        android:textColor="@color/primary_text" />
 
     <ScrollView
         android:layout_width="match_parent"
