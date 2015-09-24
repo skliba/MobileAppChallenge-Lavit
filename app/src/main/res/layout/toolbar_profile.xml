@@ -21,8 +21,8 @@
             android:id="@+id/imgAccountAvatar"
             android:layout_width="?attr/actionBarSize"
             android:layout_height="match_parent"
-            android:layout_marginEnd="10dp"
-            android:layout_marginRight="10dp"
+            android:layout_marginEnd="5dp"
+            android:layout_marginRight="5dp"
             app:border="true"
             app:border_color="#fff"
             app:border_width="1dp" />
@@ -37,15 +37,16 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:singleLine="true"
-                android:textColor="@android:color/white"
-                android:textSize="16sp" />
+                android:text="John Doe"
+                android:textColor="@color/primary_text"
+                android:textSize="20sp" />
 
             <TextView
                 android:id="@+id/txtAccountEmail"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:singleLine="true"
-                android:textColor="@android:color/white" />
+                android:textColor="@color/secondary_text" />
         </LinearLayout>
     </LinearLayout>
 </android.support.v7.widget.Toolbar>

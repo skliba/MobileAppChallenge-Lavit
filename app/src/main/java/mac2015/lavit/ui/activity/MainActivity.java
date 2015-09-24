@@ -1,5 +1,6 @@
 package mac2015.lavit.ui.activity;
 
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -67,7 +68,9 @@ public class MainActivity extends BaseActivity implements MainView, ViewEventLis
     public void showProfileInfo(User user) {
         Picasso.with(this).load("http://41.media.tumblr.com/18a5ac1fc70360ea1b2ef476ec9f15f2/tumblr_mgblfiaRi21qarlxmo1_400.png").into(imgAccountAvatar);
         txtAccountEmail.setText(user.getEmail());
-        txtAccountName.setText("John Doe");
+        txtAccountName.setText(user.getFirstName());
+        Typeface myTypeface = Typeface.createFromAsset(getAssets(), "fonts/LobsterTwo.otf");
+        txtAccountName.setTypeface(myTypeface);
     }
 
     @Override

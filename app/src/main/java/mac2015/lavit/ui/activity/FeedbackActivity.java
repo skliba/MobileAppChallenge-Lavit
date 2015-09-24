@@ -3,8 +3,6 @@ package mac2015.lavit.ui.activity;
 import android.content.Intent;
 import android.location.Location;
 import android.os.Bundle;
-import android.support.design.widget.AppBarLayout;
-import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.widget.Button;
 import android.widget.Toast;
@@ -40,12 +38,8 @@ import mac2015.lavit.ui.view.FeedbackView;
 public class FeedbackActivity extends BaseActivity implements FeedbackView {
 
     private static final String TAG = "DAM_ACT_FEEDBACK";
-    @InjectView(R.id.appbar)
-    AppBarLayout appbar;
     @InjectView(R.id.viewPager)
     NonSwipeablePager pager;
-    @InjectView(R.id.toolbar)
-    Toolbar toolbar;
     @InjectView(R.id.btnFeedbackCancel)
     Button btnFeedbackCancel;
     @InjectView(R.id.btnFeedbackProceed)
@@ -73,7 +67,6 @@ public class FeedbackActivity extends BaseActivity implements FeedbackView {
 
     @Override
     protected void main(Bundle savedInstanceState) {
-        setSupportActionBar(toolbar);
         feedbackPresenter.setView(this);
         feedbackPresenter.initialize();
         pages = new ArrayList<>();
@@ -149,8 +142,10 @@ public class FeedbackActivity extends BaseActivity implements FeedbackView {
     @Override
     public void toggleLastPage(boolean lastPage) {
         if (lastPage) {
+            btnFeedbackProceed.setTextColor(getResources().getColor(R.color.accent));
             btnFeedbackProceed.setText("Finish");
         } else {
+            btnFeedbackProceed.setTextColor(getResources().getColor(R.color.accent2));
             btnFeedbackProceed.setText("Next");
         }
     }
@@ -168,8 +163,10 @@ public class FeedbackActivity extends BaseActivity implements FeedbackView {
     @Override
     public void toggleFirstPage(boolean firstPage) {
         if (firstPage) {
+            btnFeedbackCancel.setTextColor(getResources().getColor(R.color.accent));
             btnFeedbackCancel.setText("Cancel");
         } else {
+            btnFeedbackCancel.setTextColor(getResources().getColor(R.color.accent2));
             btnFeedbackCancel.setText("Previous");
         }
     }
