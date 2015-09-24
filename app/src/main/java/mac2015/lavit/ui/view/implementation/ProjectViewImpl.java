@@ -48,7 +48,7 @@ public class ProjectViewImpl extends BindableLayout<ProjectModel> {
     @Override
     public void bind(ProjectModel projectModel) {
         this.project = projectModel;
-        Picasso.with(getContext()).load("http://blog.caranddriver.com/wp-content/uploads/2009/08/2009-Lamborghini-Gallardo-LP60-4.jpg").into(imgProjectCover);
+        Picasso.with(getContext()).load(projectModel.getCoverPicture()).into(imgProjectCover);
         txtProjectName.setText(projectModel.getName());
         showTags(projectModel.getTags());
         setOnClickListener(new OnClickListener() {

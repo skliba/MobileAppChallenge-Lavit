@@ -17,7 +17,7 @@ public class ProjectModel {
     private String name;
     @SerializedName("active")
     private boolean active;
-    private String coverPicture;
+    private String coverPicture = "http://blog.caranddriver.com/wp-content/uploads/2009/08/2009-Lamborghini-Gallardo-LP60-4.jpg";
     @SerializedName("description")
     private String description;
     @SerializedName("tags")
