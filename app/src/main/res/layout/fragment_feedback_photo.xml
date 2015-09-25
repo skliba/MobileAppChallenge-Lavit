@@ -4,6 +4,12 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:src="@drawable/bg2"
+        android:scaleType="centerCrop"/>
+
     <Button
         android:id="@+id/btnFeedbackSkip"
         android:layout_width="match_parent"
@@ -17,16 +23,17 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/txtPicture"
-        android:text="Snap a picture of your experience"
+        android:layout_marginTop="30dp"
+        android:text="@string/text_picture_snap"
         android:textColor="@android:color/white"
         android:layout_below="@id/btnFeedbackSkip"
         android:layout_centerHorizontal="true"
-        android:textSize="18sp"/>
+        android:textSize="21sp"/>
 
     <android.support.v7.widget.CardView
         android:id="@+id/cardProjectDescription"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
         android:layout_centerInParent="true"
         android:layout_margin="20dp"
         android:background="@color/primary2">
@@ -34,7 +41,7 @@
         <ImageView
             android:id="@+id/imgFeedbackPhoto"
             android:layout_width="match_parent"
-            android:layout_height="300dp"
+            android:layout_height="match_parent"
             android:scaleType="center" />
     </android.support.v7.widget.CardView>
 
