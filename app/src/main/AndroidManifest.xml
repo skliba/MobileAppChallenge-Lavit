@@ -65,6 +65,8 @@
         <meta-data
             android:name="com.google.android.maps.v2.API_KEY"
             android:value="@string/key_maps" />
+
+        <receiver android:name=".domain.manager.NotificationPublisher" />
     </application>
 
 </manifest>
