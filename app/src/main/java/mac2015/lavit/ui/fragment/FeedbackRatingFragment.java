@@ -1,5 +1,6 @@
 package mac2015.lavit.ui.fragment;
 
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
@@ -28,6 +29,8 @@ public class FeedbackRatingFragment extends FeedbackFragment<Double> {
     SeekBar seekBar;
     @InjectView(R.id.txtFeedbackRatingValue)
     TextView txtFeedbackRatingValue;
+    @InjectView(R.id.lavitText)
+    TextView txtLavit;
 
     RelativeLayout.LayoutParams params;
 
@@ -55,6 +58,8 @@ public class FeedbackRatingFragment extends FeedbackFragment<Double> {
                 borderWidth = imgBackHeart.getWidth();
                 seekBar.setMax(100);
                 seekBar.setProgress(50);
+                Typeface myTypeface = Typeface.createFromAsset(getActivity().getAssets(), "fonts/LobsterTwo.otf");
+                txtLavit.setTypeface(myTypeface);
             }
         });
     }
@@ -70,7 +75,22 @@ public class FeedbackRatingFragment extends FeedbackFragment<Double> {
             updateWidth(cast);
             updateTransparency(progress);
             imgFrontHeart.setLayoutParams(params);
-            txtFeedbackRatingValue.setText(progress + "%");
+            if (progress <= 24) {
+                seekBar.setProgress(0);
+                txtFeedbackRatingValue.setText("1");
+            } else if (progress >= 25 && progress <= 50) {
+                seekBar.setProgress(25);
+                txtFeedbackRatingValue.setText("2");
+            } else if (progress >= 51 && progress <= 70) {
+                seekBar.setProgress(51);
+                txtFeedbackRatingValue.setText("3");
+            } else if (progress >= 71 && progress <= 90) {
+                seekBar.setProgress(75);
+                txtFeedbackRatingValue.setText("4");
+            } else if (progress >= 91) {
+                seekBar.setProgress(100);
+                txtFeedbackRatingValue.setText("5");
+            }
         }
 
         @Override
@@ -80,7 +100,8 @@ public class FeedbackRatingFragment extends FeedbackFragment<Double> {
 
         @Override
         public void onStopTrackingTouch(SeekBar seekBar) {
-            seekBar.setProgress(seekBar.getProgress() / 5);
+
+            //seekBar.setProgress(seekBar.getProgress() / 5);
 //            YoYo.with(Techniques.Tada).duration(800).playOn(imgFrontHeart);
         }
     };
