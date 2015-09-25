@@ -28,6 +28,7 @@ import mac2015.lavit.R;
 import mac2015.lavit.app.BaseActivity;
 import mac2015.lavit.domain.models.ProjectModel;
 import mac2015.lavit.domain.models.User;
+import mac2015.lavit.domain.repository.gcm.simple.SimpleGcmIntentService;
 import mac2015.lavit.ui.presenter.MainPresenter;
 import mac2015.lavit.ui.util.IntentUtil;
 import mac2015.lavit.ui.view.MainView;

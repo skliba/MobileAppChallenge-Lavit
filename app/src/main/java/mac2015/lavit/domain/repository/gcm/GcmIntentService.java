@@ -29,8 +29,7 @@ public abstract class GcmIntentService extends IntentService {
     @Override
     protected final void onHandleIntent(final Intent intent) {
         final Bundle bundle = intent.getExtras();
-
-        if (!bundle.isEmpty()) {
+        if (bundle != null && !bundle.isEmpty()) {
             final String messageType = GoogleCloudMessaging.getInstance(this).getMessageType(intent);
 
             if (GoogleCloudMessaging.MESSAGE_TYPE_SEND_ERROR.equals(messageType)) {

@@ -99,8 +99,7 @@ public class LoginPresenterImpl extends BasePresenter implements LoginPresenter,
         if (preferences.isUserStored()) {
             loginView.proceed(preferences.getUser());
         } else {
-            preferences.saveRegistrationId("dsgfshfhfdhrtgsrtg245");
-           //setupGCM();
+            setupGCM();
         }
     }
 
