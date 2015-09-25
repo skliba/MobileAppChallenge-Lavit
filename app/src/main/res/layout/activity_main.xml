@@ -23,6 +23,7 @@
             android:id="@+id/listProjects"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="@color/primary_dark"
             android:clipToPadding="false" />
     </org.buraktamturk.loadingview.LoadingView>
 
