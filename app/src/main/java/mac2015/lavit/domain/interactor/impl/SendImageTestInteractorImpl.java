@@ -31,8 +31,8 @@ public class SendImageTestInteractorImpl extends AbstractInteractor implements S
     public void run() {
         try {
             typedFile = new TypedFile("image/jpeg", file);
-            String response = listRepository.sendImage(typedFile, projectId);
-            notifySuccess(response);
+            //String response = listRepository.sendImage(typedFile, projectId);
+            //notifySuccess(response);
         } catch (RetrofitError e) {
             notifyError(e.getMessage());
         }

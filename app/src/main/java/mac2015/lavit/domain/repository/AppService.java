@@ -45,7 +45,7 @@ public interface AppService {
 
     @Multipart
     @POST("/app/api/feedbacks/{projectId}/image")
-    String uploadImage(@Path("projectId") long projectId, @Part("avatar") TypedFile file);
+    Response<String> uploadImage(@Path("projectId") long projectId, @Part("avatar") TypedFile file);
 
     @GET("/app/api/projects/{projectId}")
     Response<ZokaResponse> fetchFeedback(@Header("X-Api-Token") String token, @Path("projectId") long projectId);
