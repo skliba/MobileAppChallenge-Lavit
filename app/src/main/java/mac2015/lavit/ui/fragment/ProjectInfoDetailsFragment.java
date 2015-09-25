@@ -65,8 +65,8 @@ public class ProjectInfoDetailsFragment extends BaseTabFragment implements Proje
     }
 
     @Override
-    public void showOverallScore(double score) {
-        txtProjectOwner.setText(score + "%");
+    public void showOverallScore(ProjectModel model) {
+        txtProjectOwner.setText(model.getFeedbackModel().getAverage() + "");
     }
 
     @Override

@@ -16,6 +16,8 @@ import android.widget.Toast;
 
 import com.squareup.picasso.Picasso;
 
+import org.buraktamturk.loadingview.LoadingView;
+
 import java.util.List;
 
 import javax.inject.Inject;
@@ -48,6 +50,8 @@ public class MainActivity extends BaseActivity implements MainView, ViewEventLis
     TextView txtAccountEmail;
     @InjectView(R.id.listProjects)
     RecyclerView gridProjects;
+    @InjectView(R.id.listPinLoadingView)
+    LoadingView loadingView;
 
     @Inject
     MainPresenter mainPresenter;
@@ -72,7 +76,7 @@ public class MainActivity extends BaseActivity implements MainView, ViewEventLis
 
     @Override
     public void showProfileInfo(User user) {
-        Picasso.with(this).load("http://41.media.tumblr.com/18a5ac1fc70360ea1b2ef476ec9f15f2/tumblr_mgblfiaRi21qarlxmo1_400.png").into(imgAccountAvatar);
+        Picasso.with(this).load("http://www.niksebastian.com/wp-content/uploads/2014/05/sample-2-sm.jpg").into(imgAccountAvatar);
         txtAccountEmail.setText(user.getEmail());
         txtAccountName.setText(user.getFirstName());
         Typeface myTypeface = Typeface.createFromAsset(getAssets(), "fonts/LobsterTwo.otf");
@@ -98,6 +102,17 @@ public class MainActivity extends BaseActivity implements MainView, ViewEventLis
     public void returnToLogin() {
         startActivity(new Intent(getBaseContext(), LoginActivity.class));
         finish();
+    }
+
+    @Override
+    public void showLoading(String s) {
+        loadingView.setText(s);
+        loadingView.setLoading(true);
+    }
+
+    @Override
+    public void hideLoading() {
+        loadingView.setLoading(false);
     }
 
     private void setupGrid() {

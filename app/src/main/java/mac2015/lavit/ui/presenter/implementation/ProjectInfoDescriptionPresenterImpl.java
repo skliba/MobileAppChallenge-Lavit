@@ -28,7 +28,7 @@ public class ProjectInfoDescriptionPresenterImpl extends BasePresenter implement
     public void onViewCreate() {
         this.projectInfoDescriptionView.showDescription(projectModel);
         this.projectInfoDescriptionView.showTags(projectModel.getTags());
-        //this.projectInfoDescriptionView.showOverallScore(projectModel);
+        this.projectInfoDescriptionView.showOverallScore(projectModel);
     }
 
     @Override

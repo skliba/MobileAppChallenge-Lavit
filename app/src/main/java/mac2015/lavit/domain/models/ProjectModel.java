@@ -1,5 +1,6 @@
 package mac2015.lavit.domain.models;
 
+import com.google.gson.JsonElement;
 import com.google.gson.annotations.SerializedName;
 
 import java.util.List;
@@ -26,7 +27,7 @@ public class ProjectModel {
     private String category;
     private int feedBackType;
     @SerializedName("allowedTypes")
-    private transient int[] feedbackTypes;
+    private JsonElement feedbackTypes;
     private transient FeedbackResponse feedbackModel;
 
     public String getName() {
@@ -122,11 +123,19 @@ public class ProjectModel {
         }
     }
 
-    public int[] getFeedbackTypes() {
+    /*public int[] getFeedbackTypes() {
         return feedbackTypes;
     }
 
     public void setFeedbackTypes(int[] feedbackTypes) {
+        this.feedbackTypes = feedbackTypes;
+    }*/
+
+    public JsonElement getFeedbackTypes() {
+        return feedbackTypes;
+    }
+
+    public void setFeedbackTypes(JsonElement feedbackTypes) {
         this.feedbackTypes = feedbackTypes;
     }
 

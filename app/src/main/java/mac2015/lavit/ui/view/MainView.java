@@ -19,4 +19,8 @@ public interface MainView extends View {
     void showError(String msg);
 
     void returnToLogin();
+
+    void showLoading(String s);
+
+    void hideLoading();
 }

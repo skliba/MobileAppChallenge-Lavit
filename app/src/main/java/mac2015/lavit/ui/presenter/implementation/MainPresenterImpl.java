@@ -44,6 +44,7 @@ public class MainPresenterImpl extends BasePresenter implements MainPresenter, P
     @Override
     public void onViewCreate() {
         mainView.showProfileInfo(user);
+        mainView.showLoading("Fetching your projects");
         projectInteractor.fetchProjects(this, preferences.getToken());
         GcmObserver.getInstance().register(this);
     }
@@ -86,11 +87,13 @@ public class MainPresenterImpl extends BasePresenter implements MainPresenter, P
 
     @Override
     public void onProjectFetchFail(String msg) {
+        mainView.hideLoading();
         mainView.showError(msg);
     }
 
     @Override
     public void onProjectFetchSuccess(List<ProjectModel> data) {
+        mainView.hideLoading();
         mainView.showProjects(data);
     }
 

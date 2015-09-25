@@ -13,7 +13,7 @@ public interface ProjectInfoDescriptionView extends View {
 
     void showOwners(ProjectModel projectModel);
 
-    void showOverallScore(double score);
+    void showOverallScore(ProjectModel model);
 
     void showTags(List<ProjectModel.Tag> tags);
 }

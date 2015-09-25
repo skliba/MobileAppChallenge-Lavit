@@ -12,7 +12,7 @@
         android:paddingBottom="15dp"
         android:paddingTop="15dp"
         android:text="SIGN UP"
-        android:textColor="@color/primary_text" />
+        android:textColor="@color/accent2" />
 
     <ScrollView
         android:layout_width="match_parent"
@@ -33,7 +33,6 @@
                 android:layout_height="wrap_content"
                 android:hint="Email"
                 android:inputType="textEmailAddress"
-                android:text="dmacan23@gmail.com"
                 android:textCursorDrawable="@null" />
 
 
@@ -45,7 +44,6 @@
                 android:layout_marginTop="20dp"
                 android:hint="Password"
                 android:inputType="textPassword"
-                android:text="xxx123"
                 android:textCursorDrawable="@null" />
 
             <com.rengwuxian.materialedittext.MaterialEditText
@@ -56,7 +54,6 @@
                 android:layout_marginTop="20dp"
                 android:hint="Password confirm"
                 android:inputType="textPassword"
-                android:text="xxx123"
                 android:textCursorDrawable="@null" />
 
             <com.rengwuxian.materialedittext.MaterialEditText
@@ -67,7 +64,6 @@
                 android:layout_marginTop="20dp"
                 android:hint="First name"
                 android:inputType="textPersonName"
-                android:text="David"
                 android:textCursorDrawable="@null" />
 
             <com.rengwuxian.materialedittext.MaterialEditText
@@ -78,7 +74,6 @@
                 android:layout_marginTop="20dp"
                 android:hint="Last name"
                 android:inputType="textPersonName"
-                android:text="Macan"
                 android:textCursorDrawable="@null" />
 
         </LinearLayout>

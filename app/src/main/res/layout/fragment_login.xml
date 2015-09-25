@@ -35,7 +35,7 @@
             android:paddingBottom="15dp"
             android:paddingTop="15dp"
             android:text="@string/sign_in_button_text"
-            android:textColor="@color/primary_text" />
+            android:textColor="@color/accent2" />
     </LinearLayout>
 
     <ScrollView
@@ -62,7 +62,6 @@
                 android:layout_marginTop="-100dp"
                 android:hint="@string/log_in_email_hint"
                 android:inputType="textEmailAddress"
-                android:text="user@mailinator.com"
                 android:textCursorDrawable="@null" />
 
 
@@ -74,7 +73,6 @@
                 android:layout_marginTop="20dp"
                 android:hint="@string/log_in_password_hint"
                 android:inputType="textPassword"
-                android:text="123456"
                 android:textCursorDrawable="@null" />
         </LinearLayout>
     </ScrollView>

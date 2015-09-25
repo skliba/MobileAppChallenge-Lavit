@@ -91,6 +91,11 @@ public class FeedbackRatingFragment extends FeedbackFragment<Double> {
                 seekBar.setProgress(100);
                 txtFeedbackRatingValue.setText("5");
             }
+            if (progress < 50) {
+                txtFeedbackRatingValue.setTextColor(getResources().getColor(R.color.accent2));
+            } else {
+                txtFeedbackRatingValue.setTextColor(getResources().getColor(R.color.primary_light));
+            }
         }
 
         @Override

@@ -42,7 +42,7 @@ public class FetchFeedbackInteractorImpl extends AbstractInteractor implements F
     public void run() {
         try {
             final Response<ZokaResponse> feedbackResponse = listRepository.fetchFeedback(token, projectId);
-            //   model = feedbackResponse.getData().getFeedbackResponseZoka().get(0);
+            model = feedbackResponse.getData().getFeedbackResponseZoka().get(0);
             notifySucces(model);
         } catch (RetrofitError e) {
             notifyError(e.getMessage());

@@ -37,7 +37,7 @@ public class ProjectInteractorImpl extends AbstractInteractor implements Project
             Response<List<ProjectModel>> projectResponse = listRepository.fetchProjects(token);
             Log.i(TAG, "fetched responses");
             List<ProjectModel> models = projectResponse.getData();
-            /*Log.i(TAG, "Got data");
+            Log.i(TAG, "Got data");
             for (ProjectModel model : models) {
                 Log.i(TAG, "Fetching feedback for model " + model.getId());
                 final Response<ZokaResponse> feedbackResponse = listRepository.fetchFeedback(token, model.getId());
@@ -45,7 +45,7 @@ public class ProjectInteractorImpl extends AbstractInteractor implements Project
                     model.setFeedbackModel(response);
                 }
             }
-            Log.i(TAG, "Successy");*/
+            Log.i(TAG, "Successy");
             notifySuccess(models);
         } catch (RetrofitError e) {
             Log.e(TAG, "Retrofit error", e);

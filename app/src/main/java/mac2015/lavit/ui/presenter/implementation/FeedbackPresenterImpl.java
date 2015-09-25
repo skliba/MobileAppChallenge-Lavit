@@ -3,6 +3,9 @@ package mac2015.lavit.ui.presenter.implementation;
 import android.content.Context;
 import android.util.Log;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.inject.Inject;
 
 import mac2015.lavit.app.BasePresenter;
@@ -11,6 +14,7 @@ import mac2015.lavit.domain.interactor.SendImageTestInteractor;
 import mac2015.lavit.domain.manager.Preferences;
 import mac2015.lavit.domain.models.FeedbackModel;
 import mac2015.lavit.domain.models.ProjectModel;
+import mac2015.lavit.domain.util.Serializator;
 import mac2015.lavit.ui.presenter.FeedbackPresenter;
 import mac2015.lavit.ui.view.FeedbackView;
 
@@ -84,7 +88,21 @@ public class FeedbackPresenterImpl extends BasePresenter implements FeedbackPres
     @Override
     public void initialize() {
         project = feedbackView.getProject();
-        pages = new int[]{1, 2, 3, 4};//project.getFeedbackTypes();
+        String value = Serializator.serialize(project.getFeedbackTypes());
+        List<Integer> mPages = new ArrayList<>();
+        if (value.contains("1,"))
+            mPages.add(1);
+        if (value.contains("2,"))
+            mPages.add(2);
+        if (value.contains("3,"))
+            mPages.add(3);
+        if (value.contains("4"))
+            mPages.add(4);
+        pages = new int[mPages.size()];
+        for(int i=0; i<mPages.size(); i++){
+            pages[i] = mPages.get(i);
+        }
+        //pages = project.getFeedbackTypes();//new int[]{1, 2, 3, 4};
     }
 
     @Override

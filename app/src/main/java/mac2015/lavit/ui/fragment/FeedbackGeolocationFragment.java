@@ -1,5 +1,6 @@
 package mac2015.lavit.ui.fragment;
 
+import android.graphics.Typeface;
 import android.location.Address;
 import android.location.Geocoder;
 import android.location.Location;
@@ -46,6 +47,8 @@ public class FeedbackGeolocationFragment extends FeedbackFragment<Location> {
     TextView txtLng;
     @InjectView(R.id.txtLocation)
     TextView txtLocation;
+    @InjectView(R.id.txtFeedbackGeo)
+    TextView txtFeedbackGeo;
 
     @Inject
     PinGMapAdapter adapter;
@@ -60,6 +63,8 @@ public class FeedbackGeolocationFragment extends FeedbackFragment<Location> {
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        Typeface myTypeface = Typeface.createFromAsset(getActivity().getAssets(), "fonts/LobsterTwo.otf");
+        txtFeedbackGeo.setTypeface(myTypeface);
         mapView.onCreate(savedInstanceState);
         setupMap();
         if (getOnFragmentReadyListener() != null) {
@@ -101,7 +106,7 @@ public class FeedbackGeolocationFragment extends FeedbackFragment<Location> {
         txtLng.setText("Longitude: " + getFeedback().getLongitude());
         try {
             txtLocation.setVisibility(View.GONE);
-           // txtLocation.setText(getName(getFeedback()));
+            // txtLocation.setText(getName(getFeedback()));
         } catch (Exception e) {
             txtLocation.setVisibility(View.GONE);
         }

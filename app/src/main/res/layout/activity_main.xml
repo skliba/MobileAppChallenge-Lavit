@@ -2,20 +2,27 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/primary_dark">
 
-    <include
-        layout="@layout/toolbar_profile"
+    <android.support.design.widget.AppBarLayout
+        android:id="@+id/abl"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true" />
+        android:layout_height="wrap_content">
+
+        <include
+            layout="@layout/toolbar_profile"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true" />
+    </android.support.design.widget.AppBarLayout>
 
     <org.buraktamturk.loadingview.LoadingView
         android:id="@+id/listPinLoadingView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:layout_below="@+id/toolbar"
+        android:layout_below="@+id/abl"
         app:lv_loading="false"
         app:lv_title="Loading projects">
 
@@ -23,7 +30,6 @@
             android:id="@+id/listProjects"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/primary_dark"
             android:clipToPadding="false" />
     </org.buraktamturk.loadingview.LoadingView>
 
