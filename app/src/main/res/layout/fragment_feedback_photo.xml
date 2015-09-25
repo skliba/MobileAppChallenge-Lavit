@@ -17,13 +17,14 @@
         android:textSize="17sp"
         android:background="@android:color/transparent"
         android:text="@string/skip_button_feedback"
-        android:textColor="@android:color/white" />
+        android:textColor="@android:color/white"
+        android:visibility="gone"/>
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/txtPicture"
-        android:layout_marginTop="30dp"
+        android:paddingTop="50dp"
         android:text="@string/text_picture_snap"
         android:textColor="@android:color/white"
         android:layout_below="@id/btnFeedbackSkip"
