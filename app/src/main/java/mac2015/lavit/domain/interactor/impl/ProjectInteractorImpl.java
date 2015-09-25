@@ -1,11 +1,15 @@
 package mac2015.lavit.domain.interactor.impl;
 
+import android.util.Log;
+
 import java.util.List;
 
 import mac2015.lavit.domain.interactor.AbstractInteractor;
 import mac2015.lavit.domain.interactor.ProjectInteractor;
 import mac2015.lavit.domain.models.ProjectModel;
+import mac2015.lavit.domain.models.response.FeedbackResponse;
 import mac2015.lavit.domain.models.response.Response;
+import mac2015.lavit.domain.models.response.ZokaResponse;
 import mac2015.lavit.domain.repository.ListRepository;
 import mac2015.lavit.executor.InteractorExecutor;
 import mac2015.lavit.executor.MainThreadExecutor;
@@ -16,8 +20,8 @@ import retrofit.RetrofitError;
  */
 public class ProjectInteractorImpl extends AbstractInteractor implements ProjectInteractor {
 
+    private static final String TAG = "DAM_INTER_PROJ";
     private ListRepository listRepository;
-    private ProjectModel projectModel;
     private Callback callback;
     private String token;
 
@@ -31,8 +35,20 @@ public class ProjectInteractorImpl extends AbstractInteractor implements Project
     public void run() {
         try {
             Response<List<ProjectModel>> projectResponse = listRepository.fetchProjects(token);
-            notifySuccess(projectResponse.getData());
+            Log.i(TAG, "fetched responses");
+            List<ProjectModel> models = projectResponse.getData();
+            /*Log.i(TAG, "Got data");
+            for (ProjectModel model : models) {
+                Log.i(TAG, "Fetching feedback for model " + model.getId());
+                final Response<ZokaResponse> feedbackResponse = listRepository.fetchFeedback(token, model.getId());
+                for (FeedbackResponse response : feedbackResponse.getData().getFeedbackResponseZoka()) {
+                    model.setFeedbackModel(response);
+                }
+            }
+            Log.i(TAG, "Successy");*/
+            notifySuccess(models);
         } catch (RetrofitError e) {
+            Log.e(TAG, "Retrofit error", e);
             notifyError(e.getMessage());
         }
 

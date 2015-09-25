@@ -9,6 +9,7 @@ import mac2015.lavit.domain.models.RegistrationModel;
 import mac2015.lavit.domain.models.response.LoginResponse;
 import mac2015.lavit.domain.models.response.RegistrationResponse;
 import mac2015.lavit.domain.models.response.Response;
+import mac2015.lavit.domain.models.response.ZokaResponse;
 import retrofit.http.Body;
 import retrofit.http.GET;
 import retrofit.http.Header;
@@ -45,4 +46,8 @@ public interface AppService {
     @Multipart
     @POST("/app/api/feedbacks/{projectId}/image")
     String uploadImage(@Path("projectId") long projectId, @Part("avatar") TypedFile file);
+
+    @GET("/app/api/projects/{projectId}")
+    Response<ZokaResponse> fetchFeedback(@Header("X-Api-Token") String token, @Path("projectId") long projectId);
+
 }

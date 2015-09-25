@@ -17,6 +17,8 @@ public class FeedbackResponse {
     private String imagePath;
     @SerializedName("comment")
     private String comment;
+    @SerializedName("avg")
+    private double average;
 
     public double getRating() {
         return rating;
@@ -56,5 +58,13 @@ public class FeedbackResponse {
 
     public void setComment(String comment) {
         this.comment = comment;
+    }
+
+    public double getAverage() {
+        return average;
+    }
+
+    public void setAverage(double average) {
+        this.average = average;
     }
 }

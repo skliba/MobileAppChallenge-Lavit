@@ -9,7 +9,6 @@ import mac2015.lavit.domain.models.LoginModel;
 import mac2015.lavit.domain.models.ProjectModel;
 import mac2015.lavit.domain.models.RegistrationModel;
 import mac2015.lavit.domain.models.SocialProfile;
-import mac2015.lavit.domain.models.response.FeedbackResponse;
 import mac2015.lavit.domain.models.response.LoginResponse;
 import mac2015.lavit.domain.models.response.RegistrationResponse;
 import mac2015.lavit.domain.models.response.Response;
@@ -95,7 +94,7 @@ public class ApiManagerImpl implements ApiManager, ListRepository {
 
     @Override
     public Response<ZokaResponse> fetchFeedback(String token, long projectId) {
-        return null;
+        return service.fetchFeedback(token, projectId);
     }
 
     public Response<String> sendFeedback(FeedbackModel feedbackModel, String token, long projectId) {

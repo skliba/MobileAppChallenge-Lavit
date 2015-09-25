@@ -2,7 +2,6 @@ package mac2015.lavit.ui.fragment;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -68,10 +67,6 @@ public class FeedbackRatingFragment extends FeedbackFragment<Double> {
             double bwDouble = borderWidth;
             double calculated = (progressDouble / 100) * (bwDouble);
             int cast = (int) calculated;
-            Log.i(TAG, "Progress: " + progress);
-            Log.i(TAG, "BW: " + borderWidth);
-            Log.i(TAG, "Calculated: " + calculated);
-            Log.i(TAG, "Cast: " + cast);
             updateWidth(cast);
             updateTransparency(progress);
             imgFrontHeart.setLayoutParams(params);
@@ -85,6 +80,7 @@ public class FeedbackRatingFragment extends FeedbackFragment<Double> {
 
         @Override
         public void onStopTrackingTouch(SeekBar seekBar) {
+            seekBar.setProgress(seekBar.getProgress() / 5);
 //            YoYo.with(Techniques.Tada).duration(800).playOn(imgFrontHeart);
         }
     };
