@@ -1,7 +1,5 @@
 package mac2015.lavit.domain.interactor.impl;
 
-import android.telecom.Call;
-
 import mac2015.lavit.domain.interactor.AbstractInteractor;
 import mac2015.lavit.domain.interactor.FetchFeedbackInteractor;
 import mac2015.lavit.domain.models.response.FeedbackResponse;
@@ -42,12 +40,11 @@ public class FetchFeedbackInteractorImpl extends AbstractInteractor implements F
 
     @Override
     public void run() {
-        try{
+        try {
             final Response<ZokaResponse> feedbackResponse = listRepository.fetchFeedback(token, projectId);
-            model = feedbackResponse.getData().getFeedbackResponseZoka();
+            //   model = feedbackResponse.getData().getFeedbackResponseZoka().get(0);
             notifySucces(model);
-        }
-        catch(RetrofitError e){
+        } catch (RetrofitError e) {
             notifyError(e.getMessage());
         }
     }

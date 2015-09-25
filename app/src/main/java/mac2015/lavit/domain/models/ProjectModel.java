@@ -27,6 +27,7 @@ public class ProjectModel {
     private int feedBackType;
     @SerializedName("allowedTypes")
     private transient int[] feedbackTypes;
+    private transient FeedbackResponse feedbackModel;
 
     public String getName() {
         return name;
@@ -127,5 +128,13 @@ public class ProjectModel {
 
     public void setFeedbackTypes(int[] feedbackTypes) {
         this.feedbackTypes = feedbackTypes;
+    }
+
+    public FeedbackResponse getFeedbackModel() {
+        return feedbackModel;
+    }
+
+    public void setFeedbackModel(FeedbackResponse feedbackModel) {
+        this.feedbackModel = feedbackModel;
     }
 }

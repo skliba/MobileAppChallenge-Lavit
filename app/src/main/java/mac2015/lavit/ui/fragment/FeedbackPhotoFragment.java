@@ -2,23 +2,19 @@ package mac2015.lavit.ui.fragment;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.net.Uri;
+import android.graphics.Bitmap;
 import android.os.Bundle;
-import android.os.Environment;
 import android.provider.MediaStore;
 import android.support.annotation.Nullable;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
-import com.squareup.picasso.Picasso;
-
+import java.io.ByteArrayOutputStream;
 import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 
 import butterknife.InjectView;
 import butterknife.OnClick;
@@ -32,7 +28,6 @@ public class FeedbackPhotoFragment extends FeedbackFragment<File> {
     private static final String TAG = "DAM_FRAG_PHOTO";
     @InjectView(R.id.imgFeedbackPhoto)
     ImageView imgFeedbackPhoto;
-    private String currentPhotoPath;
     private File photoFile;
 
     @Nullable
@@ -53,49 +48,41 @@ public class FeedbackPhotoFragment extends FeedbackFragment<File> {
 
     private void takePicture() {
         Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-        // Create the File where the photo should go
-        photoFile = null;
-        try {
-            photoFile = createImageFile();
-        } catch (IOException ex) {
-            Log.e(TAG, "IOE", ex);
-            // Error occurred while creating the File
-        }
-        // Continue only if the File was successfully created
-        if (photoFile != null) {
-            Log.i(TAG, "PF!=null");
-            takePictureIntent.putExtra(MediaStore.EXTRA_OUTPUT,
-                    Uri.fromFile(photoFile));
-            startActivityForResult(takePictureIntent, 0);
-        }
+        startActivityForResult(takePictureIntent, 0);
     }
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        Log.i(TAG, "AFR:" + requestCode);
         if (requestCode == 0 && resultCode == Activity.RESULT_OK) {
-            Picasso.with(getActivity()).load(photoFile).resize(500, 500).into(imgFeedbackPhoto);
+            Bitmap photo = (Bitmap) data.getExtras().get("data");
+            imgFeedbackPhoto.setImageBitmap(photo);
+            try {
+                photoFile = (bitmapToFile(photo));
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
         }
     }
 
-    private File createImageFile() throws IOException {
-        // Create an image file name
-        String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
-        String imageFileName = "JPEG_" + timeStamp + "_";
-        File storageDir = Environment.getExternalStoragePublicDirectory(
-                Environment.DIRECTORY_PICTURES);
-        File image = File.createTempFile(
-                imageFileName,  /* prefix */
-                ".jpg",         /* suffix */
-                storageDir      /* directory */
-        );
+    private File bitmapToFile(Bitmap bitmap) throws IOException {
+        //create a file to write bitmap data
+        File f = new File(getActivity().getCacheDir(), "sljika");
+        f.createNewFile();
 
-        // Save a file: path for use with ACTION_VIEW intents
-        currentPhotoPath = "file:" + image.getAbsolutePath();
-        return image;
+//Convert bitmap to byte array
+        ByteArrayOutputStream bos = new ByteArrayOutputStream();
+        bitmap.compress(Bitmap.CompressFormat.JPEG, 100/*ignored for PNG*/, bos);
+        byte[] bitmapdata = bos.toByteArray();
+
+//write the bytes in file
+        FileOutputStream fos = new FileOutputStream(f);
+        fos.write(bitmapdata);
+        fos.flush();
+        fos.close();
+        return f;
     }
-
 
     @Override
     public File getFeedback() {

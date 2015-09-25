@@ -2,6 +2,8 @@ package mac2015.lavit.domain.models.response;
 
 import com.google.gson.annotations.SerializedName;
 
+import java.util.List;
+
 /**
  * Created by noxqs on 24.09.15..
  */
@@ -10,7 +12,7 @@ public class ZokaResponse {
     @SerializedName("project")
     private ProjectRespponseZoka projectResponseZoka;
     @SerializedName("feedback")
-    private FeedbackResponse feedbackResponseZoka;
+    private List<FeedbackResponse> feedbackResponseZoka;
 
     public ProjectRespponseZoka getProjectResponseZoka() {
         return projectResponseZoka;
@@ -20,11 +22,11 @@ public class ZokaResponse {
         this.projectResponseZoka = projectResponseZoka;
     }
 
-    public FeedbackResponse getFeedbackResponseZoka() {
+    public List<FeedbackResponse> getFeedbackResponseZoka() {
         return feedbackResponseZoka;
     }
 
-    public void setFeedbackResponseZoka(FeedbackResponse feedbackResponseZoka) {
+    public void setFeedbackResponseZoka(List<FeedbackResponse> feedbackResponseZoka) {
         this.feedbackResponseZoka = feedbackResponseZoka;
     }
 }
