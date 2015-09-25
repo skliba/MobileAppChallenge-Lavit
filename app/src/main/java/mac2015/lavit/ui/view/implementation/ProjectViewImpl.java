@@ -48,7 +48,8 @@ public class ProjectViewImpl extends BindableLayout<ProjectModel> {
     @Override
     public void bind(ProjectModel projectModel) {
         this.project = projectModel;
-        Picasso.with(getContext()).load(projectModel.getCoverPicture()).into(imgProjectCover);
+        String url = "http://178.62.255.25:8000/app/admin/projects/" + projectModel.getId() + "/image";
+        Picasso.with(getContext()).load(url).into(imgProjectCover);
         txtProjectName.setText(projectModel.getName());
         showTags(projectModel.getTags());
         setOnClickListener(new OnClickListener() {

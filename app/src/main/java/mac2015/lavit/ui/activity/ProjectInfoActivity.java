@@ -5,6 +5,7 @@ import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.view.ViewPager;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.MenuItem;
 import android.widget.ImageView;
 
@@ -34,6 +35,7 @@ import mac2015.lavit.ui.view.ProjectInfoView;
 public class ProjectInfoActivity extends BaseActivity implements ProjectInfoView {
 
 
+    private static final String TAG = "JEBOTE";
     @InjectView(R.id.imgBackdrop)
     ImageView imgBackdrop;
     @InjectView(R.id.fab)
@@ -49,6 +51,8 @@ public class ProjectInfoActivity extends BaseActivity implements ProjectInfoView
     @InjectView(R.id.appbar)
     ControllableAppBarLayout appbar;
 
+    @Inject
+    Picasso safePicasso;
     @Inject
     AppbarOffsetHandler appbarOffsetHandler;
     @Inject
@@ -96,7 +100,9 @@ public class ProjectInfoActivity extends BaseActivity implements ProjectInfoView
 
     @Override
     public void showBasicInfo(ProjectModel projectModel) {
-        Picasso.with(getBaseContext()).load(projectModel.getCoverPicture()).into(imgBackdrop);
+        String url = "http://178.62.255.25:8000/app/admin/projects/" + projectModel.getId() + "/image";
+        Log.i(TAG, "Url: " + url);
+        safePicasso.load(url).into(imgBackdrop);
         setProfileName(projectModel.getName());
     }
 
