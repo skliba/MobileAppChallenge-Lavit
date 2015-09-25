@@ -9,4 +9,5 @@
     <string name="log_in_email_hint">Email</string>
     <string name="gcm_sender_id">260736635970</string>
     <string name="How_Lav_it">How much do you Lavit?</string>
+    <string name="skip_button_feedback">Skip</string>
 </resources>

@@ -3,6 +3,7 @@ package mac2015.lavit.ui.fragment;
 import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.support.annotation.Nullable;
@@ -10,6 +11,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
@@ -28,6 +30,10 @@ public class FeedbackPhotoFragment extends FeedbackFragment<File> {
     private static final String TAG = "DAM_FRAG_PHOTO";
     @InjectView(R.id.imgFeedbackPhoto)
     ImageView imgFeedbackPhoto;
+    @InjectView(R.id.txtPicture)
+    TextView txtPicture;
+
+
     private File photoFile;
 
     @Nullable
@@ -39,6 +45,8 @@ public class FeedbackPhotoFragment extends FeedbackFragment<File> {
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        Typeface myTypeface = Typeface.createFromAsset(getActivity().getAssets(), "fonts/LobsterTwo.otf");
+        txtPicture.setTypeface(myTypeface);
     }
 
     @OnClick(R.id.fab)

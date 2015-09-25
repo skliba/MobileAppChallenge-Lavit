@@ -1,11 +1,13 @@
 package mac2015.lavit.ui.activity;
 
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.location.Location;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.io.File;
@@ -45,6 +47,7 @@ public class FeedbackActivity extends BaseActivity implements FeedbackView {
     Button btnFeedbackCancel;
     @InjectView(R.id.btnFeedbackProceed)
     Button btnFeedbackProceed;
+
 
     TabAdapter adapter;
 
