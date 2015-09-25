@@ -1,5 +1,7 @@
 package mac2015.lavit.domain.models;
 
+import com.google.gson.annotations.SerializedName;
+
 import java.io.File;
 
 /**
@@ -16,8 +18,9 @@ public class FeedbackModel {
     private double latitude;
     private double longitude;
     private transient File image;
-    private String imagePath;
     private ProjectModel project;
+    @SerializedName("imagePath")
+    private String imageUrl;
 
     public double getLatitude() {
         return latitude;
@@ -79,5 +82,9 @@ public class FeedbackModel {
 
     public void setProject(ProjectModel project) {
         this.project = project;
+    }
+
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
     }
 }

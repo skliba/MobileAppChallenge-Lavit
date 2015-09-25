@@ -88,7 +88,7 @@ public class ApiManagerImpl implements ApiManager, ListRepository {
     }
 
     @Override
-    public String sendImage(TypedFile file, long projectId) {
+    public Response<String> sendImage(TypedFile file, long projectId) {
         return service.uploadImage(projectId, file);
     }
 

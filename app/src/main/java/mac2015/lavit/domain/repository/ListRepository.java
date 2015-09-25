@@ -28,7 +28,7 @@ public interface ListRepository {
 
     Response<List<ProjectModel>> fetchProjects(String token);
 
-    String sendImage(TypedFile file, long projectId);
+    Response<String> sendImage(TypedFile file, long projectId);
 
     Response<ZokaResponse> fetchFeedback(String token, long projectId);
 }

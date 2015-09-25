@@ -47,8 +47,8 @@ public class FeedbackPresenterImpl extends BasePresenter implements FeedbackPres
             feedbackView.showStatus("Sending feedback");
             // TODO: send feedback
             FeedbackModel model = createModel();
-            sendImageTestInteractor.sendImage(this, model.getImage(), project.getId());
-            //sendFeedbackInteractor.sendFeedback(this, model, preferences.getToken(), project.getId());
+            // sendImageTestInteractor.sendImage(this, model.getImage(), project.getId());
+            sendFeedbackInteractor.sendFeedback(this, model, preferences.getToken(), project.getId());
             feedbackView.finishFeedback();
         }
     }
